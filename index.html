@@ -1,4 +1,4 @@
-<html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,6 +47,9 @@
             font-family: 'Caveat', cursive;
             font-weight: 700;
         }
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -54,11 +57,11 @@
     <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-3">
-                <img src="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU" alt="Logo Dr. Bañuelos Han" class="h-12 w-auto">
-                <span class="hidden sm:block text-xl font-semibold text-gray-800 tracking-wider">Dr. Han</span>
+            <a href="#" class="flex items-center space-x-4">
+                <img src="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU" alt="Logo Dr. Bañuelos Han" class="h-14 w-auto">
+                <span class="hidden sm:block text-2xl font-bold text-gray-800 tracking-wider logo-text">Dr. Han</span>
             </a>
-            <div class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest uppercase">
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-widest uppercase">
                 <a href="#perfil" class="underline-animation" data-translate="nav_profile">Perfil</a>
                 <a href="#especialidades" class="underline-animation" data-translate="nav_specialties">Especialidades</a>
                 <a href="#herramientas" class="underline-animation" data-translate="nav_tools">Herramientas</a>
@@ -79,7 +82,7 @@
             <a href="#herramientas" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_tools_mobile">Herramientas</a>
             <a href="#experiencia" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_experience_mobile">Experiencia</a>
             <a href="#contacto" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_contact_mobile">Contacto</a>
-             <div class="p-4"><button id="lang-switcher-mobile" class="lang-btn w-full">EN / ES</button></div>
+             <div class="p-4 flex items-center justify-center"><button id="lang-switcher-mobile" class="lang-btn w-full">EN / ES</button></div>
         </div>
     </header>
 
@@ -189,7 +192,7 @@
                         <button onclick="openModal('modal1')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain">
+                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain">
                     </div>
                 </div>
                 <!-- Experience 2 -->
@@ -213,7 +216,7 @@
                         <button onclick="openModal('modal3')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_3">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain">
+                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain">
                     </div>
                 </div>
             </div>
@@ -225,7 +228,7 @@
                 <blockquote class="text-2xl md:text-3xl italic text-gray-700 leading-relaxed" data-translate="quote_text">
                     "La prevención efectiva no solo protege al personal, sino que impulsa resultados medibles para el negocio."
                 </blockquote>
-                <p class="mt-6 text-4xl signature text-gray-900">Dr. Han</p>
+                <p class="mt-6 text-5xl signature text-gray-900">Dr. Han</p>
             </div>
         </section>
 
@@ -501,9 +504,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const langSwitcherDesktop = document.getElementById('lang-switcher-desktop');
             const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
-            const langSwitcherFooter = document.getElementById('lang-switcher-footer');
-
-
+            
             const toggleLanguage = () => {
                 const newLang = currentLang === 'es' ? 'en' : 'es';
                 switchLanguage(newLang);
@@ -511,7 +512,6 @@
             
             if(langSwitcherDesktop) langSwitcherDesktop.addEventListener('click', toggleLanguage);
             if(langSwitcherMobile) langSwitcherMobile.addEventListener('click', toggleLanguage);
-            if(langSwitcherFooter) langSwitcherFooter.addEventListener('click', toggleLanguage);
             
             // Set initial language
             switchLanguage('es');
@@ -543,3 +543,4 @@
     </script>
 </body>
 </html>
+
