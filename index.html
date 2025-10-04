@@ -31,9 +31,9 @@
         }
         .lang-btn {
             border: 1px solid #ddd;
-            padding: 4px 8px;
+            padding: 4px 12px;
             border-radius: 9999px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: #555;
             transition: all 0.3s;
@@ -41,6 +41,7 @@
         .lang-btn:hover {
             border-color: #333;
             color: #000;
+            background-color: #f9fafb;
         }
         .signature {
             font-family: 'Caveat', cursive;
@@ -188,7 +189,7 @@
                         <button onclick="openModal('modal1')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain">
+                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain">
                     </div>
                 </div>
                 <!-- Experience 2 -->
@@ -212,7 +213,7 @@
                         <button onclick="openModal('modal3')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_3">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain">
+                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain">
                     </div>
                 </div>
             </div>
@@ -235,6 +236,14 @@
                 <p class="mt-6 text-lg text-gray-600" data-translate="contact_p1">
                     Si su organización busca un profesional que combine la experiencia clínica con la gestión de seguridad y la optimización de procesos, me encantaría explorar cómo podemos colaborar.
                 </p>
+                <div class="mt-10">
+                    <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" data-translate="download_cv_button_bottom">
+                        <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        Descargar CV
+                    </a>
+                </div>
                 <div class="mt-10 flex flex-col md:flex-row flex-wrap justify-center items-center gap-6 md:gap-10">
                     <a href="mailto:dr.hanmedical@gmail.com" class="font-semibold text-lg text-gray-800 flex items-center gap-2 group">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-gray-900 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -310,11 +319,13 @@
                 nav_profile: "Profile",
                 nav_specialties: "Specialties",
                 nav_tools: "Tools & Standards",
+                nav_education: "Education",
                 nav_experience: "Experience",
                 nav_contact: "Contact",
                 nav_profile_mobile: "Profile",
                 nav_specialties_mobile: "Specialties",
                 nav_tools_mobile: "Tools & Standards",
+                nav_education_mobile: "Education",
                 nav_experience_mobile: "Experience",
                 nav_contact_mobile: "Contact",
                 hero_name: "Dr. Edgar Ivan Bañuelos Han",
@@ -330,6 +341,13 @@
                 spec2_desc: "Application of Official Mexican Standards (STPS), audits under ISO 45001, and risk analysis (PESTEL, Ishikawa).",
                 spec3_title: "Health Law & Compliance",
                 spec3_desc: "Expertise in Mexico's health legal framework, ensuring adherence to laws and managing informed consent.",
+                education_title: "Education & Certifications",
+                education_degree_title: "Academic Background",
+                education_degree_subtitle: "MD, General Physician and Obstetrician",
+                education_degree_school: "University of Guadalajara",
+                education_certs_title: "Key Certifications",
+                education_cert1: "Basic Life Support (BLS) - American Heart Association",
+                education_cert2: "Advanced Cardiovascular Life Support (ACLS) - American Heart Association",
                 tools_title: "Tools & Standards",
                 tools_subtitle: "My technical arsenal and regulatory knowledge.",
                 tools_management_title: "Management & Analysis Tools",
@@ -375,18 +393,21 @@
                 modal3_role_desc: "Occupational Medicine Specialist.",
                 modal3_achievements_title: "Functions and Achievements",
                 modal3_achievements_list: `<li>Directed the creation and management of the occupational medicine department from scratch.</li><li>Designed and implemented the medical evaluation process for recruitment and selection.</li><li>Created the clinical records system and health monitoring protocols.</li><li>Developed logs for the control and review of the risk premium.</li>`,
-                modal_close_button_3: "Close"
+                modal_close_button_3: "Close",
+                download_cv_button_bottom: "Download CV"
             },
             es: {
                 page_title: "Dr. Han | Médico Laboral y Especialista en Seguridad e Higiene",
                 nav_profile: "Perfil",
                 nav_specialties: "Especialidades",
                 nav_tools: "Herramientas",
+                nav_education: "Formación",
                 nav_experience: "Experiencia",
                 nav_contact: "Contacto",
                 nav_profile_mobile: "Perfil",
                 nav_specialties_mobile: "Especialidades",
                 nav_tools_mobile: "Herramientas",
+                nav_education_mobile: "Formación",
                 nav_experience_mobile: "Experiencia",
                 nav_contact_mobile: "Contacto",
                 hero_name: "Dr. Edgar Ivan Bañuelos Han",
@@ -402,6 +423,13 @@
                 spec2_desc: "Aplicación de Normas Oficiales Mexicanas (STPS), auditorías bajo ISO 45001 y análisis de riesgos (PESTEL, Ishikawa).",
                 spec3_title: "Derecho Sanitario y Cumplimiento",
                 spec3_desc: "Experiencia en el marco legal de la salud en México, asegurando el apego a leyes y gestionando consentimientos informados.",
+                education_title: "Formación y Certificaciones",
+                education_degree_title: "Formación Académica",
+                education_degree_subtitle: "Licenciatura en Médico Cirujano y Partero",
+                education_degree_school: "Universidad de Guadalajara",
+                education_certs_title: "Certificaciones Clave",
+                education_cert1: "Basic Life Support (BLS) - American Heart Association",
+                education_cert2: "Advanced Cardiovascular Life Support (ACLS) - American Heart Association",
                 tools_title: "Herramientas y Normativas",
                 tools_subtitle: "Mi arsenal técnico y conocimiento regulatorio.",
                 tools_management_title: "Herramientas de Gestión y Análisis",
@@ -447,7 +475,8 @@
                 modal3_role_desc: "Especialista en Medicina Ocupacional.",
                 modal3_achievements_title: "Funciones y Logros",
                 modal3_achievements_list: `<li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li>`,
-                modal_close_button_3: "Cerrar"
+                modal_close_button_3: "Cerrar",
+                download_cv_button_bottom: "Descargar CV"
             }
         };
 
@@ -472,14 +501,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const langSwitcherDesktop = document.getElementById('lang-switcher-desktop');
             const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
+            const langSwitcherFooter = document.getElementById('lang-switcher-footer');
+
 
             const toggleLanguage = () => {
                 const newLang = currentLang === 'es' ? 'en' : 'es';
                 switchLanguage(newLang);
             };
             
-            langSwitcherDesktop.addEventListener('click', toggleLanguage);
-            langSwitcherMobile.addEventListener('click', toggleLanguage);
+            if(langSwitcherDesktop) langSwitcherDesktop.addEventListener('click', toggleLanguage);
+            if(langSwitcherMobile) langSwitcherMobile.addEventListener('click', toggleLanguage);
+            if(langSwitcherFooter) langSwitcherFooter.addEventListener('click', toggleLanguage);
             
             // Set initial language
             switchLanguage('es');
