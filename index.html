@@ -1,0 +1,513 @@
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="page_title">Dr. Han | Médico Laboral y Especialista en Seguridad e Higiene</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+        }
+        h1, h2, h3, h4, blockquote {
+            font-family: 'Playfair Display', serif;
+        }
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        .modal-content { transition: transform 0.3s ease-in-out; }
+        .underline-animation {
+            display: inline;
+            background-image: linear-gradient(to right, #333 50%, #333 50%);
+            background-size: 200% 1px;
+            background-repeat: no-repeat;
+            background-position: 100% 100%;
+            transition: background-position 0.4s ease-in-out;
+        }
+        .underline-animation:hover {
+            background-position: 0% 100%;
+        }
+        .lang-btn {
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #555;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover {
+            border-color: #333;
+            color: #000;
+        }
+        .signature {
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <img src="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU" alt="Logo Dr. Bañuelos Han" class="h-12 w-auto">
+                <span class="hidden sm:block text-xl font-semibold text-gray-800 tracking-wider">Dr. Han</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest uppercase">
+                <a href="#perfil" class="underline-animation" data-translate="nav_profile">Perfil</a>
+                <a href="#especialidades" class="underline-animation" data-translate="nav_specialties">Especialidades</a>
+                <a href="#herramientas" class="underline-animation" data-translate="nav_tools">Herramientas</a>
+                <a href="#experiencia" class="underline-animation" data-translate="nav_experience">Experiencia</a>
+                <a href="#contacto" class="underline-animation" data-translate="nav_contact">Contacto</a>
+                <button id="lang-switcher-desktop" class="lang-btn">EN / ES</button>
+            </div>
+             <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+         <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t">
+            <a href="#perfil" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_profile_mobile">Perfil</a>
+            <a href="#especialidades" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_specialties_mobile">Especialidades</a>
+            <a href="#herramientas" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_tools_mobile">Herramientas</a>
+            <a href="#experiencia" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_experience_mobile">Experiencia</a>
+            <a href="#contacto" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_contact_mobile">Contacto</a>
+             <div class="p-4"><button id="lang-switcher-mobile" class="lang-btn w-full">EN / ES</button></div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="home" class="py-24 md:py-40 flex flex-col md:flex-row items-center text-center md:text-left">
+            <div class="md:w-3/5">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight" data-translate="hero_name">Dr. Edgar Ivan Bañuelos Han</h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl" data-translate="hero_subtitle">
+                    Médico Laboral con enfoque en Salud y Seguridad Industrial. Aplico un enfoque basado en datos para optimizar el bienestar en el entorno de trabajo.
+                </p>
+            </div>
+            <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center">
+                 <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/d/1nj44-d1y2ohmMDQNHnQWn3FzvvqSSPT-" alt="Foto profesional de Dr. Edgar Ivan Bañuelos Han" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="perfil" class="py-24 border-t bg-gray-50 -mx-6 px-6">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-translate="profile_title">Perfil Profesional</h2>
+                <p class="text-lg text-gray-600 mb-4" data-translate="profile_p1">
+                    Como Médico Cirujano con conocimiento y capacitación en Seguridad e Higiene Industrial y Derecho Sanitario, mi perfil profesional se ha consolidado en la gestión y liderazgo de áreas médicas. Integro mi entendimiento clínico con una sólida competencia en la administración de personal, la estructuración de departamentos y la gestión de riesgos laborales.
+                </p>
+                <p class="text-lg text-gray-600" data-translate="profile_p2">
+                    Mi práctica se fundamenta en la gestión estratégica para la prevención de riesgos, el estricto apego a las leyes y normas mexicanas (NOMs, ISO), y la promoción de entornos saludables. Soy responsable del desarrollo de protocolos, la gestión de recursos y el uso de análisis de datos para crear una cultura de seguridad robusta y eficiente.
+                </p>
+            </div>
+        </section>
+
+        <!-- Specialties Section -->
+        <section id="especialidades" class="py-24 border-t">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900" data-translate="specialties_title">Áreas de Especialidad</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-translate="specialties_subtitle">Mis competencias se centran en tres pilares de la salud y seguridad ocupacional.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="text-center p-6">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec1_title">Medicina del Trabajo</h3>
+                        <p class="text-gray-600 text-sm" data-translate="spec1_desc">Realización de exámenes médicos, gestión de casos clínicos laborales y desarrollo de programas preventivos de salud.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec2_title">Seguridad e Higiene</h3>
+                        <p class="text-gray-600 text-sm" data-translate="spec2_desc">Aplicación de Normas Oficiales Mexicanas (STPS), auditorías bajo ISO 45001 y análisis de riesgos (PESTEL, Ishikawa).</p>
+                    </div>
+                     <div class="text-center p-6">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h8a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.8 4.963l1.447-.814a2 2 0 012.506 0l1.447.814M12 6V3m-3.182 5.182a15.01 15.01 0 016.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec3_title">Derecho Sanitario y Cumplimiento</h3>
+                        <p class="text-gray-600 text-sm" data-translate="spec3_desc">Experiencia en el marco legal de la salud en México, asegurando el apego a leyes y gestionando consentimientos informados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tools & Standards Section -->
+        <section id="herramientas" class="py-24 border-t bg-gray-50 -mx-6 px-6">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900" data-translate="tools_title">Herramientas y Normativas</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-translate="tools_subtitle">Mi arsenal técnico y conocimiento regulatorio.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center md:text-left" data-translate="tools_management_title">Herramientas de Gestión y Análisis</h3>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Datos:</strong><span data-translate="tool_da"> Looker Studio, Flourish, Excel Avanzado.</span></div>
+                            <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Causa Raíz:</strong><span data-translate="tool_rca"> Diagrama de Ishikawa, 5 Porqués.</span></div>
+                            <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Riesgo:</strong><span data-translate="tool_risk"> Modelo PESTEL.</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center md:text-left" data-translate="tools_standards_title">Conocimiento en Normativas</h3>
+                        <div class="space-y-4">
+                             <div class="bg-white p-4 rounded-lg border">
+                                <strong class="block">Estándares ISO:</strong>
+                                <p class="text-sm" data-translate="tool_iso">ISO 9001:2015 (Calidad), ISO 19011:2018 (Auditoría), ISO 45001:2018 (SST).</p>
+                             </div>
+                             <div class="bg-white p-4 rounded-lg border">
+                                <strong class="block">NOM-STPS:</strong>
+                                <p class="text-sm" data-translate="tool_noms">NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Riesgos Psicosociales), NOM-036 (Ergonomía).</p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experiencia" class="py-24 border-t">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900" data-translate="experience_title">Experiencia Profesional</h2>
+                 <p class="mt-4 text-lg text-gray-600" data-translate="experience_subtitle">Una trayectoria de resultados y responsabilidades clave.</p>
+            </div>
+            <div class="space-y-20">
+                <!-- Experience 1 -->
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="pr-0 md:pr-10">
+                        <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp1_tag">Corporativo</p>
+                        <h3 class="text-3xl font-bold text-gray-800" data-translate="exp1_title">Responsable del Área Médica</h3>
+                        <p class="mt-4 text-gray-600" data-translate="exp1_desc">En Vitesco / Schaeffler, fui responsable de la reestructuración del área médica, implementando un sistema de gestión basado en KPIs y análisis de datos. Administré al equipo en la investigación de accidentes, utilizando metodologías de causa raíz para desarrollar estrategias preventivas.</p>
+                        <button onclick="openModal('modal1')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button">Ver detalles</button>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md">
+                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain">
+                    </div>
+                </div>
+                <!-- Experience 2 -->
+                 <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="order-last md:order-first rounded-lg overflow-hidden shadow-md">
+                         <img src="https://lh3.googleusercontent.com/d/1Jf2lrXh5_anq5gMSPhNssUIhqOo89zPE" alt="Imagen de experiencia aeronáutica" class="w-full h-auto object-contain">
+                    </div>
+                    <div class="pl-0 md:pl-10">
+                        <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp2_tag">Aeronáutica</p>
+                        <h3 class="text-3xl font-bold text-gray-800" data-translate="exp2_title">Gestión de Salud en Aeronáutica</h3>
+                        <p class="mt-4 text-gray-600" data-translate="exp2_desc">En Aeroméxico, fui responsable de las evaluaciones médicas de aptitud para personal crítico (pilotos, sobrecargos, mantenimiento), garantizando la salud y seguridad operacional. Coordiné la aplicación de pruebas y gestioné la documentación correspondiente (ST-7, ST-9), asegurando el cumplimiento normativo.</p>
+                        <button onclick="openModal('modal2')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_2">Ver detalles</button>
+                    </div>
+                </div>
+                 <!-- Experience 3 -->
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="pr-0 md:pr-10">
+                        <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp3_tag">Logística</p>
+                        <h3 class="text-3xl font-bold text-gray-800" data-translate="exp3_title">Implementación de Estructura Departamental</h3>
+                        <p class="mt-4 text-gray-600" data-translate="exp3_desc">Para Grupo Vallarta Plus, diseñé y ejecuté la creación del departamento de medicina laboral desde cero. Esta iniciativa incluyó el desarrollo de todos los protocolos, la implementación de sistemas de gestión de expedientes y la creación de métricas para el control de la prima de riesgo.</p>
+                        <button onclick="openModal('modal3')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_3">Ver detalles</button>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md">
+                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="py-24 border-t bg-gray-50 -mx-6 px-6">
+            <div class="container mx-auto max-w-3xl text-center">
+                <blockquote class="text-2xl md:text-3xl italic text-gray-700 leading-relaxed" data-translate="quote_text">
+                    "La prevención efectiva no solo protege al personal, sino que impulsa resultados medibles para el negocio."
+                </blockquote>
+                <p class="mt-6 text-4xl signature text-gray-900">Dr. Han</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-24 border-t text-center">
+             <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900" data-translate="contact_title">Hablemos</h2>
+                <p class="mt-6 text-lg text-gray-600" data-translate="contact_p1">
+                    Si su organización busca un profesional que combine la experiencia clínica con la gestión de seguridad y la optimización de procesos, me encantaría explorar cómo podemos colaborar.
+                </p>
+                <div class="mt-10 flex flex-col md:flex-row flex-wrap justify-center items-center gap-6 md:gap-10">
+                    <a href="mailto:dr.hanmedical@gmail.com" class="font-semibold text-lg text-gray-800 flex items-center gap-2 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-gray-900 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        <span class="underline-animation">dr.hanmedical@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/drhanmedical" target="_blank" rel="noopener noreferrer" class="font-semibold text-lg text-gray-800 flex items-center gap-2 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 group-hover:text-gray-900 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span class="underline-animation">LinkedIn</span>
+                    </a>
+                    <a href="https://wa.me/525629846164" target="_blank" rel="noopener noreferrer" class="font-semibold text-lg text-gray-800 flex items-center gap-2 group">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 group-hover:text-gray-900 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l-1.317 4.834 4.885-1.286zM9.062 8.611c-.308-.153-.687-.153-.907-.153-.224 0-.462.08-.667.311-.205.225-.824.838-.824 2.015s.843 2.333.951 2.492c.108.158 1.691 2.64 4.198 3.731 2.506 1.092 2.87.843 3.397.823.527-.02 1.69-.69 1.928-1.363.238-.673.238-1.25.163-1.364-.075-.114-.268-.174-.548-.329-.28-.155-1.688-.834-1.96-.926-.272-.092-.47-.138-.67.138-.2.277-.738.835-.907 1.004-.169.169-.338.184-.618.031-.28-.155-.957-.347-1.824-1.127-.678-.582-1.127-1.309-1.26-1.528-.133-.219-.014-.338.122-.462.12-.11.268-.282.403-.431.135-.149.18-.256.268-.431.088-.174.043-.338-.014-.462-.058-.125-.548-1.318-.753-1.804z"/></svg>
+                        <span class="underline-animation">WhatsApp</span>
+                    </a>
+                </div>
+                <div class="mt-12">
+                    <p class="font-semibold text-gray-800" data-translate="contact_location">
+                        Ubicación: Región de Zapopan, Jalisco, México
+                    </p>
+                    <p class="font-medium text-gray-600" data-translate="contact_availability">Disponibilidad a reubicación o trabajo a distancia.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="border-t">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">
+            <p data-translate="footer_text">&copy; 2025 Dr. Edgar Ivan Bañuelos Han. Salud y Seguridad Corporativa.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Modal 1: Vitesco -->
+    <div id="modal1" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
+        <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
+            <div class="p-6 border-b flex justify-between items-start"><h3 class="text-2xl font-bold text-gray-900">Vitesco / Schaeffler</h3><button onclick="closeModal('modal1')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button></div>
+            <div class="p-8 space-y-4 text-gray-600">
+                <div><h4 class="font-bold text-gray-800" data-translate="modal1_role_title">Rol</h4><p data-translate="modal1_role_desc">Responsable del área médica.</p></div>
+                <div><h4 class="font-bold text-gray-800" data-translate="modal1_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal1_achievements_list"><li>Gestión y administración del personal del área médica.</li><li>Implementación de programas preventivos y campañas de salud.</li><li>Realización de exámenes médicos periódicos y de nuevo ingreso.</li><li>Investigaciones de accidentes con análisis de causa raíz (5 porqués).</li><li>Desarrollo de diagnósticos situacionales para la toma de decisiones preventivas.</li></ul></div>
+            </div>
+            <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button onclick="closeModal('modal1')" class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button">Cerrar</button></div>
+        </div>
+    </div>
+    <!-- Modal 2: Aeromexico -->
+    <div id="modal2" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
+         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
+            <div class="p-6 border-b flex justify-between items-start"><h3 class="text-2xl font-bold text-gray-900">Aeroméxico</h3><button onclick="closeModal('modal2')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button></div>
+            <div class="p-8 space-y-4 text-gray-600">
+                <div><h4 class="font-bold text-gray-800" data-translate="modal2_role_title">Rol</h4><p data-translate="modal2_role_desc">Médico Ocupacional.</p></div>
+                <div><h4 class="font-bold text-gray-800" data-translate="modal2_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal2_achievements_list"><li>Realicé evaluaciones médicas críticas para personal de tráfico, cargo, mantenimiento y tripulación.</li><li>Apliqué pruebas de colesterol, triglicéridos, glucosa, alcoholimetría y antidoping.</li><li>Gestioné de manera integral formatos ante el IMSS (ST-7, ST-9, ST-2).</li><li>Implementé análisis de tests de fatiga para mitigar riesgos operacionales.</li><li>Investigación de accidentes laborales.</li><li>Fomento al bienestar de los colaboradores.</li></ul></div>
+            </div>
+            <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button onclick="closeModal('modal2')" class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_2">Cerrar</button></div>
+        </div>
+    </div>
+    <!-- Modal 3: Grupo Vallarta Plus -->
+     <div id="modal3" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
+         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
+            <div class="p-6 border-b flex justify-between items-start"><h3 class="text-2xl font-bold text-gray-900">Grupo Vallarta Plus / GOPOST</h3><button onclick="closeModal('modal3')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button></div>
+            <div class="p-8 space-y-4 text-gray-600">
+                <div><h4 class="font-bold text-gray-800" data-translate="modal3_role_title">Rol</h4><p data-translate="modal3_role_desc">Especialista en Medicina Ocupacional.</p></div>
+                <div><h4 class="font-bold text-gray-800" data-translate="modal3_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal3_achievements_list"><li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li></ul></div>
+            </div>
+            <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button onclick="closeModal('modal3')" class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_3">Cerrar</button></div>
+        </div>
+    </div>
+
+    <script>
+        // Language Translation Logic
+        const translations = {
+            en: {
+                page_title: "Dr. Han | Occupational Physician & Health Specialist",
+                nav_profile: "Profile",
+                nav_specialties: "Specialties",
+                nav_tools: "Tools & Standards",
+                nav_experience: "Experience",
+                nav_contact: "Contact",
+                nav_profile_mobile: "Profile",
+                nav_specialties_mobile: "Specialties",
+                nav_tools_mobile: "Tools & Standards",
+                nav_experience_mobile: "Experience",
+                nav_contact_mobile: "Contact",
+                hero_name: "Dr. Edgar Ivan Bañuelos Han",
+                hero_subtitle: "Occupational Physician with a focus on Industrial Health and Safety. I apply a data-driven approach to optimize wellness in the workplace.",
+                profile_title: "Professional Profile",
+                profile_p1: "As a Medical Doctor with knowledge and training in Industrial Safety & Hygiene and Health Law, my professional profile has been consolidated in the management and leadership of medical areas. I integrate my clinical understanding with strong competence in personnel administration, department structuring, and occupational risk management.",
+                profile_p2: "My practice is based on strategic management for risk prevention, strict adherence to Mexican laws and regulations (NOMs, ISO), and the promotion of healthy environments. I am responsible for protocol development, resource management, and the use of data analysis to create a robust and efficient safety culture.",
+                specialties_title: "Areas of Specialty",
+                specialties_subtitle: "My expertise is focused on three key pillars of occupational health and safety.",
+                spec1_title: "Occupational Medicine",
+                spec1_desc: "Conducting medical examinations, managing occupational clinical cases, and developing preventive health programs.",
+                spec2_title: "Safety and Hygiene",
+                spec2_desc: "Application of Official Mexican Standards (STPS), audits under ISO 45001, and risk analysis (PESTEL, Ishikawa).",
+                spec3_title: "Health Law & Compliance",
+                spec3_desc: "Expertise in Mexico's health legal framework, ensuring adherence to laws and managing informed consent.",
+                tools_title: "Tools & Standards",
+                tools_subtitle: "My technical arsenal and regulatory knowledge.",
+                tools_management_title: "Management & Analysis Tools",
+                tool_da: " Looker Studio, Flourish, Advanced Excel.",
+                tool_rca: " Ishikawa Diagram, 5 Whys.",
+                tool_risk: " PESTEL Model.",
+                tools_standards_title: "Knowledge in Standards",
+                tool_iso: "ISO 9001:2015 (Quality), ISO 19011:2018 (Auditing), ISO 45001:2018 (OH&S).",
+                tool_noms: "NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Psychosocial Risks), NOM-036 (Ergonomics).",
+                experience_title: "Professional Experience",
+                experience_subtitle: "A track record of key results and responsibilities.",
+                exp1_tag: "Corporate",
+                exp1_title: "Head of Medical Area",
+                exp1_desc: "At Vitesco / Schaeffler, I was responsible for the restructuring of the medical area, implementing a management system based on KPIs and data analysis. I managed the team in accident investigations, using root cause analysis methodologies to develop preventive strategies.",
+                exp_button: "View details",
+                exp_image_placeholder: "Experience Image",
+                exp2_tag: "Aeronautics",
+                exp2_title: "Aeronautical Health Management",
+                exp2_desc: "At Aeroméxico, I was responsible for fitness-for-duty medical evaluations for critical personnel (pilots, flight attendants, maintenance), ensuring operational health and safety. I coordinated testing and managed corresponding documentation (ST-7, ST-9), ensuring regulatory compliance.",
+                exp_button_2: "View details",
+                exp3_tag: "Logistics",
+                exp3_title: "Departmental Structure Implementation",
+                exp3_desc: "For Grupo Vallarta Plus, I designed and executed the creation of the occupational medicine department from scratch. This initiative included developing all protocols, implementing records management systems, and creating metrics for risk premium control.",
+                exp_button_3: "View details",
+                exp_image_placeholder_2: "Experience Image",
+                quote_text: '"Effective prevention not only protects personnel, but also drives measurable business results."',
+                contact_title: "Let's Talk",
+                contact_location: "Location: Zapopan, Jalisco, Mexico Region",
+                contact_availability: "Available for relocation or remote work.",
+                contact_p1: "If your organization is looking for a professional who combines clinical experience with safety management and process optimization, I would love to explore how we can collaborate.",
+                footer_text: "© 2025 Dr. Edgar Ivan Bañuelos Han. Corporate Health and Safety.",
+                modal1_role_title: "Role",
+                modal1_role_desc: "Head of the Medical Area.",
+                modal1_achievements_title: "Functions and Achievements",
+                modal1_achievements_list: `<li>Management and administration of the medical area staff.</li><li>Implementation of preventive programs and health campaigns.</li><li>Conducting periodic and pre-employment medical examinations.</li><li>Led accident investigations with root cause analysis (5 Whys).</li><li>Developed situational diagnoses for preventive decision-making.</li>`,
+                modal_close_button: "Close",
+                modal2_role_title: "Role",
+                modal2_role_desc: "Occupational Physician.",
+                modal2_achievements_title: "Functions and Achievements",
+                modal2_achievements_list: `<li>Conducted critical medical evaluations for traffic, cargo, maintenance, and crew personnel.</li><li>Administered cholesterol, triglycerides, glucose, alcohol, and drug tests.</li><li>Managed comprehensively IMSS forms (ST-7, ST-9, ST-2).</li><li>Implemented fatigue test analysis to mitigate operational risks.</li><li>Conducted occupational accident investigations.</li><li>Focused on employee well-being.</li>`,
+                modal_close_button_2: "Close",
+                modal3_role_title: "Role",
+                modal3_role_desc: "Occupational Medicine Specialist.",
+                modal3_achievements_title: "Functions and Achievements",
+                modal3_achievements_list: `<li>Directed the creation and management of the occupational medicine department from scratch.</li><li>Designed and implemented the medical evaluation process for recruitment and selection.</li><li>Created the clinical records system and health monitoring protocols.</li><li>Developed logs for the control and review of the risk premium.</li>`,
+                modal_close_button_3: "Close"
+            },
+            es: {
+                page_title: "Dr. Han | Médico Laboral y Especialista en Seguridad e Higiene",
+                nav_profile: "Perfil",
+                nav_specialties: "Especialidades",
+                nav_tools: "Herramientas",
+                nav_experience: "Experiencia",
+                nav_contact: "Contacto",
+                nav_profile_mobile: "Perfil",
+                nav_specialties_mobile: "Especialidades",
+                nav_tools_mobile: "Herramientas",
+                nav_experience_mobile: "Experiencia",
+                nav_contact_mobile: "Contacto",
+                hero_name: "Dr. Edgar Ivan Bañuelos Han",
+                hero_subtitle: "Médico Laboral con enfoque en Salud y Seguridad Industrial. Aplico un enfoque basado en datos para optimizar el bienestar en el entorno de trabajo.",
+                profile_title: "Perfil Profesional",
+                profile_p1: "Como Médico Cirujano con conocimiento y capacitación en Seguridad e Higiene Industrial y Derecho Sanitario, mi perfil profesional se ha consolidado en la gestión y liderazgo de áreas médicas. Integro mi entendimiento clínico con una sólida competencia en la administración de personal, la estructuración de departamentos y la gestión de riesgos laborales.",
+                profile_p2: "Mi práctica se fundamenta en la gestión estratégica para la prevención de riesgos, el estricto apego a las leyes y normas mexicanas (NOMs, ISO), y la promoción de entornos saludables. Soy responsable del desarrollo de protocolos, la gestión de recursos y el uso de análisis de datos para crear una cultura de seguridad robusta y eficiente.",
+                specialties_title: "Áreas de Especialidad",
+                specialties_subtitle: "Mis competencias se centran en tres pilares de la salud y seguridad ocupacional.",
+                spec1_title: "Medicina del Trabajo",
+                spec1_desc: "Realización de exámenes médicos, gestión de casos clínicos laborales y desarrollo de programas preventivos de salud.",
+                spec2_title: "Seguridad e Higiene",
+                spec2_desc: "Aplicación de Normas Oficiales Mexicanas (STPS), auditorías bajo ISO 45001 y análisis de riesgos (PESTEL, Ishikawa).",
+                spec3_title: "Derecho Sanitario y Cumplimiento",
+                spec3_desc: "Experiencia en el marco legal de la salud en México, asegurando el apego a leyes y gestionando consentimientos informados.",
+                tools_title: "Herramientas y Normativas",
+                tools_subtitle: "Mi arsenal técnico y conocimiento regulatorio.",
+                tools_management_title: "Herramientas de Gestión y Análisis",
+                tool_da: " Looker Studio, Flourish, Excel Avanzado.",
+                tool_rca: " Diagrama de Ishikawa, 5 Porqués.",
+                tool_risk: " Modelo PESTEL.",
+                tools_standards_title: "Conocimiento en Normativas",
+                tool_iso: "ISO 9001:2015 (Calidad), ISO 19011:2018 (Auditoría), ISO 45001:2018 (SST).",
+                tool_noms: "NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Riesgos Psicosociales), NOM-036 (Ergonomía).",
+                experience_title: "Experiencia Profesional",
+                experience_subtitle: "Una trayectoria de resultados y responsabilidades clave.",
+                exp1_tag: "Corporativo",
+                exp1_title: "Responsable del Área Médica",
+                exp1_desc: "En Vitesco / Schaeffler, fui responsable de la reestructuración del área médica, implementando un sistema de gestión basado en KPIs y análisis de datos. Administré al equipo en la investigación de accidentes, utilizando metodologías de causa raíz para desarrollar estrategias preventivas.",
+                exp_button: "Ver detalles",
+                exp_image_placeholder: "Imagen de la experiencia",
+                exp2_tag: "Aeronáutica",
+                exp2_title: "Gestión de Salud en Aeronáutica",
+                exp2_desc: "En Aeroméxico, fui responsable de las evaluaciones médicas de aptitud para personal crítico (pilotos, sobrecargos, mantenimiento), garantizando la salud y seguridad operacional. Coordiné la aplicación de pruebas y gestioné la documentación correspondiente (ST-7, ST-9), asegurando el cumplimiento normativo.",
+                exp_button_2: "Ver detalles",
+                exp3_tag: "Logística",
+                exp3_title: "Implementación de Estructura Departamental",
+                exp3_desc: "Para Grupo Vallarta Plus, diseñé y ejecuté la creación del departamento de medicina laboral desde cero. Esta iniciativa incluyó el desarrollo de todos los protocolos, la implementación de sistemas de gestión de expedientes y la creación de métricas para el control de la prima de riesgo.",
+                exp_button_3: "Ver detalles",
+                exp_image_placeholder_2: "Imagen de la experiencia",
+                quote_text: '"La prevención efectiva no solo protege al personal, sino que impulsa resultados medibles para el negocio."',
+                contact_title: "Hablemos",
+                contact_location: "Ubicación: Región de Zapopan, Jalisco, México",
+                contact_availability: "Disponibilidad a reubicación o trabajo a distancia.",
+                contact_p1: "Si su organización busca un profesional que combine la experiencia clínica con la gestión de seguridad y la optimización de procesos, me encantaría explorar cómo podemos colaborar.",
+                footer_text: "© 2025 Dr. Edgar Ivan Bañuelos Han. Salud y Seguridad Corporativa.",
+                modal1_role_title: "Rol",
+                modal1_role_desc: "Responsable del área médica.",
+                modal1_achievements_title: "Funciones y Logros",
+                modal1_achievements_list: `<li>Gestión y administración del personal del área médica.</li><li>Implementación de programas preventivos y campañas de salud.</li><li>Realización de exámenes médicos periódicos y de nuevo ingreso.</li><li>Investigaciones de accidentes con análisis de causa raíz (5 porqués).</li><li>Desarrollo de diagnósticos situacionales para la toma de decisiones preventivas.</li>`,
+                modal_close_button: "Cerrar",
+                modal2_role_title: "Rol",
+                modal2_role_desc: "Médico Ocupacional.",
+                modal2_achievements_title: "Funciones y Logros",
+                modal2_achievements_list: `<li>Realicé evaluaciones médicas críticas para personal de tráfico, cargo, mantenimiento y tripulación.</li><li>Apliqué pruebas de colesterol, triglicéridos, glucosa, alcoholimetría y antidoping.</li><li>Gestioné de manera integral formatos ante el IMSS (ST-7, ST-9, ST-2).</li><li>Implementé análisis de tests de fatiga para mitigar riesgos operacionales.</li><li>Investigación de accidentes laborales.</li><li>Fomento al bienestar de los colaboradores.</li>`,
+                modal_close_button_2: "Cerrar",
+                modal3_role_title: "Rol",
+                modal3_role_desc: "Especialista en Medicina Ocupacional.",
+                modal3_achievements_title: "Funciones y Logros",
+                modal3_achievements_list: `<li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li>`,
+                modal_close_button_3: "Cerrar"
+            }
+        };
+
+        let currentLang = 'es';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    // For list elements, need to handle HTML content
+                    if (key.includes('_list')) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSwitcherDesktop = document.getElementById('lang-switcher-desktop');
+            const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
+
+            const toggleLanguage = () => {
+                const newLang = currentLang === 'es' ? 'en' : 'es';
+                switchLanguage(newLang);
+            };
+            
+            langSwitcherDesktop.addEventListener('click', toggleLanguage);
+            langSwitcherMobile.addEventListener('click', toggleLanguage);
+            
+            // Set initial language
+            switchLanguage('es');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+        
+        // Modal logic
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.querySelector('.modal-content').classList.remove('-translate-y-12'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-content').classList.add('-translate-y-12');
+            setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = ''; }, 300);
+        }
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { document.querySelectorAll('.modal-backdrop').forEach(modal => { if (!modal.classList.contains('hidden')) { closeModal(modal.id); }}); } });
+        window.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) { closeModal(e.target.id); } });
+    </script>
+</body>
+</html>
