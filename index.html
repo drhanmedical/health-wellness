@@ -3,6 +3,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-translate="page_title">Dr. Han | Médico Ocupacional</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, Médico Ocupacional especialista en Salud y Seguridad Industrial. Explore su experiencia, especialidades y enfoque basado en datos.">
+    <meta name="keywords" content="Médico Ocupacional, Salud Ocupacional, Seguridad Industrial, Medicina del Trabajo, Dr. Han, Riesgos Laborales, NOM-STPS, ISO 45001, Zapopan">
+    <meta name="author" content="Dr. Edgar Ivan Bañuelos Han">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dr-han-portfolio.com/">
+    <meta property="og:title" content="Dr. Han | Médico Ocupacional">
+    <meta property="og:description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, especialista en Salud y Seguridad Industrial.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1nj44-d1y2ohmMDQNHnQWn3FzvvqSSPT-">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dr-han-portfolio.com/">
+    <meta property="twitter:title" content="Dr. Han | Médico Ocupacional">
+    <meta property="twitter:description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, especialista en Salud y Seguridad Industrial.">
+    <meta property="twitter:image" content="https://lh3.googleusercontent.com/d/1nj44-d1y2ohmMDQNHnQWn3FzvvqSSPT-">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +80,7 @@
     <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-4">
+            <a href="#home" class="flex items-center space-x-4">
                 <img src="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU" alt="Logo Dr. Bañuelos Han" class="h-14 w-auto">
                 <span class="hidden sm:block text-2xl font-bold text-gray-800 tracking-wider logo-text">Dr. Han</span>
             </a>
@@ -70,13 +93,13 @@
                 <button id="lang-switcher-desktop" class="lang-btn">EN / ES</button>
             </div>
              <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none" aria-label="Abrir menú" aria-expanded="false">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
          <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden border-t">
+        <div id="mobile-menu" class="md:hidden border-t transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
             <a href="#perfil" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_profile_mobile">Perfil</a>
             <a href="#especialidades" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_specialties_mobile">Especialidades</a>
             <a href="#herramientas" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_tools_mobile">Herramientas</a>
@@ -192,13 +215,13 @@
                         <button onclick="openModal('modal1')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain">
+                        <img src="https://lh3.googleusercontent.com/d/1rPdVKf02OWQrtP-Tq4uSaT5PnBXgp1up" alt="Imagen de experiencia en logística" class="w-full h-auto object-contain" loading="lazy">
                     </div>
                 </div>
                 <!-- Experience 2 -->
                  <div class="grid md:grid-cols-2 gap-10 items-center">
                     <div class="order-last md:order-first rounded-lg overflow-hidden shadow-md">
-                         <img src="https://lh3.googleusercontent.com/d/1Jf2lrXh5_anq5gMSPhNssUIhqOo89zPE" alt="Imagen de experiencia aeronáutica" class="w-full h-auto object-contain">
+                         <img src="https://lh3.googleusercontent.com/d/1Jf2lrXh5_anq5gMSPhNssUIhqOo89zPE" alt="Imagen de experiencia aeronáutica" class="w-full h-auto object-contain" loading="lazy">
                     </div>
                     <div class="pl-0 md:pl-10">
                         <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp2_tag">Aeronáutica</p>
@@ -216,7 +239,7 @@
                         <button onclick="openModal('modal3')" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_3">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain">
+                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -466,6 +489,7 @@
         };
 
         let currentLang = 'es';
+        let lastFocusedElement; // For modal focus trapping
 
         function switchLanguage(lang) {
             currentLang = lang;
@@ -499,31 +523,103 @@
             switchLanguage('es');
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle with Animation and ARIA
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            
+            if (isExpanded) {
+                mobileMenuButton.setAttribute('aria-label', 'Abrir menú');
+                mobileMenu.classList.add('max-h-0', 'opacity-0');
+                mobileMenu.classList.remove('max-h-96', 'opacity-100');
+            } else {
+                mobileMenuButton.setAttribute('aria-label', 'Cerrar menú');
+                mobileMenu.classList.remove('max-h-0', 'opacity-0');
+                mobileMenu.classList.add('max-h-96', 'opacity-100');
+            }
         });
         
-        // Modal logic
+        // Hide menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenuButton.setAttribute('aria-expanded', 'false');
+                 mobileMenuButton.setAttribute('aria-label', 'Abrir menú');
+                 mobileMenu.classList.add('max-h-0', 'opacity-0');
+                 mobileMenu.classList.remove('max-h-96', 'opacity-100');
+            });
+        });
+        
+        // Improved Modal logic with Focus Trapping
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
+            if (!modal) return;
+            
+            lastFocusedElement = document.activeElement; // Save last focused element
+
             modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); modal.querySelector('.modal-content').classList.remove('-translate-y-12'); }, 10);
+            setTimeout(() => { 
+                modal.classList.remove('opacity-0'); 
+                modal.querySelector('.modal-content').classList.remove('-translate-y-12'); 
+            }, 10);
             document.body.style.overflow = 'hidden';
+
+            const focusableElements = modal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+            firstFocusableElement?.focus();
+
+            modal.addEventListener('keydown', (e) => {
+                if (e.key !== 'Tab') return;
+
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstFocusableElement) {
+                        lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastFocusableElement) {
+                        firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            });
         }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
+            if (!modal) return;
+
             modal.classList.add('opacity-0');
             modal.querySelector('.modal-content').classList.add('-translate-y-12');
-            setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = ''; }, 300);
+            setTimeout(() => { 
+                modal.classList.add('hidden'); 
+                document.body.style.overflow = ''; 
+                lastFocusedElement?.focus(); // Restore focus
+            }, 300);
         }
-        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { document.querySelectorAll('.modal-backdrop').forEach(modal => { if (!modal.classList.contains('hidden')) { closeModal(modal.id); }}); } });
-        window.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) { closeModal(e.target.id); } });
+
+        window.addEventListener('keydown', (e) => { 
+            if (e.key === 'Escape') { 
+                document.querySelectorAll('.modal-backdrop').forEach(modal => { 
+                    if (!modal.classList.contains('hidden')) { 
+                        closeModal(modal.id); 
+                    }
+                }); 
+            } 
+        });
+        
+        window.addEventListener('click', (e) => { 
+            if (e.target.classList.contains('modal-backdrop')) { 
+                closeModal(e.target.id); 
+            } 
+        });
     </script>
 </body>
 </html>
-
 
