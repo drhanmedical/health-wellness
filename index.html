@@ -6,21 +6,21 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, Médico Ocupacional especialista en Salud y Seguridad Industrial. Explore su experiencia, especialidades y enfoque basado en datos.">
-    <meta name="keywords" content="Médico Ocupacional, Salud Ocupacional, Seguridad Industrial, Medicina del Trabajo, Dr. Han, Riesgos Laborales, NOM-STPS, ISO 45001, Zapopan">
+    <meta name="keywords" content="Médico Ocupacional, Salud Ocupacional, Seguridad Industrial, Medicina del Trabajo, Dr. Han, Riesgos Laborales, NOM-STPS, ISO 45001, Zapopan, Capacitación, Biomecánica">
     <meta name="author" content="Dr. Edgar Ivan Bañuelos Han">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dr-han-portfolio.com/">
-    <meta property="og:title" content="Dr. Han | Médico Ocupacional">
-    <meta property="og:description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, especialista en Salud y Seguridad Industrial.">
+    <meta property="og:url" content="https://dr-han-portfolio.com/"> <!-- CAMBIAR A TU URL FINAL -->
+    <meta property="og:title" content="Dr. Han | Portafolio de Salud y Capacitación">
+    <meta property="og:description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, especialista en Salud Industrial, Ergonomía y Capacitación Técnica.">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1nj44-d1y2ohmMDQNHnQWn3FzvvqSSPT-">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://dr-han-portfolio.com/">
-    <meta property="twitter:title" content="Dr. Han | Médico Ocupacional">
-    <meta property="twitter:description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, especialista en Salud y Seguridad Industrial.">
+    <meta property="twitter:url" content="https://dr-han-portfolio.com/"> <!-- CAMBIAR A TU URL FINAL -->
+    <meta property="twitter:title" content="Dr. Han | Portafolio de Salud y Capacitación">
+    <meta property="twitter:description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, especialista en Salud Industrial, Ergonomía y Capacitación Técnica.">
     <meta property="twitter:image" content="https://lh3.googleusercontent.com/d/1nj44-d1y2ohmMDQNHnQWn3FzvvqSSPT-">
 
     <!-- Favicon -->
@@ -88,17 +88,20 @@
         .blog-card:hover {
             transform: translateY(-5px);
         }
-        /* Tailwind Aspect Ratio Fallback (si no se usa el plugin) */
-        .aspect-w-16 {
+        /* Estilos para el iframe responsivo */
+        .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 9 / 16 = 0.5625 */
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
         }
-        .aspect-w-16 > * {
+        .video-iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
     </style>
 </head>
@@ -111,13 +114,13 @@
                 <img src="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU" alt="Logo Dr. Bañuelos Han" class="h-12 w-auto">
                 <span class="hidden sm:block text-2xl font-bold text-gray-800 tracking-wider logo-text">Dr. Han</span>
             </a>
-            <!-- CAMBIO: Ajuste de espaciado para que quepa el menú -->
+            <!-- CAMBIO: space-x-6 a space-x-4 y tracking-widest a tracking-wider -->
             <div class="hidden md:flex items-center space-x-4 text-sm font-medium tracking-wider uppercase">
                 <a href="#perfil" class="underline-animation" data-translate="nav_profile">Perfil</a>
                 <a href="#especialidades" class="underline-animation" data-translate="nav_specialties">Especialidades</a>
                 <a href="#herramientas" class="underline-animation" data-translate="nav_tools">Herramientas</a>
                 <a href="#experiencia" class="underline-animation" data-translate="nav_experience">Experiencia</a>
-                <!-- CAMBIO: Nuevo enlace de menú "Recursos" -->
+                <!-- CAMBIO: Nuevo enlace de menú -->
                 <a href="#recursos" class="underline-animation" data-translate="nav_resources">Recursos</a>
                 <a href="#blog" class="underline-animation" data-translate="nav_blog">Blog</a>
                 <a href="#contacto" class="underline-animation" data-translate="nav_contact">Contacto</a>
@@ -135,7 +138,7 @@
             <a href="#especialidades" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_specialties_mobile">Especialidades</a>
             <a href="#herramientas" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_tools_mobile">Herramientas</a>
             <a href="#experiencia" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_experience_mobile">Experiencia</a>
-            <!-- CAMBIO: Nuevo enlace de menú "Recursos" (móvil) -->
+            <!-- CAMBIO: Nuevo enlace de menú móvil -->
             <a href="#recursos" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_resources_mobile">Recursos</a>
             <a href="#blog" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_blog_mobile">Blog</a>
             <a href="#contacto" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_contact_mobile">Contacto</a>
@@ -150,7 +153,7 @@
             <div class="md:w-3/5">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight" data-translate="hero_name">Dr. Edgar Ivan Bañuelos Han</h1>
                 <p class="mt-6 text-xl md:text-2xl text-gray-600 max-w-2xl" data-translate="hero_subtitle">
-                    Médico Ocupacional con enfoque en Salud y Seguridad Industrial. Aplico un enfoque basado en datos para optimizar el bienestar en el entorno de trabajo.
+                    Médico especialista en Salud Industrial, Ergonomía y Desarrollo de Capacitación Técnica.
                 </p>
             </div>
             <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center">
@@ -164,7 +167,7 @@
         <section id="story" class="py-24 border-t bg-gray-50 -mx-6 px-6">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900" data-translate="story_title">¿Reconoce estos desafíos en su empresa?</h2>
+                    <h2 class="text-4xl font-bold text-gray-900" data-translate="story_title">Optimizando el Capital Humano</h2>
                 </div>
                 <div class="grid md:grid-cols-3 gap-10 mb-16 text-center">
                     <!-- Problem 1 -->
@@ -175,9 +178,9 @@
                     </div>
                     <!-- Problem 2 -->
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="problem2_title">Ausentismo y Baja Productividad</h3>
-                        <p class="text-gray-600 text-sm" data-translate="problem2_desc">Incapacidades constantes y un equipo que no rinde al máximo, afectando la operación.</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m0-6a9 9 0 11-18 0 9 9 0 0118 0zM9 9a1 1 0 00-1 1v.01a1 1 0 001 1h.01a1 1 0 001-1V10a1 1 0 00-1-1H9z" /></svg>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="problem2_title">Brecha de Habilidades</h3>
+                        <p class="text-gray-600 text-sm" data-translate="problem2_desc">La capacitación técnica no es efectiva, generando errores en procedimientos y baja productividad.</p>
                     </div>
                     <!-- Problem 3 -->
                     <div>
@@ -188,8 +191,9 @@
                 </div>
                 <div class="max-w-3xl mx-auto text-center bg-white p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold text-gray-900" data-translate="solution_title">Mi misión es convertir desafíos en oportunidades</h3>
-                    <p class="mt-4 text-lg text-gray-700 leading-relaxed" data-translate="solution_desc">
-                        Más que un médico, soy un socio estratégico para su negocio. Mi enfoque no es solo reactivo, atendiendo incidentes, sino proactivo y basado en datos. Analizo sus indicadores para diseñar programas preventivos que no solo protegen a su gente, sino que optimizan sus operaciones, reducen costos y fortalecen su cultura de seguridad. Juntos, podemos transformar el área de salud ocupacional en un pilar de la rentabilidad y el bienestar de su empresa.
+                    <!-- CAMBIO: Añadido md:text-justify -->
+                    <p class="mt-4 text-lg text-gray-700 leading-relaxed md:text-justify" data-translate="solution_desc">
+                        Mi enfoque integra la salud ocupacional con la capacitación técnica. No solo prevengo riesgos, sino que desarrollo el talento de su equipo. Analizo sus operaciones para crear programas de capacitación efectivos y material educativo digital que garantiza la correcta ejecución de procedimientos. Convierto el cumplimiento normativo y la salud en pilares de la productividad y la excelencia operativa.
                     </p>
                 </div>
             </div>
@@ -197,13 +201,16 @@
 
         <!-- Profile Section -->
         <section id="perfil" class="py-24 border-t">
-            <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6" data-translate="profile_title">Perfil Profesional</h2>
-                <p class="text-lg text-gray-600 mb-4" data-translate="profile_p1">
-                    Como Médico Cirujano con conocimiento y capacitación en Seguridad e Higiene Industrial y Derecho Sanitario, mi perfil profesional se ha consolidado en la gestión y liderazgo de áreas médicas. Integro mi entendimiento clínico con una sólida competencia en la administración de personal, la estructuración de departamentos y la gestión de riesgos laborales.
+            <!-- CAMBIO: Quitado text-center del contenedor principal -->
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center" data-translate="profile_title">Perfil Profesional</h2>
+                <!-- CAMBIO: Añadido text-justify -->
+                <p class="text-lg text-gray-600 mb-4 text-justify" data-translate="profile_p1">
+                    Como Médico Cirujano con diplomados en Fisioterapia del Deporte y Ergonomía, y formación como instructor, mi perfil une la ciencia médica con la educación. Tengo experiencia en la gestión de salud ocupacional y en el diseño de contenido educativo enfocado en la prevención, la biomecánica y la ejecución segura de procedimientos.
                 </p>
-                <p class="text-lg text-gray-600" data-translate="profile_p2">
-                    Mi práctica se fundamenta en la gestión estratégica para la prevención de riesgos, el estricto apego a las leyes y normas mexicanas (NOMs, ISO), y la promoción de entornos saludables. Soy responsable del desarrollo de protocolos, la gestión de recursos y el uso de análisis de datos para crear una cultura de seguridad robusta y eficiente.
+                <!-- CAMBIO: Añadido text-justify -->
+                <p class="text-lg text-gray-600 text-justify" data-translate="profile_p2">
+                    Mi práctica se fundamenta en el análisis de datos para la prevención de riesgos y en la creación de material didáctico (digital y presencial) que traduce conocimiento técnico complejo en instrucciones claras y aplicables, asegurando tanto el cumplimiento normativo (NOMs, ISO) como la eficiencia operativa.
                 </p>
             </div>
         </section>
@@ -213,31 +220,24 @@
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-900" data-translate="specialties_title">Áreas de Especialidad</h2>
-                    <p class="mt-4 text-lg text-gray-600" data-translate="specialties_subtitle">Mis competencias se centran en cuatro pilares clave.</p>
+                    <p class="mt-4 text-lg text-gray-600" data-translate="specialties_subtitle">Mis competencias se centran en la intersección de la salud, la seguridad y la educación.</p>
                 </div>
-                <div class="grid md:grid-cols-4 gap-10">
+                <div class="grid md:grid-cols-3 gap-10">
                     <div class="text-center p-6">
                         <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec1_title">Medicina del Trabajo</h3>
                         <p class="text-gray-600 text-sm" data-translate="spec1_desc">Realización de exámenes médicos, gestión de casos clínicos laborales y desarrollo de programas preventivos de salud.</p>
                     </div>
                     <div class="text-center p-6">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec2_title">Seguridad e Higiene</h3>
-                        <p class="text-gray-600 text-sm" data-translate="spec2_desc">Aplicación de Normas Oficiales Mexicanas (STPS), auditorías bajo ISO 45001 y análisis de riesgos (PESTEL, Ishikawa).</p>
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h.01M9 11h.01M15 7h.01M15 11h.01M9 15h.01M15 15h.01" /></svg>
+                        <!-- CAMBIO: Título y descripción ajustados -->
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec2_title">Capacitación y Educación</h3>
+                        <p class="text-gray-600 text-sm" data-translate="spec2_desc">Diseño de programas de capacitación y creación de material didáctico enfocado en la ejecución de procedimientos seguros.</p>
                     </div>
                      <div class="text-center p-6">
                         <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h8a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.8 4.963l1.447-.814a2 2 0 012.506 0l1.447.814M12 6V3m-3.182 5.182a15.01 15.01 0 016.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec3_title">Derecho Sanitario y Cumplimiento</h3>
-                        <p class="text-gray-600 text-sm" data-translate="spec3_desc">Experiencia en el marco legal de la salud en México, asegurando el apego a leyes y gestionando consentimientos informados.</p>
-                    </div>
-                    <!-- CAMBIO: NUEVA especialidad añadida para la vacante -->
-                    <div class="text-center p-6">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13.5M6.253 10.5h11.494M18 10.5v4.875c0 .621-.504 1.125-1.125 1.125H7.125A1.125 1.125 0 016 15.375V10.5m12 0v-1.875c0-.621-.504-1.125-1.125-1.125H7.125A1.125 1.125 0 006 7.5V10.5" /></svg>
-                        <!-- CAMBIO: Título actualizado -->
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec4_title">Capacitación y Educación</h3>
-                        <!-- CAMBIO: Redacción actualizada -->
-                        <p class="text-gray-600 text-sm" data-translate="spec4_desc">Diseño de programas de capacitación y creación de material didáctico enfocado en la ejecución de procedimientos seguros.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec3_title">Ergonomía y Biomecánica</h3>
+                        <p class="text-gray-600 text-sm" data-translate="spec3_desc">Análisis de puestos de trabajo para prevenir lesiones (NOM-036) y aplicación de principios biomecánicos para optimizar el rendimiento.</p>
                     </div>
                 </div>
             </div>
@@ -256,7 +256,8 @@
                         <div class="space-y-4">
                             <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Datos:</strong><span data-translate="tool_da"> Looker Studio, Flourish, Excel Avanzado.</span></div>
                             <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Causa Raíz:</strong><span data-translate="tool_rca"> Diagrama de Ishikawa, 5 Porqués.</span></div>
-                            <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Riesgo:</strong><span data-translate="tool_risk"> Modelo PESTEL.</span></div>
+                            <!-- CAMBIO: Añadido PowerPoint -->
+                            <div class="bg-white p-4 rounded-lg border"><strong>Creación de Contenido:</strong><span data-translate="tool_content"> MS PowerPoint (Avanzado), MS Word, Edición de Video.</span></div>
                         </div>
                     </div>
                     <div>
@@ -267,8 +268,8 @@
                                 <p class="text-sm" data-translate="tool_iso">ISO 9001:2015 (Calidad), ISO 19011:2018 (Auditoría), ISO 45001:2018 (SST).</p>
                              </div>
                              <div class="bg-white p-4 rounded-lg border">
-                                <strong class="block">NOM-STPS:</strong>
-                                <p class="text-sm" data-translate="tool_noms">NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Riesgos Psicosociales), NOM-036 (Ergonomía).</p>
+                                <strong class="block">NOM-STPS y Sanitarias:</strong>
+                                <p class="text-sm" data-translate="tool_noms">NOM-035 (Riesgos Psicosociales), NOM-036 (Ergonomía), y NOM-241 (Buenas Prácticas Dispositivos Médicos).</p>
                              </div>
                         </div>
                     </div>
@@ -276,7 +277,6 @@
             </div>
         </section>
 
-        <!-- CAMBIO: Sección de Experiencia re-añadida -->
         <!-- Experience Section -->
         <section id="experiencia" class="py-24 border-t bg-gray-50 -mx-6 px-6">
             <div class="text-center mb-16">
@@ -289,7 +289,8 @@
                     <div class="pr-0 md:pr-10">
                         <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp1_tag">Corporativo</p>
                         <h3 class="text-3xl font-bold text-gray-800" data-translate="exp1_title">Responsable del área médica</h3>
-                        <p class="mt-4 text-gray-600" data-translate="exp1_desc">En Vitesco / Schaeffler, fui responsable de la reestructuración del área médica, implementando un sistema de gestión basado en KPIs. Administré al equipo en la investigación de accidentes y desarrollé programas de capacitación interna sobre normativas y salud.</p>
+                        <!-- CAMBIO: Añadido md:text-justify -->
+                        <p class="mt-4 text-gray-600 md:text-justify" data-translate="exp1_desc">En Vitesco / Schaeffler, fui responsable de la reestructuración del área médica, implementando un sistema de gestión basado en KPIs. Administré al equipo en la investigación de accidentes y desarrollé programas de capacitación interna sobre normativas y salud.</p>
                         <button data-modal-target="modal1" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
@@ -304,7 +305,8 @@
                     <div class="pl-0 md:pl-10">
                         <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp2_tag">Aeronáutica</p>
                         <h3 class="text-3xl font-bold text-gray-800" data-translate="exp2_title">Gestión de salud en aeronáutica</h3>
-                        <p class="mt-4 text-gray-600" data-translate="exp2_desc">En Aeroméxico, fui responsable de las evaluaciones médicas de aptitud para personal crítico (pilotos, sobrecargos), garantizando la seguridad operacional. Coordiné la aplicación de pruebas, gestioné documentación (ST-7, ST-9) y realicé pláticas informativas y de capacitación.</p>
+                        <!-- CAMBIO: Añadido md:text-justify -->
+                        <p class="mt-4 text-gray-600 md:text-justify" data-translate="exp2_desc">En Aeroméxico, fui responsable de las evaluaciones médicas de aptitud para personal crítico (pilotos, sobrecargos), garantizando la seguridad operacional. Coordiné la aplicación de pruebas, gestioné documentación (ST-7, ST-9) y realicé pláticas informativas y de capacitación.</p>
                         <button data-modal-target="modal2" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_2">Ver detalles</button>
                     </div>
                 </div>
@@ -313,7 +315,8 @@
                     <div class="pr-0 md:pr-10">
                         <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp3_tag">Logística</p>
                         <h3 class="text-3xl font-bold text-gray-800" data-translate="exp3_title">Implementación de estructura departamental</h3>
-                        <p class="mt-4 text-gray-600" data-translate="exp3_desc">Para Grupo Vallarta Plus, diseñé la creación del departamento de medicina laboral. Esto incluyó el desarrollo de protocolos, la implementación de expedientes y la creación y capacitación en campañas de difusión de la salud para prevención.</p>
+                        <!-- CAMBIO: Añadido md:text-justify -->
+                        <p class="mt-4 text-gray-600 md:text-justify" data-translate="exp3_desc">Para Grupo Vallarta Plus, diseñé la creación del departamento de medicina laboral. Esto incluyó el desarrollo de protocolos, la implementación de expedientes y la creación y capacitación en campañas de difusión de la salud para prevención.</p>
                         <button data-modal-target="modal3" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_3">Ver detalles</button>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-md">
@@ -327,83 +330,90 @@
         <section id="recursos" class="py-24 border-t">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900" data-translate="recursos_title">Recursos Educativos</h2>
-                    <p class="mt-4 text-lg text-gray-600" data-translate="recursos_subtitle">Una muestra de materiales didácticos y contenido de capacitación.</p>
+                    <h2 class="text-4xl font-bold text-gray-900" data-translate="resources_title">Recursos Educativos</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-translate="resources_subtitle">Muestras de material didáctico y contenido de capacitación.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-10">
-                    <!-- Recurso 1: Video -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <!-- CAMBIO: Iframe de Google Drive añadido. El contenedor mantiene el aspect ratio. -->
-                        <div class="aspect-w-16 rounded-lg overflow-hidden bg-gray-200 mb-4">
-                            <iframe src="https://drive.google.com/file/d/1CMcQdin50HDDL1WMJeHtxYk0KESp7uoS/preview" class="w-full h-full" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                    <!-- Recurso 1: Video Ergonomía -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="resource1_title">Video: Importancia de la Ergonomía</h3>
+                        <div class="video-container rounded-lg overflow-hidden mb-4">
+                            <iframe
+                                class="video-iframe"
+                                src="https://drive.google.com/file/d/1CMcQdin50HDDL1WMJeHtxYk0KESp7uoS/preview"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800" data-translate="recurso1_title">Importancia de la ergonomía en el trabajo</h3>
-                        <p class="mt-2 text-gray-600 text-sm" data-translate="recurso1_desc">Cápsula educativa sobre la aplicación de principios ergonómicos para la prevención de lesiones.</p>
+                        <!-- CAMBIO: Añadido text-justify -->
+                        <p class="text-gray-600 text-justify" data-translate="resource1_desc">
+                            Video de micro-capacitación enfocado en explicar los principios básicos de la ergonomía en el trabajo y su impacto en la prevención de lesiones, con base en la NOM-036.
+                        </p>
                     </div>
-                    <!-- Recurso 2: Guía Digital -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="aspect-w-16 rounded-lg overflow-hidden bg-gray-200 mb-4 flex items-center justify-center">
-                            <!-- CAMBIO: Contenido de la guía (placeholder) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                            </svg>
+                    <!-- Recurso 2: Video Biomecánica -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4" data-translate="resource2_title">Video: Análisis Biomecánico Básico</h3>
+                        <div class="video-container rounded-lg overflow-hidden mb-4">
+                            <iframe
+                                class="video-iframe"
+                                src="https://drive.google.com/file/d/19Jiu4JZ4l9sTO37GX0A-_R9IsXEiMMSh/preview"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800" data-translate="recurso2_title">Guía Digital (Ejemplo)</h3>
-                        <p class="mt-2 text-gray-600 text-sm" data-translate="recurso2_desc">Ejemplo de material de capacitación digital sobre el uso correcto de EPP.</p>
+                        <!-- CAMBIO: Añadido text-justify -->
+                        <p class="text-gray-600 text-justify" data-translate="resource2_desc">
+                            Un análisis de la física aplicada a la biología. Este video explora cómo los principios de palancas y tensiones rigen el movimiento humano, siendo la base para diseñar dispositivos médicos, optimizar procedimientos seguros y prevenir riesgos ergonómicos.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <!-- Blog Section -->
         <section id="blog" class="py-24 border-t bg-gray-50 -mx-6 px-6">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-900" data-translate="blog_title">Blog Personal</h2>
-                    <p class="mt-4 text-lg text-gray-600" data-translate="blog_subtitle">Explorando temas de actualidad en salud ocupacional, normativas y capacitación.</p>
+                    <p class="mt-4 text-lg text-gray-600" data-translate="blog_subtitle">Explorando temas de actualidad en salud, normativas y capacitación.</p>
                 </div>
-                <!-- CAMBIO: Reorganización y nuevos artículos en el blog -->
+                <!-- CAMBIO: Reorganización de artículos del blog -->
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Blog Post 1 (Nuevo) -->
                     <button data-modal-target="modal-blog7" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div class="bg-gray-100 h-40 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v11.494m-9-5.747h18m-18 0a9 9 0 1018 0 9 9 0 00-18 0z" /></svg>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog7_title">El arte de la comunicación científica</h3>
-                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog7_desc">Por qué traducir datos complejos en contenido claro es clave para la capacitación.</p>
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog7_title">NOM-241: Buenas Prácticas en Dispositivos Médicos</h3>
+                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog7_desc">Análisis de la norma clave para la fabricación y manejo de dispositivos médicos en México.</p>
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
                     </button>
                     <!-- Blog Post 2 (Nuevo) -->
                     <button data-modal-target="modal-blog8" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div class="bg-gray-100 h-40 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13.5M6.253 10.5h11.494M18 10.5v4.875c0 .621-.504 1.125-1.125 1.125H7.125A1.125 1.125 0 016 15.375V10.5m12 0v-1.875c0-.621-.504-1.125-1.125-1.125H7.125A1.125 1.125 0 006 7.5V10.5" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog8_title">Biomecánica y ergonomía en la industria</h3>
-                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog8_desc">La conexión entre el movimiento humano y el diseño de herramientas seguras.</p>
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog8_title">El arte de la comunicación científica</h3>
+                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog8_desc">Cómo traducir datos técnicos y artículos complejos en material de capacitación claro y efectivo.</p>
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
                     </button>
                     <!-- Blog Post 3 (Nuevo) -->
                     <button data-modal-target="modal-blog9" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div class="bg-gray-100 h-40 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338A2.25 2.25 0 0017.088 3.75H15M4.5 3.75l7.5 7.5 7.5-7.5" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog9_title">NOM-241: Buenas Prácticas en Dispositivos Médicos</h3>
-                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog9_desc">Entendiendo la norma que asegura la calidad en la fabricación de dispositivos.</p>
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog9_title">Ergonomía y biomecánica: Pilares de la capacitación</h3>
+                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog9_desc">Por qué entender el movimiento humano es esencial para diseñar procedimientos seguros y eficientes.</p>
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
                     </button>
-                    <!-- Blog Post 1 (Original) -->
+                    <!-- Blog Post 4 -->
                     <button data-modal-target="modal-blog1" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div class="bg-gray-100 h-40 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -411,38 +421,12 @@
                             </svg>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog1_title">Ley silla en México</h3>
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog1_title">Ley Silla en México</h3>
                             <p class="mt-2 text-gray-600 text-sm" data-translate="blog1_desc">Un análisis sobre las implicaciones y retos de esta importante reforma laboral.</p>
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
                     </button>
-                    <!-- Blog Post 2 (Original) -->
-                    <button data-modal-target="modal-blog2" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <div class="bg-gray-100 h-40 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog2_title">Ergonomía moderna</h3>
-                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog2_desc">Estrategias prácticas para mejorar la postura y prevenir lesiones en el entorno laboral.</p>
-                            <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
-                        </div>
-                    </button>
-                    <!-- Blog Post 3 (Original) -->
-                    <button data-modal-target="modal-blog3" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                         <div class="bg-gray-100 h-40 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog3_title">Novedades en normativas</h3>
-                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog3_desc">Claves sobre los últimos estándares que impactan la seguridad industrial en México.</p>
-                            <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
-                        </div>
-                    </button>
-                    <!-- Blog Post 4 (Original) -->
+                    <!-- Blog Post 5 -->
                     <button data-modal-target="modal-blog4" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div class="bg-gray-100 h-40 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -457,7 +441,7 @@
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
                     </button>
-                    <!-- Blog Post 5 (Original) -->
+                    <!-- Blog Post 6 -->
                     <button data-modal-target="modal-blog5" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div class="bg-gray-100 h-40 flex items-center justify-center">
                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -470,7 +454,33 @@
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
                     </button>
-                    <!-- Blog Post 6 (Original) -->
+                    <!-- Blog Post 7 -->
+                    <button data-modal-target="modal-blog2" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <div class="bg-gray-100 h-40 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog2_title">Ergonomía moderna</h3>
+                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog2_desc">Estrategias prácticas para mejorar la postura y prevenir lesiones en el entorno laboral.</p>
+                            <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
+                        </div>
+                    </button>
+                    <!-- Blog Post 8 -->
+                    <button data-modal-target="modal-blog3" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                         <div class="bg-gray-100 h-40 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog3_title">Novedades en normativas</h3>
+                            <p class="mt-2 text-gray-600 text-sm" data-translate="blog3_desc">Claves sobre los últimos estándares que impactan la seguridad industrial en México.</p>
+                            <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
+                        </div>
+                    </button>
+                    <!-- Blog Post 9 -->
                     <button data-modal-target="modal-blog6" class="blog-card group text-left block bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                          <div class="bg-gray-100 h-40 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -478,7 +488,7 @@
                             </svg>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog6_title">Liderazgo en comisiones de S&H</h3>
+                            <h3 class="text-xl font-bold text-gray-800" data-translate="blog6_title">Liderazgo en Comisiones de S&H</h3>
                             <p class="mt-2 text-gray-600 text-sm" data-translate="blog6_desc">Claves para dirigir comisiones efectivas que promuevan una cultura de seguridad.</p>
                             <span class="mt-4 inline-block font-semibold text-blue-600" data-translate="blog_read_more">Leer más →</span>
                         </div>
@@ -552,7 +562,7 @@
             <div class="p-6 border-b flex justify-between items-start"><h3 class="text-2xl font-bold text-gray-900">Vitesco / Schaeffler</h3><button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button></div>
             <div class="p-8 space-y-4 text-gray-600">
                 <div><h4 class="font-bold text-gray-800" data-translate="modal1_role_title">Rol</h4><p data-translate="modal1_role_desc">Responsable del área médica.</p></div>
-                <div><h4 class="font-bold text-gray-800" data-translate="modal1_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal1_achievements_list"><li>Gestión y administración del personal del área médica.</li><li>Implementación de programas preventivos y campañas de salud.</li><li>Realización de exámenes médicos periódicos y de nuevo ingreso.</li><li>Investigaciones de accidentes con análisis de causa raíz (5 porqués).</li><li>Desarrollo de diagnósticos situacionales y capacitación interna de normativas.</li></ul></div>
+                <div><h4 class="font-bold text-gray-800" data-translate="modal1_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal1_achievements_list"><li>Gestión y administración del personal del área médica.</li><li>Implementación de programas preventivos y campañas de salud.</li><li>Realización de exámenes médicos periódicos y de nuevo ingreso.</li><li>Investigaciones de accidentes con análisis de causa raíz (5 porqués).</li><li>Desarrollo de diagnósticos situacionales para la toma de decisiones preventivas.</li><li>Capacitación de personal en normativas y procedimientos internos.</li></ul></div>
             </div>
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button">Cerrar</button></div>
         </div>
@@ -563,7 +573,7 @@
             <div class="p-6 border-b flex justify-between items-start"><h3 class="text-2xl font-bold text-gray-900">Aeroméxico</h3><button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button></div>
             <div class="p-8 space-y-4 text-gray-600">
                 <div><h4 class="font-bold text-gray-800" data-translate="modal2_role_title">Rol</h4><p data-translate="modal2_role_desc">Médico Ocupacional.</p></div>
-                <div><h4 class="font-bold text-gray-800" data-translate="modal2_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal2_achievements_list"><li>Realicé evaluaciones médicas críticas para personal de tráfico, cargo, mantenimiento y tripulación.</li><li>Apliqué pruebas de colesterol, triglicéridos, glucosa, alcoholimetría y antidoping.</li><li>Gestioné de manera integral formatos ante el IMSS (ST-7, ST-9, ST-2).</li><li>Implementé análisis de tests de fatiga para mitigar riesgos operacionales.</li><li>Investigación de accidentes laborales y pláticas informativas de capacitación.</li><li>Fomento al bienestar de los colaboradores.</li></ul></div>
+                <div><h4 class="font-bold text-gray-800" data-translate="modal2_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal2_achievements_list"><li>Realicé evaluaciones médicas críticas para personal de tráfico, cargo, mantenimiento y tripulación.</li><li>Apliqué pruebas de colesterol, triglicéridos, glucosa, alcoholimetría y antidoping.</li><li>Gestioné de manera integral formatos ante el IMSS (ST-7, ST-9, ST-2).</li><li>Implementé análisis de tests de fatiga para mitigar riesgos operacionales.</li><li>Investigación de accidentes laborales.</li><li>Creación y entrega de pláticas informativas y de capacitación.</li></ul></div>
             </div>
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_2">Cerrar</button></div>
         </div>
@@ -574,7 +584,7 @@
             <div class="p-6 border-b flex justify-between items-start"><h3 class="text-2xl font-bold text-gray-900">Grupo Vallarta Plus / GOPOST</h3><button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button></div>
             <div class="p-8 space-y-4 text-gray-600">
                 <div><h4 class="font-bold text-gray-800" data-translate="modal3_role_title">Rol</h4><p data-translate="modal3_role_desc">Especialista en Medicina Ocupacional.</p></div>
-                <div><h4 class="font-bold text-gray-800" data-translate="modal3_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal3_achievements_list"><li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li><li>Capacitación en campañas de difusión de la salud.</li></ul></div>
+                <div><h4 class="font-bold text-gray-800" data-translate="modal3_achievements_title">Funciones y Logros</h4><ul class="list-disc list-inside space-y-1" data-translate="modal3_achievements_list"><li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li><li>Generación y capacitación en campañas con enfoque a la difusión de la salud.</li></ul></div>
             </div>
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_3">Cerrar</button></div>
         </div>
@@ -585,10 +595,11 @@
     <div id="modal-blog1" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
             <div class="p-6 border-b flex justify-between items-start">
-                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog1_title">Ley silla en México</h3>
+                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog1_title">Ley Silla en México</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-            <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog1_content">
+            <!-- CAMBIO: Añadido text-justify -->
+            <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog1_content">
                 <p>La "Ley Silla", aprobada en 2024, es una reforma crucial a la Ley Federal del Trabajo en México que aborda el derecho al descanso durante la jornada laboral. Su objetivo principal es garantizar que los trabajadores de sectores como servicios, comercio y análogos, cuyas funciones se realizan de pie, tengan acceso a asientos o sillas con respaldo.</p>
                 <p>Esta legislación prohíbe a los empleadores obligar a los trabajadores a permanecer de pie durante la totalidad de su turno. La medida busca prevenir problemas de salud a largo plazo, como fatiga crónica, insuficiencia venosa, lesiones en rodillas y espalda, y otros trastornos musculoesqueléticos derivados de posturas prolongadas.</p>
                 <p>Desde la perspectiva de la salud ocupacional, la implementación de esta ley es un paso fundamental hacia la creación de entornos laborales más ergonómicos y seguros. Implica la necesidad de realizar evaluaciones de riesgo en los puestos de trabajo para determinar las necesidades específicas de descanso y adecuar el mobiliario, asegurando así el bienestar del personal y el cumplimiento normativo.</p>
@@ -603,7 +614,8 @@
                 <h3 class="text-2xl font-bold text-gray-900" data-translate="blog2_title">Ergonomía moderna</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog2_content">
+             <!-- CAMBIO: Añadido text-justify -->
+             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog2_content">
                 <p>La ergonomía es la disciplina científica que busca optimizar la interacción entre el trabajador, su equipo y el ambiente de trabajo. En el contexto moderno, su relevancia ha crecido exponencialmente debido a la diversificación de las modalidades laborales, incluyendo el teletrabajo y los entornos industriales automatizados.</p>
                 <p>El objetivo principal de la ergonomía es adaptar el trabajo a las capacidades y limitaciones de la persona para minimizar el estrés físico y mental. Una correcta aplicación de sus principios no solo previene trastornos musculoesqueléticos (TME), sino que también aumenta la eficiencia, reduce errores y mejora la satisfacción del empleado.</p>
                 <p>En México, la <span class="font-semibold">NOM-036-1-STPS-2018</span> establece los elementos para identificar, analizar, prevenir y controlar los factores de riesgo ergonómico en los centros de trabajo. Esto incluye el manejo manual de cargas, pero sus principios son aplicables a la evaluación de posturas, movimientos repetitivos y el diseño de estaciones de trabajo, desde una línea de producción hasta una oficina en casa.</p>
@@ -618,7 +630,8 @@
                 <h3 class="text-2xl font-bold text-gray-900" data-translate="blog3_title">Novedades en normativas</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog3_content">
+             <!-- CAMBIO: Añadido text-justify -->
+             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog3_content">
                 <p>El panorama de la seguridad y salud en el trabajo está en constante evolución. Mantenerse actualizado sobre las Normas Oficiales Mexicanas (NOMs) emitidas por la Secretaría del Trabajo y Previsión Social (STPS) y los estándares internacionales es una responsabilidad fundamental para cualquier profesional del área.</p>
                 <p>Recientemente, ha habido un enfoque renovado en factores de riesgo psicosocial (<span class="font-semibold">NOM-035</span>) y ergonómico (<span class="font-semibold">NOM-036</span>), así como en las regulaciones para el teletrabajo (<span class="font-semibold">NOM-037</span>). Estas normativas reflejan un cambio hacia un enfoque más holístico de la salud del trabajador, que abarca tanto el bienestar físico como el mental.</p>
                 <p>A nivel internacional, la norma <span class="font-semibold">ISO 45001:2018</span> sigue siendo el estándar de oro para los sistemas de gestión de la seguridad y salud en el trabajo. Su adopción no solo facilita el cumplimiento legal, sino que promueve una cultura de mejora continua, fomenta la participación de los trabajadores y demuestra el compromiso de una organización con la seguridad, lo cual puede ser un diferenciador competitivo clave.</p>
@@ -633,7 +646,8 @@
                 <h3 class="text-2xl font-bold text-gray-900" data-translate="blog4_title">Reducción de prima de riesgo</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog4_content">
+             <!-- CAMBIO: Añadido text-justify -->
+             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog4_content">
                 <p>La prima en el seguro de riesgos de trabajo del IMSS es una obligación patronal cuyo costo puede variar significativamente según la siniestralidad de la empresa. Una gestión proactiva de la salud y seguridad no solo protege a los trabajadores, sino que representa un ahorro financiero directo y medible.</p>
                 <p>La clave para reducirla es la prevención. Esto se logra mediante la implementación de un sistema de gestión robusto que incluya: análisis de riesgos por puesto, investigación exhaustiva de accidentes para identificar causas raíz, capacitación continua del personal y programas de vigilancia de la salud. El objetivo es disminuir la frecuencia y gravedad de los accidentes y enfermedades laborales.</p>
                 <p>Un médico ocupacional con enfoque estratégico se encarga de documentar y gestionar adecuadamente los casos (formatos ST-7, ST-9), asegurar un seguimiento médico oportuno para una pronta reincorporación y analizar datos de siniestralidad para enfocar los esfuerzos preventivos donde más se necesiten. Esta labor demuestra el valor del área médica como un socio estratégico del negocio.</p>
@@ -648,7 +662,8 @@
                 <h3 class="text-2xl font-bold text-gray-900" data-translate="blog5_title">Gestión de salud con KPIs</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog5_content">
+             <!-- CAMBIO: Añadido text-justify -->
+             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog5_content">
                 <p>"Lo que no se mide, no se puede mejorar". Esta máxima es especialmente cierta en la salud ocupacional. Implementar indicadores clave de desempeño (KPIs) transforma la gestión de salud de un centro de costos a un área que demuestra su valor y contribución a los objetivos de la organización.</p>
                 <p>Algunos KPIs fundamentales en salud y seguridad incluyen: tasa de frecuencia y gravedad de accidentes, días perdidos por incapacidad, tasa de ausentismo por causa médica, y el porcentaje de cumplimiento en programas de vigilancia de la salud. Estos indicadores permiten tener un diagnóstico preciso del estado de salud de la plantilla laboral.</p>
                 <p>Utilizar herramientas como dashboards (Looker Studio, Power BI) para visualizar estos KPIs permite a la dirección tomar decisiones informadas, identificar tendencias, justificar inversiones en programas preventivos y, en última instancia, demostrar el retorno de inversión (ROI) de las iniciativas de salud y seguridad. Un profesional que habla el lenguaje de los datos es un activo invaluable.</p>
@@ -660,10 +675,11 @@
     <div id="modal-blog6" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
             <div class="p-6 border-b flex justify-between items-start">
-                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog6_title">Liderazgo en comisiones de S&H</h3>
+                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog6_title">Liderazgo en Comisiones de S&H</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog6_content">
+             <!-- CAMBIO: Añadido text-justify -->
+             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog6_content">
                 <p>La Comisión de Seguridad e Higiene es una pieza angular del sistema de gestión de riesgos laborales, exigida por la <span class="font-semibold">NOM-019-STPS</span>. Sin embargo, su efectividad depende directamente del liderazgo y la estructura que se le imprima. Una comisión pasiva es un requisito cumplido; una comisión proactiva es un motor de cambio cultural.</p>
                 <p>Un liderazgo efectivo en la comisión implica ir más allá de las reuniones mensuales. Se trata de capacitar a sus miembros para que sean verdaderos observadores de riesgos en sus áreas, fomentar una comunicación abierta donde los trabajadores se sientan seguros de reportar condiciones inseguras, y utilizar metodologías para analizar incidentes y proponer soluciones prácticas.</p>
                 <p>El rol del médico ocupacional como asesor de la comisión es vital. Aporta el conocimiento técnico para evaluar riesgos a la salud, interpretar la normativa y fundamentar las recomendaciones. Liderar o asesorar eficazmente a esta comisión demuestra no solo conocimiento técnico, sino también habilidades de comunicación, negociación y trabajo en equipo, competencias altamente valoradas por cualquier reclutador.</p>
@@ -671,52 +687,57 @@
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_blog">Cerrar</button></div>
         </div>
     </div>
-    <!-- CAMBIO: Nuevos modales para el blog -->
-    <!-- Modal Blog 7: Comunicación Científica -->
+
+    <!-- CAMBIO: Nuevos Modales de Blog -->
+    <!-- Modal Blog 7: NOM-241 -->
     <div id="modal-blog7" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
             <div class="p-6 border-b flex justify-between items-start">
-                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog7_title">El arte de la comunicación científica</h3>
+                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog7_title">NOM-241: Buenas prácticas en dispositivos médicos</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog7_content">
-                <p>En el ámbito técnico y médico, poseer conocimiento es solo la mitad de la batalla; la otra mitad es saber transmitirlo. La comunicación científica efectiva es la habilidad de tomar conceptos complejos, ya sean artículos de investigación, datos estadísticos o principios anatómicos, y traducirlos a un lenguaje claro, accesible y accionable para una audiencia específica.</p>
-                <p>Esta habilidad es crucial en la capacitación. Un instructor no solo debe "saber", sino "saber enseñar". Esto implica diseñar material didáctico que vaya al punto, crear agendas lógicas que construyan el conocimiento progresivamente y utilizar analogías que conecten con la experiencia de la audiencia (ya sean médicos, ingenieros o personal de planta).</p>
-                <p>Un buen comunicador científico puede revisar un artículo denso sobre una nueva técnica quirúrgica e identificar los 3 puntos clave que un profesional de la salud necesita saber. Puede tomar datos de ergonomía y crear una infografía de un minuto que prevenga lesiones. Esta capacidad de "traducir" es lo que convierte la información en conocimiento aplicado y, finalmente, en procedimientos más seguros y efectivos.</p>
+            <!-- CAMBIO: Añadido text-justify -->
+            <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog7_content">
+                <p>La <span class="font-semibold">NOM-241-SSA1</span> establece los requisitos de Buenas Prácticas de Fabricación (BPF) para dispositivos médicos. Esta norma es fundamental para garantizar la calidad, seguridad y eficacia de productos que van desde implantes quirúrgicos hasta equipos de diagnóstico.</p>
+                <p>El objetivo de la norma es asegurar la consistencia en los procesos de producción, almacenamiento y distribución. Cubre aspectos críticos como el diseño, la validación de procesos, el control de calidad, la trazabilidad y la gestión de riesgos. Para un profesional de la capacitación en esta industria, conocer esta norma es vital, ya que cualquier material educativo sobre el uso de un producto debe estar alineado con los estándares de calidad bajo los cuales fue fabricado.</p>
+                <p>Comprender la NOM-241 permite crear programas de capacitación que no solo enseñan a usar un dispositivo, sino que refuerzan la importancia de su correcto manejo, almacenamiento y reporte de incidentes, asegurando el cumplimiento regulatorio en todo el ciclo de vida del producto.</p>
             </div>
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_blog">Cerrar</button></div>
         </div>
     </div>
-    <!-- Modal Blog 8: Biomecánica y Ergonomía -->
+    <!-- Modal Blog 8: Comunicación Científica -->
     <div id="modal-blog8" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
             <div class="p-6 border-b flex justify-between items-start">
-                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog8_title">Biomecánica y ergonomía en la industria</h3>
+                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog8_title">El arte de la comunicación científica</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog8_content">
-                <p>La biomecánica es el estudio de las fuerzas y sus efectos en los sistemas biológicos; la ergonomía es el diseño de sistemas para que se ajusten al usuario. En la industria, especialmente en la de dispositivos médicos u ortopedia, estas dos disciplinas son inseparables.</p>
-                <p>Comprender la biomecánica de una articulación (como la rodilla o el hombro) es fundamental para entender por qué falla y cómo repararla. Este conocimiento es la base para diseñar un implante, una sutura o una herramienta quirúrgica. Sin embargo, la ergonomía es lo que hace que esa herramienta sea utilizable, segura y eficiente en las manos del cirujano.</p>
-                <p>Una herramienta mal diseñada ergonómicamente puede causar fatiga, aumentar el tiempo quirúrgico o incluso provocar un error. Por lo tanto, la capacitación en el uso de nuevos dispositivos debe incluir no solo el *qué* (la técnica), sino el *cómo* (la interacción ergonómica). Este enfoque dual, que une la ciencia del cuerpo con el diseño de la herramienta, es esencial para la seguridad del paciente y la adopción exitosa de nueva tecnología.</p>
+            <!-- CAMBIO: Añadido text-justify -->
+            <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog8_content">
+                <p>En la industria de la salud, la información es tan crucial como el producto. La capacidad de revisar un artículo científico o un estudio clínico y traducirlo en contenido claro, conciso y accionable es una habilidad clave. No basta con entender los datos; hay que saber comunicarlos.</p>
+                <p>Un capacitador efectivo actúa como un puente entre el equipo de ingeniería/clínico y el usuario final (sea un médico, un técnico o un paciente). Esto implica diseñar materiales que van desde una presentación en PowerPoint hasta un video interactivo o una guía rápida, adaptando el lenguaje y la profundidad al público objetivo.</p>
+                <p>La buena comunicación científica en la capacitación asegura que los procedimientos se realicen correctamente, minimiza errores de usuario y garantiza que los beneficios del producto se entiendan y se apliquen de manera segura. Es una disciplina que combina rigor técnico con empatía y pedagogía.</p>
             </div>
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_blog">Cerrar</button></div>
         </div>
     </div>
-    <!-- Modal Blog 9: NOM-241 -->
+    <!-- Modal Blog 9: Biomecánica y Ergonomía -->
     <div id="modal-blog9" class="modal-backdrop fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 hidden opacity-0">
         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-2xl transform -translate-y-12">
             <div class="p-6 border-b flex justify-between items-start">
-                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog9_title">NOM-241: Buenas Prácticas en Dispositivos Médicos</h3>
+                <h3 class="text-2xl font-bold text-gray-900" data-translate="blog9_title">Ergonomía y biomecánica: Pilares de la capacitación</h3>
                 <button data-modal-close class="text-gray-400 hover:text-gray-600 text-3xl leading-none" aria-label="Cerrar modal">&times;</button>
             </div>
-             <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed" data-translate="modal_blog9_content">
-                <p>La <span class="font-semibold">NOM-241-SSA1</span> es la Norma Oficial Mexicana que establece las Buenas Prácticas de Fabricación (BPF) para los dispositivos médicos. Esta regulación es el pilar de la calidad y seguridad en la industria, asegurando que los productos, desde un implante hasta un equipo de diagnóstico, se fabriquen de manera consistente y controlada.</p>
-                <p>Esta norma no solo impacta a los fabricantes, sino a toda la cadena de suministro, incluyendo a los profesionales de la salud que los utilizan. Comprender la NOM-241 significa entender la importancia de la trazabilidad, la gestión de riesgos en el diseño, la validación de procesos y los controles de calidad que un dispositivo debe superar antes de llegar al paciente.</p>
-                <p>Para un profesional que capacita sobre el uso de estos dispositivos, tener conocimiento de este marco regulatorio es un diferenciador. Permite explicar *por qué* un producto está diseñado de cierta manera y *por qué* los protocolos de uso son tan estrictos. Es la conexión entre la ingeniería de calidad y la aplicación clínica segura.</p>
+            <!-- CAMBIO: Añadido text-justify -->
+            <div class="p-8 max-h-[60vh] overflow-y-auto space-y-4 text-gray-700 leading-relaxed text-justify" data-translate="modal_blog9_content">
+                <p>La ergonomía y la biomecánica a menudo se ven solo como herramientas de prevención de riesgos en salud ocupacional (NOM-036). Sin embargo, su verdadero valor es mucho más amplio: son la base para la eficiencia operativa y la capacitación de alta calidad.</p>
+                <p>Entender la biomecánica permite diseñar procedimientos que no solo son seguros, sino también eficientes y fáciles de aprender. Por ejemplo, al capacitar sobre una nueva técnica quirúrgica o el manejo de un equipo industrial, analizar el movimiento humano (fuerza, postura, repetición) es clave para definir el "cómo" hacerlo correctamente.</p>
+                <p>La ergonomía, por su parte, se enfoca en la interacción entre el usuario y la herramienta. Un buen programa de capacitación debe incluir la ergonomía del producto, enseñando al usuario a ajustarlo y utilizarlo de forma que maximice su rendimiento y minimice la fatiga. Integrar estos conceptos transforma una simple capacitación de producto en una formación integral de procedimientos.</p>
             </div>
             <div class="p-4 bg-gray-50 text-right rounded-b-lg border-t"><button data-modal-close class="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300" data-translate="modal_close_button_blog">Cerrar</button></div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -724,78 +745,74 @@
             // --- Language Translation Logic ---
             const translations = {
                 en: {
-                    page_title: "Dr. Han | Occupational Physician",
+                    page_title: "Dr. Han | Occupational Physician & Technical Trainer",
                     nav_profile: "Profile",
                     nav_specialties: "Specialties",
-                    nav_tools: "Tools & Standards",
+                    nav_tools: "Tools",
                     nav_experience: "Experience",
-                    nav_resources: "Resources", // CAMBIO
+                    nav_resources: "Resources",
                     nav_blog: "Blog",
                     nav_contact: "Contact",
                     nav_profile_mobile: "Profile",
                     nav_specialties_mobile: "Specialties",
-                    nav_tools_mobile: "Tools & Standards",
+                    nav_tools_mobile: "Tools",
                     nav_experience_mobile: "Experience",
-                    nav_resources_mobile: "Resources", // CAMBIO
+                    nav_resources_mobile: "Resources",
                     nav_blog_mobile: "Blog",
                     nav_contact_mobile: "Contact",
                     hero_name: "Dr. Edgar Ivan Bañuelos Han",
-                    hero_subtitle: "Occupational Physician with a focus on Industrial Health and Safety. I apply a data-driven approach to optimize wellness in the workplace.",
-                    story_title: "Do You Recognize These Challenges in Your Company?",
+                    hero_subtitle: "Physician specializing in Industrial Health, Ergonomics, and Technical Training Development.",
+                    story_title: "Optimizing Human Capital",
                     problem1_title: "High-Risk Premiums",
                     problem1_desc: "Frequent accidents and a risk premium that keeps rising, impacting your finances.",
-                    problem2_title: "Absenteeism & Low Productivity",
-                    problem2_desc: "Constant medical leave and a team that isn't performing at its best, affecting operations.",
+                    problem2_title: "Skills Gap",
+                    problem2_desc: "Technical training is ineffective, leading to procedural errors and low productivity.",
                     problem3_title: "Regulatory Complexity",
                     problem3_desc: "The uncertainty of not knowing if you comply with all regulations (NOMs) and the fear of fines and penalties.",
                     solution_title: "My Mission is to Turn Challenges into Opportunities",
-                    solution_desc: "More than a doctor, I am a strategic partner for your business. My approach is not just reactive, addressing incidents, but proactive and data-driven. I analyze your indicators to design preventive programs that not only protect your people but also optimize your operations, reduce costs, and strengthen your safety culture. Together, we can transform the occupational health area into a pillar of profitability and well-being for your company.",
+                    solution_desc: "My approach integrates occupational health with technical training. I don't just prevent risks; I develop your team's talent. I analyze your operations to create effective training programs and digital educational content that ensures the correct execution of procedures. I turn regulatory compliance and health into pillars of productivity and operational excellence.",
                     profile_title: "Professional Profile",
-                    profile_p1: "As a Medical Doctor with knowledge and training in Industrial Safety & Hygiene and Health Law, my professional profile has been consolidated in the management and leadership of medical areas. I integrate my clinical understanding with strong competence in personnel administration, department structuring, and occupational risk management.",
-                    profile_p2: "My practice is based on strategic management for risk prevention, strict adherence to Mexican laws and regulations (NOMs, ISO), and the promotion of healthy environments. I am responsible for protocol development, resource management, and the use of data analysis to create a robust and efficient safety culture.",
+                    profile_p1: "As a Medical Doctor with diplomas in Sports Physical Therapy and Ergonomics, and training as an instructor, my profile merges medical science with education. I have experience in occupational health management and in designing educational content focused on prevention, biomechanics, and the safe execution of procedures.",
+                    profile_p2: "My practice is based on data analysis for risk prevention and the creation of didactic materials (digital and in-person) that translate complex technical knowledge into clear, applicable instructions, ensuring both regulatory compliance (NOMs, ISO) and operational efficiency.",
                     specialties_title: "Areas of Specialty",
-                    specialties_subtitle: "My expertise is focused on four key pillars.", // CAMBIO
+                    specialties_subtitle: "My expertise lies at the intersection of health, safety, and education.",
                     spec1_title: "Occupational Medicine",
                     spec1_desc: "Conducting medical examinations, managing occupational clinical cases, and developing preventive health programs.",
-                    spec2_title: "Safety and Hygiene",
-                    spec2_desc: "Application of Official Mexican Standards (STPS), audits under ISO 45001, and risk analysis (PESTEL, Ishikawa).",
-                    spec3_title: "Health Law & Compliance",
-                    spec3_desc: "Expertise in Mexico's health legal framework, ensuring adherence to laws and managing informed consent.",
-                    /* CAMBIO: Redacción actualizada */
-                    spec4_title: "Training & Education",
-                    spec4_desc: "Designing training programs and creating educational material focused on the execution of safe procedures.",
+                    spec2_title: "Training and Education",
+                    spec2_desc: "Designing training programs and creating educational material focused on the execution of safe procedures.",
+                    spec3_title: "Ergonomics & Biomechanics",
+                    spec3_desc: "Analyzing workstations to prevent injuries (NOM-036) and applying biomechanical principles to optimize performance.",
                     tools_title: "Tools & Standards",
                     tools_subtitle: "My technical arsenal and regulatory knowledge.",
                     tools_management_title: "Management & Analysis Tools",
                     tool_da: " Looker Studio, Flourish, Advanced Excel.",
                     tool_rca: " Ishikawa Diagram, 5 Whys.",
-                    tool_risk: " PESTEL Model.",
+                    tool_content: " MS PowerPoint (Advanced), MS Word, Video Editing.",
                     tools_standards_title: "Knowledge in Standards",
                     tool_iso: "ISO 9001:2015 (Quality), ISO 19011:2018 (Auditing), ISO 45001:2018 (OH&S).",
-                    tool_noms: "NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Psychosocial Risks), NOM-036 (Ergonomics).",
+                    tool_noms: "NOM-035 (Psychosocial Risks), NOM-036 (Ergonomics), and NOM-241 (Good Practices for Medical Devices).",
                     experience_title: "Professional Experience",
                     experience_subtitle: "A track record of key results and responsibilities.",
                     exp1_tag: "Corporate",
                     exp1_title: "Head of Medical Area",
-                    exp1_desc: "At Vitesco / Schaeffler, I was responsible for restructuring the medical area, implementing a KPI-based management system. I managed the team in accident investigations and developed internal training programs on regulations and health.", // CAMBIO
+                    exp1_desc: "At Vitesco / Schaeffler, I was responsible for restructuring the medical area, implementing a KPI-based management system. I managed the team in accident investigations and developed internal training programs on regulations and health.",
                     exp_button: "View details",
                     exp2_tag: "Aeronautics",
                     exp2_title: "Aeronautical Health Management",
-                    exp2_desc: "At Aeroméxico, I was responsible for fitness-for-duty medical evaluations for critical personnel (pilots, flight attendants), ensuring operational safety. I coordinated testing, managed documentation (ST-7, ST-9), and conducted informational and training talks.", // CAMBIO
+                    exp2_desc: "At Aeroméxico, I was responsible for fitness-for-duty medical evaluations for critical personnel (pilots, flight attendants), ensuring operational safety. I coordinated testing, managed documentation (ST-7, ST-9), and conducted informational and training talks.",
                     exp_button_2: "View details",
                     exp3_tag: "Logistics",
                     exp3_title: "Departmental Structure Implementation",
-                    exp3_desc: "For Grupo Vallarta Plus, I designed the creation of the occupational medicine department. This included protocol development, records implementation, and creating and training on health outreach campaigns for prevention.", // CAMBIO
+                    exp3_desc: "For Grupo Vallarta Plus, I designed the creation of the occupational medicine department. This included protocol development, records implementation, and creating and training on health dissemination campaigns for prevention.",
                     exp_button_3: "View details",
-                    // CAMBIO: Nueva sección de recursos
-                    recursos_title: "Educational Resources",
-                    recursos_subtitle: "A sample of teaching materials and training content.",
-                    recurso1_title: "Importance of Ergonomics at Work",
-                    recurso1_desc: "Educational capsule on applying ergonomic principles to prevent injuries.",
-                    recurso2_title: "Digital Guide (Example)",
-                    recurso2_desc: "Example of digital training material on the correct use of PPE.",
+                    resources_title: "Educational Resources",
+                    resources_subtitle: "Samples of educational material and training content.",
+                    resource1_title: "Video: Importance of Ergonomics",
+                    resource1_desc: "Micro-training video explaining the basic principles of ergonomics at work and its impact on injury prevention, based on NOM-036.",
+                    resource2_title: "Video: Basic Biomechanical Analysis",
+                    resource2_desc: "An analysis of physics applied to biology. This video explores how the principles of levers and tension govern human movement, forming the basis for designing medical devices, optimizing safe procedures, and preventing ergonomic risks.",
                     blog_title: "Personal Blog",
-                    blog_subtitle: "Exploring current topics in occupational health, regulations, and training.", // CAMBIO
+                    blog_subtitle: "Exploring current topics in health, regulations, and training.",
                     blog1_title: "The 'Chair Law' in Mexico",
                     blog1_desc: "An analysis of the implications and challenges of this major labor reform.",
                     blog2_title: "Modern Ergonomics",
@@ -808,15 +825,14 @@
                     blog5_desc: "Using key indicators to measure the success of occupational health programs.",
                     blog6_title: "Leadership in S&H Committees",
                     blog6_desc: "Keys to leading effective committees that promote a strong safety culture.",
-                    // CAMBIO: Nuevos artículos del blog
-                    blog7_title: "The Art of Scientific Communication",
-                    blog7_desc: "Why translating complex data into clear content is key for training.",
-                    blog8_title: "Biomechanics and Ergonomics in Industry",
-                    blog8_desc: "The connection between human movement and the design of safe tools.",
-                    blog9_title: "NOM-241: Good Practices in Medical Devices",
-                    blog9_desc: "Understanding the standard that ensures quality in device manufacturing.",
+                    blog7_title: "NOM-241: Good Practices in Medical Devices",
+                    blog7_desc: "Analysis of the key standard for the manufacturing and handling of medical devices in Mexico.",
+                    blog8_title: "The Art of Scientific Communication",
+                    blog8_desc: "How to translate technical data and complex articles into clear and effective training material.",
+                    blog9_title: "Ergonomics & Biomechanics: Pillars of Training",
+                    blog9_desc: "Why understanding human movement is essential for designing safe and efficient procedures.",
                     blog_read_more: "Read more →",
-                    quote_text: '"La seguridad se logra con prevención, pero la excelencia se alcanza con la capacitación constante y la mejora continua."', // CAMBIO: Frase actualizada
+                    quote_text: '"Safety is achieved with prevention, but excellence is achieved with constant training and continuous improvement."',
                     contact_title: "Let's Talk",
                     contact_location: "Location: Zapopan, Jalisco, Mexico Region",
                     contact_availability: "Available for relocation or remote work.",
@@ -825,17 +841,17 @@
                     modal1_role_title: "Role",
                     modal1_role_desc: "Head of the Medical Area.",
                     modal1_achievements_title: "Functions and Achievements",
-                    modal1_achievements_list: `<li>Management and administration of the medical area staff.</li><li>Implementation of preventive programs and health campaigns.</li><li>Conducting periodic and pre-employment medical examinations.</li><li>Led accident investigations with root cause analysis (5 Whys).</li><li>Developed situational diagnoses and internal training on regulations.</li>`, // CAMBIO
+                    modal1_achievements_list: `<li>Management and administration of the medical area staff.</li><li>Implementation of preventive programs and health campaigns.</li><li>Conducting periodic and pre-employment medical examinations.</li><li>Led accident investigations with root cause analysis (5 Whys).</li><li>Developed situational diagnoses for preventive decision-making.</li><li>Training of personnel on internal regulations and procedures.</li>`,
                     modal_close_button: "Close",
                     modal2_role_title: "Role",
                     modal2_role_desc: "Occupational Physician.",
                     modal2_achievements_title: "Functions and Achievements",
-                    modal2_achievements_list: `<li>Conducted critical medical evaluations for traffic, cargo, maintenance, and crew personnel.</li><li>Administered cholesterol, triglycerides, glucose, alcohol, and drug tests.</li><li>Managed comprehensively IMSS forms (ST-7, ST-9, ST-2).</li><li>Implemented fatigue test analysis to mitigate operational risks.</li><li>Conducted occupational accident investigations and training talks.</li><li>Focused on employee well-being.</li>`, // CAMBIO
+                    modal2_achievements_list: `<li>Conducted critical medical evaluations for traffic, cargo, maintenance, and crew personnel.</li><li>Administered cholesterol, triglycerides, glucose, alcohol, and drug tests.</li><li>Managed comprehensively IMSS forms (ST-7, ST-9, ST-2).</li><li>Implemented fatigue test analysis to mitigate operational risks.</li><li>Conducted occupational accident investigations.</li><li>Creation and delivery of informational and training talks.</li>`,
                     modal_close_button_2: "Close",
                     modal3_role_title: "Role",
                     modal3_role_desc: "Occupational Medicine Specialist.",
                     modal3_achievements_title: "Functions and Achievements",
-                    modal3_achievements_list: `<li>Directed the creation and management of the occupational medicine department from scratch.</li><li>Designed and implemented the medical evaluation process for recruitment and selection.</li><li>Created the clinical records system and health monitoring protocols.</li><li>Developed logs for the control and review of the risk premium.</li><li>Training on health outreach campaigns.</li>`, // CAMBIO
+                    modal3_achievements_list: `<li>Directed the creation and management of the occupational medicine department from scratch.</li><li>Designed and implemented the medical evaluation process for recruitment and selection.</li><li>Created the clinical records system and health monitoring protocols.</li><li>Developed logs for the control and review of the risk premium.</li><li>Generation and training on health dissemination campaigns.</li>`,
                     modal_close_button_3: "Close",
                     modal_blog1_content: `<p>The "Chair Law," approved in 2024, is a crucial reform to the Federal Labor Law in Mexico that addresses the right to rest during the workday. Its main objective is to ensure that workers in sectors such as services, commerce, and similar fields, whose duties are performed while standing, have access to seats or chairs with backrests.</p><p>This legislation prohibits employers from forcing workers to remain standing for their entire shift. The measure aims to prevent long-term health problems, such as chronic fatigue, venous insufficiency, knee and back injuries, and other musculoskeletal disorders resulting from prolonged standing.</p><p>From an occupational health perspective, the implementation of this law is a fundamental step towards creating more ergonomic and safer work environments. It involves conducting risk assessments at workstations to determine specific rest needs and adapting furniture, thereby ensuring employee well-being and regulatory compliance.</p>`,
                     modal_blog2_content: `<p>Ergonomics is the scientific discipline that seeks to optimize the interaction between the worker, their equipment, and the work environment. In the modern context, its relevance has grown exponentially due to the diversification of work modalities, including remote work and automated industrial environments.</p><p>The main goal of ergonomics is to adapt the work to the person's capabilities and limitations to minimize physical and mental stress. A correct application of its principles not only prevents musculoskeletal disorders (MSDs) but also increases efficiency, reduces errors, and improves employee satisfaction.</p><p>In Mexico, <span class="font-semibold">NOM-036-1-STPS-2018</span> establishes the elements to identify, analyze, prevent, and control ergonomic risk factors in workplaces. This includes manual load handling, but its principles are applicable to the assessment of postures, repetitive movements, and the design of workstations, from a production line to a home office.</p>`,
@@ -843,87 +859,83 @@
                     modal_blog4_content: `<p>The premium for the IMSS work risk insurance is an employer obligation whose cost can vary significantly depending on the company's accident rate. Proactive health and safety management not only protects workers but also represents a direct and measurable financial saving.</p><p>The key to reducing it is prevention. This is achieved by implementing a robust management system that includes: risk analysis by position, exhaustive accident investigation to identify root causes, continuous staff training, and health surveillance programs. The goal is to decrease the frequency and severity of workplace accidents and illnesses.</p><p>An occupational physician with a strategic focus is responsible for properly documenting and managing cases (ST-7, ST-9 forms), ensuring timely medical follow-up for a prompt return to work, and analyzing accident data to focus preventive efforts where they are most needed. This work demonstrates the value of the medical area as a strategic business partner.</p>`,
                     modal_blog5_content: `<p>"What doesn't get measured, doesn't get improved." This saying is especially true in occupational health. Implementing key performance indicators (KPIs) transforms health management from a cost center to an area that demonstrates its value and contribution to the organization's objectives.</p><p>Some fundamental KPIs in health and safety include: accident frequency and severity rates, lost days due to disability, absenteeism rate due to medical causes, and the compliance percentage in health surveillance programs. These indicators provide an accurate diagnosis of the workforce's health status.</p><p>Using tools like dashboards (Looker Studio, Power BI) to visualize these KPIs allows management to make informed decisions, identify trends, justify investments in preventive programs, and ultimately, demonstrate the return on investment (ROI) of health and safety initiatives. A professional who speaks the language of data is an invaluable asset.</p>`,
                     modal_blog6_content: `<p>The Safety and Hygiene Committee is a cornerstone of the occupational risk management system, required by <span class="font-semibold">NOM-019-STPS</span>. However, its effectiveness depends directly on the leadership and structure given to it. A passive committee is a fulfilled requirement; a proactive committee is a driver of cultural change.</p><p>Effective leadership in the committee involves going beyond monthly meetings. It's about training its members to be true risk observers in their areas, fostering open communication where workers feel safe to report unsafe conditions, and using methodologies to analyze incidents and propose practical solutions.</p><p>The role of the occupational physician as an advisor to the committee is vital. They provide the technical knowledge to assess health risks, interpret regulations, and substantiate recommendations. Effectively leading or advising this committee demonstrates not only technical knowledge but also skills in communication, negotiation, and teamwork—competencies highly valued by any recruiter.</p>`,
-                    // CAMBIO: Contenido de los nuevos modales del blog
-                    modal_blog7_content: `<p>In the technical and medical field, possessing knowledge is only half the battle; the other half is knowing how to convey it. Effective scientific communication is the ability to take complex concepts—be it research articles, statistical data, or anatomical principles—and translate them into clear, accessible, and actionable language for a specific audience.</p><p>This skill is crucial in training. An instructor must not only "know" but "know how to teach." This involves designing educational material that gets to the point, creating logical agendas that build knowledge progressively, and using analogies that connect with the audience's experience (whether they are doctors, engineers, or plant staff).</p><p>A good scientific communicator can review a dense article on a new surgical technique and identify the 3 key points a healthcare professional needs to know. They can take ergonomics data and create a one-minute infographic that prevents injuries. This "translation" ability is what turns information into applied knowledge and, ultimately, into safer and more effective procedures.</p>`,
-                    modal_blog8_content: `<p>Biomechanics is the study of forces and their effects on biological systems; ergonomics is the design of systems to fit the user. In industry, especially in medical devices or orthopedics, these two disciplines are inseparable.</p><p>Understanding the biomechanics of a joint (like the knee or shoulder) is fundamental to understanding why it fails and how to repair it. This knowledge is the basis for designing an implant, a suture, or a surgical tool. However, ergonomics is what makes that tool usable, safe, and efficient in the surgeon's hands.</p><p>An ergonomically poorly designed tool can cause fatigue, increase surgical time, or even lead to error. Therefore, training in the use of new devices must include not only the *what* (the technique) but also the *how* (the ergonomic interaction). This dual approach, linking the science of the body with the design of the tool, is essential for patient safety and the successful adoption of new technology.</p>`,
-                    modal_blog9_content: `<p>The <span class="font-semibold">NOM-241-SSA1</span> is the Official Mexican Standard that establishes Good Manufacturing Practices (GMP) for medical devices. This regulation is the pillar of quality and safety in the industry, ensuring that products, from an implant to diagnostic equipment, are manufactured in a consistent and controlled manner.</p><p>This standard impacts not only manufacturers but the entire supply chain, including the healthcare professionals who use them. Understanding NOM-241 means understanding the importance of traceability, design risk management, process validation, and the quality controls a device must pass before reaching the patient.</p><p>For a professional who trains on the use of these devices, having knowledge of this regulatory framework is a differentiator. It allows one to explain *why* a product is designed in a certain way and *why* the usage protocols are so strict. It is the connection between quality engineering and safe clinical application.</p>`,
+                    modal_blog7_content: `<p><span class="font-semibold">NOM-241-SSA1</span> establishes the Good Manufacturing Practices (GMP) requirements for medical devices. This standard is fundamental to ensuring the quality, safety, and efficacy of products ranging from surgical implants to diagnostic equipment.</p><p>The standard's objective is to ensure consistency in production, storage, and distribution processes. It covers critical aspects such as design, process validation, quality control, traceability, and risk management. For a training professional in this industry, knowing this standard is vital, as any educational material on a product's use must align with the quality standards under which it was manufactured.</p><p>Understanding NOM-241 allows for the creation of training programs that not only teach how to use a device but also reinforce the importance of its correct handling, storage, and incident reporting, ensuring regulatory compliance throughout the product's life cycle.</p>`,
+                    modal_blog8_content: `<p>In the health industry, information is as crucial as the product. The ability to review a scientific article or clinical study and translate it into clear, concise, and actionable content is a key skill. It's not enough to understand the data; one must know how to communicate it.</p><p>An effective trainer acts as a bridge between the engineering/clinical team and the end-user (be it a doctor, technician, or patient). This involves designing materials ranging from a PowerPoint presentation to an interactive video or a quick guide, adapting the language and depth to the target audience.</p><p>Good scientific communication in training ensures that procedures are performed correctly, minimizes user errors, and guarantees that the product's benefits are understood and applied safely. It is a discipline that combines technical rigor with empathy and pedagogy.</p>`,
+                    modal_blog9_content: `<p>Ergonomics and biomechanics are often seen only as risk prevention tools in occupational health (NOM-036). However, their true value is much broader: they are the foundation for operational efficiency and high-quality training.</p><p>Understanding biomechanics allows for the design of procedures that are not only safe but also efficient and easy to learn. For example, when training on a new surgical technique or the operation of industrial equipment, analyzing human movement (force, posture, repetition) is key to defining "how" to do it correctly.</p><p>Ergonomics, on the other hand, focuses on the interaction between the user and the tool. A good training program must include the product's ergonomics, teaching the user how to adjust and use it in a way that maximizes performance and minimizes fatigue. Integrating these concepts transforms simple product training into comprehensive procedural education.</p>`,
                     modal_close_button_blog: "Close",
                     download_cv_button_bottom: "Download Additional CV"
                 },
                 es: {
-                    page_title: "Dr. Han | Médico Ocupacional",
+                    page_title: "Dr. Han | Médico Ocupacional y Capacitador Técnico",
                     nav_profile: "Perfil",
                     nav_specialties: "Especialidades",
                     nav_tools: "Herramientas",
                     nav_experience: "Experiencia",
-                    nav_resources: "Recursos", // CAMBIO
+                    nav_resources: "Recursos",
                     nav_blog: "Blog",
                     nav_contact: "Contacto",
                     nav_profile_mobile: "Perfil",
                     nav_specialties_mobile: "Especialidades",
                     nav_tools_mobile: "Herramientas",
                     nav_experience_mobile: "Experiencia",
-                    nav_resources_mobile: "Recursos", // CAMBIO
+                    nav_resources_mobile: "Recursos",
                     nav_blog_mobile: "Blog",
                     nav_contact_mobile: "Contacto",
                     hero_name: "Dr. Edgar Ivan Bañuelos Han",
-                    hero_subtitle: "Médico Ocupacional con enfoque en Salud y Seguridad Industrial. Aplico un enfoque basado en datos para optimizar el bienestar en el entorno de trabajo.",
-                    story_title: "¿Reconoce estos desafíos en su empresa?",
-                    problem1_title: "Primas de riesgo elevadas",
+                    hero_subtitle: "Médico especialista en Salud Industrial, Ergonomía y Desarrollo de Capacitación Técnica.",
+                    story_title: "Optimizando el Capital Humano",
+                    problem1_title: "Primas de Riesgo Elevadas",
                     problem1_desc: "Accidentes frecuentes y una prima de riesgo que no deja de aumentar, impactando sus finanzas.",
-                    problem2_title: "Ausentismo y baja productividad",
-                    problem2_desc: "Incapacidades constantes y un equipo que no rinde al máximo, afectando la operación.",
-                    problem3_title: "Complejidad normativa",
+                    problem2_title: "Brecha de Habilidades",
+                    problem2_desc: "La capacitación técnica no es efectiva, generando errores en procedimientos y baja productividad.",
+                    problem3_title: "Complejidad Normativa",
                     problem3_desc: "La incertidumbre de no saber si cumple con todas las NOMs y el temor a multas y sanciones.",
                     solution_title: "Mi misión es convertir desafíos en oportunidades",
-                    solution_desc: "Más que un médico, soy un socio estratégico para su negocio. Mi enfoque no es solo reactivo, atendiendo incidentes, sino proactivo y basado en datos. Analizo sus indicadores para diseñar programas preventivos que no solo protegen a su gente, sino que optimizan sus operaciones, reducen costos y fortalecen su cultura de seguridad. Juntos, podemos transformar el área de salud ocupacional en un pilar de la rentabilidad y el bienestar de su empresa.",
+                    solution_desc: "Mi enfoque integra la salud ocupacional con la capacitación técnica. No solo prevengo riesgos, sino que desarrollo el talento de su equipo. Analizo sus operaciones para crear programas de capacitación efectivos y material educativo digital que garantiza la correcta ejecución de procedimientos. Convierto el cumplimiento normativo y la salud en pilares de la productividad y la excelencia operativa.",
                     profile_title: "Perfil Profesional",
-                    profile_p1: "Como Médico Cirujano con conocimiento y capacitación en Seguridad e Higiene Industrial y Derecho Sanitario, mi perfil profesional se ha consolidado en la gestión y liderazgo de áreas médicas. Integro mi entendimiento clínico con una sólida competencia en la administración de personal, la estructuración de departamentos y la gestión de riesgos laborales.",
-                    profile_p2: "Mi práctica se fundamenta en la gestión estratégica para la prevención de riesgos, el estricto apego a las leyes y normas mexicanas (NOMs, ISO), y la promoción de entornos saludables. Soy responsable del desarrollo de protocolos, la gestión de recursos y el uso de análisis de datos para crear una cultura de seguridad robusta y eficiente.",
+                    profile_p1: "Como Médico Cirujano con diplomados en Fisioterapia del Deporte y Ergonomía, y formación como instructor, mi perfil une la ciencia médica con la educación. Tengo experiencia en la gestión de salud ocupacional y en el diseño de contenido educativo enfocado en la prevención, la biomecánica y la ejecución segura de procedimientos.",
+                    profile_p2: "Mi práctica se fundamenta en el análisis de datos para la prevención de riesgos y en la creación de material didáctico (digital y presencial) que traduce conocimiento técnico complejo en instrucciones claras y aplicables, asegurando tanto el cumplimiento normativo (NOMs, ISO) como la eficiencia operativa.",
                     specialties_title: "Áreas de Especialidad",
-                    specialties_subtitle: "Mis competencias se centran en cuatro pilares clave.", // CAMBIO
-                    spec1_title: "Medicina del trabajo",
+                    specialties_subtitle: "Mis competencias se centran en la intersección de la salud, la seguridad y la educación.",
+                    spec1_title: "Medicina del Trabajo",
                     spec1_desc: "Realización de exámenes médicos, gestión de casos clínicos laborales y desarrollo de programas preventivos de salud.",
-                    spec2_title: "Seguridad e higiene",
-                    spec2_desc: "Aplicación de Normas Oficiales Mexicanas (STPS), auditorías bajo ISO 45001 y análisis de riesgos (PESTEL, Ishikawa).",
-                    spec3_title: "Derecho sanitario y cumplimiento",
-                    spec3_desc: "Experiencia en el marco legal de la salud en México, asegurando el apego a leyes y gestionando consentimientos informados.",
-                    /* CAMBIO: Redacción actualizada */
-                    spec4_title: "Capacitación y educación",
-                    spec4_desc: "Diseño de programas de capacitación y creación de material didáctico enfocado en la ejecución de procedimientos seguros.",
+                    spec2_title: "Capacitación y Educación",
+                    spec2_desc: "Diseño de programas de capacitación y creación de material didáctico enfocado en la ejecución de procedimientos seguros.",
+                    spec3_title: "Ergonomía y Biomecánica",
+                    spec3_desc: "Análisis de puestos de trabajo para prevenir lesiones (NOM-036) y aplicación de principios biomecánicos para optimizar el rendimiento.",
                     tools_title: "Herramientas y Normativas",
                     tools_subtitle: "Mi arsenal técnico y conocimiento regulatorio.",
                     tools_management_title: "Herramientas de Gestión y Análisis",
                     tool_da: " Looker Studio, Flourish, Excel Avanzado.",
                     tool_rca: " Diagrama de Ishikawa, 5 Porqués.",
-                    tool_risk: " Modelo PESTEL.",
+                    tool_content: " MS PowerPoint (Avanzado), MS Word, Edición de Video.",
                     tools_standards_title: "Conocimiento en Normativas",
                     tool_iso: "ISO 9001:2015 (Calidad), ISO 19011:2018 (Auditoría), ISO 45001:2018 (SST).",
-                    tool_noms: "NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Riesgos Psicosociales), NOM-036 (Ergonomía).",
+                    tool_noms: "NOM-035 (Riesgos Psicosociales), NOM-036 (Ergonomía), y NOM-241 (Buenas Prácticas Dispositivos Médicos).",
                     experience_title: "Experiencia Profesional",
                     experience_subtitle: "Una trayectoria de resultados y responsabilidades clave.",
                     exp1_tag: "Corporativo",
                     exp1_title: "Responsable del área médica",
-                    exp1_desc: "En Vitesco / Schaeffler, fui responsable de la reestructuración del área médica, implementando un sistema de gestión basado en KPIs. Administré al equipo en la investigación de accidentes y desarrollé programas de capacitación interna sobre normativas y salud.", // CAMBIO
+                    exp1_desc: "En Vitesco / Schaeffler, fui responsable de la reestructuración del área médica, implementando un sistema de gestión basado en KPIs. Administré al equipo en la investigación de accidentes y desarrollé programas de capacitación interna sobre normativas y salud.",
                     exp_button: "Ver detalles",
                     exp2_tag: "Aeronáutica",
                     exp2_title: "Gestión de salud en aeronáutica",
-                    exp2_desc: "En Aeroméxico, fui responsable de las evaluaciones médicas de aptitud para personal crítico (pilotos, sobrecargos), garantizando la seguridad operacional. Coordiné la aplicación de pruebas, gestioné documentación (ST-7, ST-9) y realicé pláticas informativas y de capacitación.", // CAMBIO
+                    exp2_desc: "En Aeroméxico, fui responsable de las evaluaciones médicas de aptitud para personal crítico (pilotos, sobrecargos), garantizando la seguridad operacional. Coordiné la aplicación de pruebas, gestioné documentación (ST-7, ST-9) y realicé pláticas informativas y de capacitación.",
                     exp_button_2: "Ver detalles",
                     exp3_tag: "Logística",
                     exp3_title: "Implementación de estructura departamental",
-                    exp3_desc: "Para Grupo Vallarta Plus, diseñé la creación del departamento de medicina laboral. Esto incluyó el desarrollo de protocolos, la implementación de expedientes y la creación y capacitación en campañas de difusión de la salud para prevención.", // CAMBIO
+                    exp3_desc: "Para Grupo Vallarta Plus, diseñé la creación del departamento de medicina laboral. Esto incluyó el desarrollo de protocolos, la implementación de expedientes y la creación y capacitación en campañas de difusión de la salud para prevención.",
                     exp_button_3: "Ver detalles",
-                    // CAMBIO: Nueva sección de recursos
-                    recursos_title: "Recursos Educativos",
-                    recursos_subtitle: "Una muestra de materiales didácticos y contenido de capacitación.",
-                    recurso1_title: "Importancia de la ergonomía en el trabajo",
-                    recurso1_desc: "Cápsula educativa sobre la aplicación de principios ergonómicos para la prevención de lesiones.",
-                    recurso2_title: "Guía Digital (Ejemplo)",
-                    recurso2_desc: "Ejemplo de material de capacitación digital sobre el uso correcto de EPP.",
+                    resources_title: "Recursos Educativos",
+                    resources_subtitle: "Muestras de material didáctico y contenido de capacitación.",
+                    resource1_title: "Video: Importancia de la Ergonomía",
+                    resource1_desc: "Video de micro-capacitación enfocado en explicar los principios básicos de la ergonomía en el trabajo y su impacto en la prevención de lesiones, con base en la NOM-036.",
+                    resource2_title: "Video: Análisis Biomecánico Básico",
+                    resource2_desc: "Un análisis de la física aplicada a la biología. Este video explora cómo los principios de palancas y tensiones rigen el movimiento humano, siendo la base para diseñar dispositivos médicos, optimizar procedimientos seguros y prevenir riesgos ergonómicos.",
                     blog_title: "Blog Personal",
-                    blog_subtitle: "Explorando temas de actualidad en salud ocupacional, normativas y capacitación.", // CAMBIO
-                    blog1_title: "Ley silla en México",
+                    blog_subtitle: "Explorando temas de actualidad en salud, normativas y capacitación.",
+                    // CAMBIO: Capitalización de títulos en español
+                    blog1_title: "Ley Silla en México",
                     blog1_desc: "Un análisis sobre las implicaciones y retos de esta importante reforma laboral.",
                     blog2_title: "Ergonomía moderna",
                     blog2_desc: "Estrategias prácticas para mejorar la postura y prevenir lesiones en el entorno laboral.",
@@ -933,18 +945,16 @@
                     blog4_desc: "Estrategias para minimizar la siniestralidad y su impacto financiero en la empresa.",
                     blog5_title: "Gestión de salud con KPIs",
                     blog5_desc: "Uso de indicadores clave para medir el éxito de los programas de salud ocupacional.",
-                    blog6_title: "Liderazgo en comisiones de S&H",
+                    blog6_title: "Liderazgo en Comisiones de S&H",
                     blog6_desc: "Claves para dirigir comisiones efectivas que promuevan una cultura de seguridad.",
-                    // CAMBIO: Nuevos artículos del blog
-                    blog7_title: "El arte de la comunicación científica",
-                    blog7_desc: "Por qué traducir datos complejos en contenido claro es clave para la capacitación.",
-                    blog8_title: "Biomecánica y ergonomía en la industria",
-                    blog8_desc: "La conexión entre el movimiento humano y el diseño de herramientas seguras.",
-                    blog9_title: "NOM-241: Buenas prácticas en dispositivos médicos",
-                    blog9_desc: "Entendiendo la norma que asegura la calidad en la fabricación de dispositivos.",
-    
+                    blog7_title: "NOM-241: Buenas prácticas en dispositivos médicos",
+                    blog7_desc: "Análisis de la norma clave para la fabricación y manejo de dispositivos médicos en México.",
+                    blog8_title: "El arte de la comunicación científica",
+                    blog8_desc: "Cómo traducir datos técnicos y artículos complejos en material de capacitación claro y efectivo.",
+                    blog9_title: "Ergonomía y biomecánica: Pilares de la capacitación",
+                    blog9_desc: "Por qué entender el movimiento humano es esencial para diseñar procedimientos seguros y eficientes.",
                     blog_read_more: "Leer más →",
-                    quote_text: '"La seguridad se logra con prevención, pero la excelencia se alcanza con la capacitación constante y la mejora continua."', // CAMBIO: Frase actualizada
+                    quote_text: '"La seguridad se logra con prevención, pero la excelencia se alcanza con la capacitación constante y la mejora continua."',
                     contact_title: "Hablemos",
                     contact_location: "Ubicación: Región de Zapopan, Jalisco, México",
                     contact_availability: "Disponibilidad a reubicación o trabajo a distancia.",
@@ -953,17 +963,17 @@
                     modal1_role_title: "Rol",
                     modal1_role_desc: "Responsable del área médica.",
                     modal1_achievements_title: "Funciones y Logros",
-                    modal1_achievements_list: `<li>Gestión y administración del personal del área médica.</li><li>Implementación de programas preventivos y campañas de salud.</li><li>Realización de exámenes médicos periódicos y de nuevo ingreso.</li><li>Investigaciones de accidentes con análisis de causa raíz (5 porqués).</li><li>Desarrollo de diagnósticos situacionales y capacitación interna de normativas.</li>`, // CAMBIO
+                    modal1_achievements_list: `<li>Gestión y administración del personal del área médica.</li><li>Implementación de programas preventivos y campañas de salud.</li><li>Realización de exámenes médicos periódicos y de nuevo ingreso.</li><li>Investigaciones de accidentes con análisis de causa raíz (5 porqués).</li><li>Desarrollo de diagnósticos situacionales para la toma de decisiones preventivas.</li><li>Capacitación de personal en normativas y procedimientos internos.</li>`,
                     modal_close_button: "Cerrar",
                     modal2_role_title: "Rol",
                     modal2_role_desc: "Médico Ocupacional.",
                     modal2_achievements_title: "Funciones y Logros",
-                    modal2_achievements_list: `<li>Realicé evaluaciones médicas críticas para personal de tráfico, cargo, mantenimiento y tripulación.</li><li>Apliqué pruebas de colesterol, triglicéridos, glucosa, alcoholimetría y antidoping.</li><li>Gestioné de manera integral formatos ante el IMSS (ST-7, ST-9, ST-2).</li><li>Implementé análisis de tests de fatiga para mitigar riesgos operacionales.</li><li>Investigación de accidentes laborales y pláticas informativas de capacitación.</li><li>Fomento al bienestar de los colaboradores.</li>`, // CAMBIO
+                    modal2_achievements_list: `<li>Realicé evaluaciones médicas críticas para personal de tráfico, cargo, mantenimiento y tripulación.</li><li>Apliqué pruebas de colesterol, triglicéridos, glucosa, alcoholimetría y antidoping.</li><li>Gestioné de manera integral formatos ante el IMSS (ST-7, ST-9, ST-2).</li><li>Implementé análisis de tests de fatiga para mitigar riesgos operacionales.</li><li>Investigación de accidentes laborales.</li><li>Creación y entrega de pláticas informativas y de capacitación.</li>`,
                     modal_close_button_2: "Cerrar",
                     modal3_role_title: "Rol",
                     modal3_role_desc: "Especialista en Medicina Ocupacional.",
                     modal3_achievements_title: "Funciones y Logros",
-                    modal3_achievements_list: `<li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li><li>Capacitación en campañas de difusión de la salud.</li>`, // CAMBIO
+                    modal3_achievements_list: `<li>Dirigí la creación y gestión del departamento de medicina laboral desde cero.</li><li>Diseñé e implementé el proceso de evaluación médica para el proceso de reclutamiento y selección.</li><li>Creé el sistema de expedientes clínicos y los protocolos de seguimiento de salud.</li><li>Desarrollé bitácoras para el control y revisión de la prima de riesgo.</li><li>Generación y capacitación en campañas con enfoque a la difusión de la salud.</li>`,
                     modal_close_button_3: "Cerrar",
                     modal_blog1_content: `<p>La "Ley Silla", aprobada en 2024, es una reforma crucial a la Ley Federal del Trabajo en México que aborda el derecho al descanso durante la jornada laboral. Su objetivo principal es garantizar que los trabajadores de sectores como servicios, comercio y análogos, cuyas funciones se realizan de pie, tengan acceso a asientos o sillas con respaldo.</p><p>Esta legislación prohíbe a los empleadores obligar a los trabajadores a permanecer de pie durante la totalidad de su turno. La medida busca prevenir problemas de salud a largo plazo, como fatiga crónica, insuficiencia venosa, lesiones en rodillas y espalda, y otros trastornos musculoesqueléticos derivados de posturas prolongadas.</p><p>Desde la perspectiva de la salud ocupacional, la implementación de esta ley es un paso fundamental hacia la creación de entornos laborales más ergonómicos y seguros. Implica la necesidad de realizar evaluaciones de riesgo en los puestos de trabajo para determinar las necesidades específicas de descanso y adecuar el mobiliario, asegurando así el bienestar del personal y el cumplimiento normativo.</p>`,
                     modal_blog2_content: `<p>La ergonomía es la disciplina científica que busca optimizar la interacción entre el trabajador, su equipo y el ambiente de trabajo. En el contexto moderno, su relevancia ha crecido exponencialmente debido a la diversificación de las modalidades laborales, incluyendo el teletrabajo y los entornos industriales automatizados.</p><p>El objetivo principal de la ergonomía es adaptar el trabajo a las capacidades y limitaciones de la persona para minimizar el estrés físico y mental. Una correcta aplicación de sus principios no solo previene trastornos musculoesqueléticos (TME), sino que también aumenta la eficiencia, reduce errores y mejora la satisfacción del empleado.</p><p>En México, la <span class="font-semibold">NOM-036-1-STPS-2018</span> establece los elementos para identificar, analizar, prevenir y controlar los factores de riesgo ergonómico en los centros de trabajo. Esto incluye el manejo manual de cargas, pero sus principios son aplicables a la evaluación de posturas, movimientos repetitivos y el diseño de estaciones de trabajo, desde una línea de producción hasta una oficina en casa.</p>`,
@@ -971,10 +981,9 @@
                     modal_blog4_content: `<p>La prima en el seguro de riesgos de trabajo del IMSS es una obligación patronal cuyo costo puede variar significativamente según la siniestralidad de la empresa. Una gestión proactiva de la salud y seguridad no solo protege a los trabajadores, sino que representa un ahorro financiero directo y medible.</p><p>La clave para reducirla es la prevención. Esto se logra mediante la implementación de un sistema de gestión robusto que incluya: análisis de riesgos por puesto, investigación exhaustiva de accidentes para identificar causas raíz, capacitación continua del personal y programas de vigilancia de la salud. El objetivo es disminuir la frecuencia y gravedad de los accidentes y enfermedades laborales.</p><p>Un médico ocupacional con enfoque estratégico se encarga de documentar y gestionar adecuadamente los casos (formatos ST-7, ST-9), asegurar un seguimiento médico oportuno para una pronta reincorporación y analizar datos de siniestralidad para enfocar los esfuerzos preventivos donde más se necesiten. Esta labor demuestra el valor del área médica como un socio estratégico del negocio.</p>`,
                     modal_blog5_content: `<p>"Lo que no se mide, no se puede mejorar". Esta máxima es especialmente cierta en la salud ocupacional. Implementar indicadores clave de desempeño (KPIs) transforma la gestión de salud de un centro de costos a un área que demuestra su valor y contribución a los objetivos de la organización.</p><p>Algunos KPIs fundamentales en salud y seguridad incluyen: tasa de frecuencia y gravedad de accidentes, días perdidos por incapacidad, tasa de ausentismo por causa médica, y el porcentaje de cumplimiento en programas de vigilancia de la salud. Estos indicadores permiten tener un diagnóstico preciso del estado de salud de la plantilla laboral.</p><p>Utilizar herramientas como dashboards (Looker Studio, Power BI) para visualizar estos KPIs permite a la dirección tomar decisiones informadas, identificar tendencias, justificar inversiones en programas preventivos y, en última instancia, demostrar el retorno de inversión (ROI) de las iniciativas de salud y seguridad. Un profesional que habla el lenguaje de los datos es un activo invaluable.</p>`,
                     modal_blog6_content: `<p>La Comisión de Seguridad e Higiene es una pieza angular del sistema de gestión de riesgos laborales, exigida por la <span class="font-semibold">NOM-019-STPS</span>. Sin embargo, su efectividad depende directamente del liderazgo y la estructura que se le imprima. Una comisión pasiva es un requisito cumplido; una comisión proactiva es un motor de cambio cultural.</p><p>Un liderazgo efectivo en la comisión implica ir más allá de las reuniones mensuales. Se trata de capacitar a sus miembros para que sean verdaderos observadores de riesgos en sus áreas, fomentar una comunicación abierta donde los trabajadores se sientan seguros de reportar condiciones inseguras, y utilizar metodologías para analizar incidentes y proponer soluciones prácticas.</p><p>El rol del médico ocupacional como asesor de la comisión es vital. Aporta el conocimiento técnico para evaluar riesgos a la salud, interpretar la normativa y fundamentar las recomendaciones. Liderar o asesorar eficazmente a esta comisión demuestra no solo conocimiento técnico, sino también habilidades de comunicación, negociación y trabajo en equipo, competencias altamente valoradas por cualquier reclutador.</p>`,
-                    // CAMBIO: Contenido de los nuevos modales del blog
-                    modal_blog7_content: `<p>En el ámbito técnico y médico, poseer conocimiento es solo la mitad de la batalla; la otra mitad es saber transmitirlo. La comunicación científica efectiva es la habilidad de tomar conceptos complejos, ya sean artículos de investigación, datos estadísticos o principios anatómicos, y traducirlos a un lenguaje claro, accesible y accionable para una audiencia específica.</p><p>Esta habilidad es crucial en la capacitación. Un instructor no solo debe "saber", sino "saber enseñar". Esto implica diseñar material didáctico que vaya al punto, crear agendas lógicas que construyan el conocimiento progresivamente y utilizar analogías que conecten con la experiencia de la audiencia (ya sean médicos, ingenieros o personal de planta).</p><p>Un buen comunicador científico puede revisar un artículo denso sobre una nueva técnica quirúrgica e identificar los 3 puntos clave que un profesional de la salud necesita saber. Puede tomar datos de ergonomía y crear una infografía de un minuto que prevenga lesiones. Esta capacidad de "traducir" es lo que convierte la información en conocimiento aplicado y, finalmente, en procedimientos más seguros y efectivos.</p>`,
-                    modal_blog8_content: `<p>La biomecánica es el estudio de las fuerzas y sus efectos en los sistemas biológicos; la ergonomía es el diseño de sistemas para que se ajusten al usuario. En la industria, especialmente en la de dispositivos médicos u ortopedia, estas dos disciplinas son inseparables.</p><p>Comprender la biomecánica de una articulación (como la rodilla o el hombro) es fundamental para entender por qué falla y cómo repararla. Este conocimiento es la base para diseñar un implante, una sutura o una herramienta quirúrgica. Sin embargo, la ergonomía es lo que hace que esa herramienta sea utilizable, segura y eficiente en las manos del cirujano.</p><p>Una herramienta mal diseñada ergonómicamente puede causar fatiga, aumentar el tiempo quirúrgico o incluso provocar un error. Por lo tanto, la capacitación en el uso de nuevos dispositivos debe incluir no solo el *qué* (la técnica), sino el *cómo* (la interacción ergonómica). Este enfoque dual, que une la ciencia del cuerpo con el diseño de la herramienta, es esencial para la seguridad del paciente y la adopción exitosa de nueva tecnología.</p>`,
-                    modal_blog9_content: `<p>La <span class="font-semibold">NOM-241-SSA1</span> es la Norma Oficial Mexicana que establece las Buenas Prácticas de Fabricación (BPF) para los dispositivos médicos. Esta regulación es el pilar de la calidad y seguridad en la industria, asegurando que los productos, desde un implante hasta un equipo de diagnóstico, se fabriquen de manera consistente y controlada.</p><p>Esta norma no solo impacta a los fabricantes, sino a toda la cadena de suministro, incluyendo a los profesionales de la salud que los utilizan. Comprender la NOM-241 significa entender la importancia de la trazabilidad, la gestión de riesgos en el diseño, la validación de procesos y los controles de calidad que un dispositivo debe superar antes de llegar al paciente.</p><p>Para un profesional que capacita sobre el uso de estos dispositivos, tener conocimiento de este marco regulatorio es un diferenciador. Permite explicar *por qué* un producto está diseñado de cierta manera y *por qué* los protocolos de uso son tan estrictos. Es la conexión entre la ingeniería de calidad y la aplicación clínica segura.</p>`,
+                    modal_blog7_content: `<p>La <span class="font-semibold">NOM-241-SSA1</span> establece los requisitos de Buenas Prácticas de Fabricación (BPF) para dispositivos médicos. Esta norma es fundamental para garantizar la calidad, seguridad y eficacia de productos que van desde implantes quirúrgicos hasta equipos de diagnóstico.</p><p>El objetivo de la norma es asegurar la consistencia en los procesos de producción, almacenamiento y distribución. Cubre aspectos críticos como el diseño, la validación de procesos, el control de calidad, la trazabilidad y la gestión de riesgos. Para un profesional de la capacitación en esta industria, conocer esta norma es vital, ya que cualquier material educativo sobre el uso de un producto debe estar alineado con los estándares de calidad bajo los cuales fue fabricado.</p><p>Comprender la NOM-241 permite crear programas de capacitación que no solo enseñan a usar un dispositivo, sino que refuerzan la importancia de su correcto manejo, almacenamiento y reporte de incidentes, asegurando el cumplimiento regulatorio en todo el ciclo de vida del producto.</p>`,
+                    modal_blog8_content: `<p>En la industria de la salud, la información es tan crucial como el producto. La capacidad de revisar un artículo científico o un estudio clínico y traducirlo en contenido claro, conciso y accionable es una habilidad clave. No basta con entender los datos; hay que saber comunicarlos.</p><p>Un capacitador efectivo actúa como un puente entre el equipo de ingeniería/clínico y el usuario final (sea un médico, un técnico o un paciente). Esto implica diseñar materiales que van desde una presentación en PowerPoint hasta un video interactivo o una guía rápida, adaptando el lenguaje y la profundidad al público objetivo.</p><p>La buena comunicación científica en la capacitación asegura que los procedimientos se realicen correctamente, minimiza errores de usuario y garantiza que los beneficios del producto se entiendan y se apliquen de manera segura. Es una disciplina que combina rigor técnico con empatía y pedagogía.</p>`,
+                    modal_blog9_content: `<p>La ergonomía y la biomecánica a menudo se ven solo como herramientas de prevención de riesgos en salud ocupacional (NOM-036). Sin embargo, su verdadero valor es mucho más amplio: son la base para la eficiencia operativa y la capacitación de alta calidad.</p><p>Entender la biomecánica permite diseñar procedimientos que no solo son seguros, sino también eficientes y fáciles de aprender. Por ejemplo, al capacitar sobre una nueva técnica quirúrgica o el manejo de un equipo industrial, analizar el movimiento humano (fuerza, postura, repetición) es clave para definir el "cómo" hacerlo correctamente.</p><p>La ergonomía, por su parte, se enfoca en la interacción entre el usuario y la herramienta. Un buen programa de capacitación debe incluir la ergonomía del producto, enseñando al usuario a ajustarlo y utilizarlo de forma que maximice su rendimiento y minimice la fatiga. Integrar estos conceptos transforma una simple capacitación de producto en una formación integral de procedimientos.</p>`,
                     modal_close_button_blog: "Cerrar",
                     download_cv_button_bottom: "Descargar CV adicional"
                 }
@@ -989,7 +998,7 @@
                     const key = element.getAttribute('data-translate');
                     const translation = translations[lang]?.[key];
                     if (translation) {
-                        if (element.tagName === 'UL' || key.includes('_content') || key.includes('_list')) {
+                        if (element.tagName === 'UL' || key.includes('_content')) {
                             element.innerHTML = translation;
                         } else {
                             element.textContent = translation;
@@ -1050,12 +1059,16 @@
                 setTimeout(() => { 
                     modal.classList.add('hidden'); 
                     document.body.style.overflow = ''; 
-                    lastFocusedElement?.focus();
+                    if (lastFocusedElement) {
+                        lastFocusedElement.focus();
+                    }
                 }, 300);
             }
             
             function trapFocus(modal) {
-                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), iframe');
+                if(focusableElements.length === 0) return;
+                
                 const firstFocusableElement = focusableElements[0];
                 const lastFocusableElement = focusableElements[focusableElements.length - 1];
                 
@@ -1078,7 +1091,8 @@
             }
 
             document.querySelectorAll('[data-modal-target]').forEach(button => {
-                button.addEventListener('click', () => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevenir el comportamiento por defecto del botón
                     const modal = document.getElementById(button.dataset.modalTarget);
                     openModal(modal);
                 });
@@ -1092,7 +1106,10 @@
                 });
                 
                 modal.querySelectorAll('[data-modal-close]').forEach(button => {
-                    button.addEventListener('click', () => closeModal(modal));
+                    button.addEventListener('click', (e) => {
+                         e.preventDefault(); // Prevenir el comportamiento por defecto del botón
+                        closeModal(modal)
+                    });
                 });
             });
 
