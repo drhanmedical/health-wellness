@@ -1,507 +1,460 @@
 
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate="page_title">Dr. Han | Médico Ocupacional & Wellness Specialist</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Portafolio profesional del Dr. Edgar Ivan Bañuelos Han, Médico Ocupacional especialista en Salud, Seguridad Industrial, Wellness y Cumplimiento Normativo.">
-    <meta name="keywords" content="Médico Ocupacional, Salud Ocupacional, Seguridad Industrial, Medicina del Trabajo, Dr. Han, Riesgos Laborales, NOM-STPS, ISO 45001, Zapopan, Cumplimiento Normativo, Wellness, IA">
-    <meta name="author" content="Dr. Edgar Ivan Bañuelos Han">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dr-han-portfolio.com/">
-    <meta property="og:title" content="Dr. Han | Medicina Laboral, Seguridad y Wellness">
-    <meta property="og:description" content="Médico ocupacional con enfoque en seguridad, salud industrial, wellness corporativo y capacitación técnica.">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1gQpOl-XVb1YoDSqW4FizkDqtSh3BRLDb">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Dr. Han | Portafolio de Salud y Capacitación">
-    <meta property="twitter:description" content="Médico ocupacional con enfoque en seguridad, salud industrial y wellness.">
-    <meta property="twitter:image" content="https://lh3.googleusercontent.com/d/1gQpOl-XVb1YoDSqW4FizkDqtSh3BRLDb">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU">
-
+    <title>Dr. Han | Salud Industrial & Estrategia Operativa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #333333;
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .font-title { font-family: 'Lexend', sans-serif; }
+        
+        :root {
+            --primary-navy: #0f172a; /* Slate 900 */
+            --accent-emerald: #10b981; /* Emerald 500 */
+            --industrial-gray: #475569;
         }
-        h1, h2, h3, h4, blockquote {
-            font-family: 'Playfair Display', serif;
-        }
-        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
-        .modal-content { transition: transform 0.3s ease-in-out; }
-        .underline-animation {
-            position: relative;
-            padding-bottom: 4px;
-        }
-        .underline-animation::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background-color: #333;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease-in-out;
-        }
-        .underline-animation:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-        .lang-btn {
-            border: 1px solid #ddd;
-            padding: 4px 10px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #555;
-            transition: all 0.3s;
-        }
-        .lang-btn:hover {
-            border-color: #333;
-            color: #000;
-            background-color: #f9fafb;
-        }
-        .signature {
-            font-family: 'Caveat', cursive;
-            font-weight: 700;
-        }
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-        }
-        .blog-card {
-             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        .video-container {
+
+        .bg-industrial { background-color: var(--primary-navy); }
+        .text-accent { color: var(--accent-emerald); }
+        .bg-accent { background-color: var(--accent-emerald); }
+        .border-accent { border-color: var(--accent-emerald); }
+        
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(15, 23, 42, 0.08); }
+        
+        /* Refinamiento de Modal */
+        .modal { transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden; }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { transform: scale(0.9) translateY(40px); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .modal.active .modal-content { transform: scale(1) translateY(0); }
+
+        /* Sistema de Tarjetas Premium */
+        .nom-card {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: white;
+            border: 1px solid #f1f5f9;
             position: relative;
             overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .video-iframe {
+        .nom-card::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--accent-emerald);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+        .nom-card:hover {
+            border-color: var(--accent-emerald);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px -12px rgba(16, 185, 129, 0.12);
+        }
+        .nom-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Selector de Idioma */
+        .lang-switch { display: inline-flex; background: #f8fafc; padding: 5px; border-radius: 14px; border: 1px solid #e2e8f0; }
+        .lang-btn { padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; transition: 0.4s; }
+        .lang-btn.active { background: var(--primary-navy); color: white; }
+        
+        /* Revelado de Foto: B&N a Color */
+        .profile-img-container img {
+            filter: grayscale(100%) contrast(1.15) brightness(1.05);
+            transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .profile-img-container:hover img {
+            filter: grayscale(0%) contrast(1) brightness(1);
+        }
+
+        .section-tag {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.5em;
+            color: var(--accent-emerald);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: inline-block;
+            border-left: 3px solid var(--accent-emerald);
+            padding-left: 1rem;
+        }
+
+        .reveal-on-scroll { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-active { opacity: 1; transform: translateY(0); }
+
+        .trayectoria-card {
+            transition: all 0.4s ease;
+            border-left: 4px solid transparent;
+        }
+        .trayectoria-card:hover {
+            border-left-color: var(--accent-emerald);
+            background: rgba(255, 255, 255, 0.03);
+            padding-left: 2rem;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-[#fcfdfe] text-slate-900 overflow-x-hidden selection:bg-emerald-100 selection:text-emerald-900">
 
-    <!-- Header & Navigation -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-100">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#home" class="flex items-center space-x-2">
-                <img src="https://lh3.googleusercontent.com/d/1maAAOedgv5OYLvv-vUY4uFg5AlO6PzYU" alt="Logo Dr. Bañuelos Han" class="h-10 w-auto">
-                <span class="hidden sm:block text-xl font-bold text-gray-800 tracking-wider logo-text">Dr. Han</span>
-            </a>
-            <div class="hidden lg:flex items-center space-x-3 text-[10px] xl:text-xs font-medium tracking-wider uppercase">
-                <a href="#perfil" class="underline-animation" data-translate="nav_profile">Perfil</a>
-                <a href="#especialidades" class="underline-animation" data-translate="nav_specialties">Áreas</a>
-                <a href="#herramientas" class="underline-animation" data-translate="nav_tools">Herramientas</a>
-                <a href="#experiencia" class="underline-animation" data-translate="nav_experience">Experiencia</a>
-                <a href="#recursos" class="underline-animation" data-translate="nav_resources">Recursos</a>
-                <a href="#blog" class="underline-animation" data-translate="nav_blog">Blog</a>
-                <a href="#wellness" class="underline-animation" data-translate="nav_wellness">Wellness</a>
-                <a href="#contacto" class="underline-animation" data-translate="nav_contact">Contacto</a>
-                <button id="lang-switcher-desktop" class="lang-btn ml-2">EN / ES</button>
+    <!-- Navegación del Encabezado -->
+    <nav class="fixed w-full z-50 glass-header py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-slate-900 font-black text-2xl tracking-tighter uppercase group cursor-pointer">
+                DR. <span class="text-accent group-hover:tracking-normal transition-all duration-500">HAN</span>
             </div>
-             <div class="lg:hidden">
-                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none" aria-label="Abrir menú" aria-expanded="false">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+            
+            <div class="flex items-center gap-8 lg:gap-12">
+                <div class="hidden lg:flex space-x-12 text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">
+                    <a href="#perfil" data-i18n="nav-profile" class="hover:text-accent transition">Perfil</a>
+                    <a href="#normas" data-i18n="nav-norms" class="hover:text-accent transition">Normatividad</a>
+                    <a href="#experiencia" data-i18n="nav-experience" class="hover:text-accent transition">Trayectoria</a>
+                    <a href="#contacto" data-i18n="nav-contact" class="text-slate-900 border-b-2 border-accent pb-1 uppercase tracking-widest">Hiring</a>
+                </div>
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLanguage('es')" id="btn-es">ES</button>
+                    <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+                </div>
             </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="lg:hidden border-t transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
-            <a href="#perfil" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_profile_mobile">Perfil</a>
-            <a href="#especialidades" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_specialties_mobile">Áreas</a>
-            <a href="#herramientas" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_tools_mobile">Herramientas</a>
-            <a href="#experiencia" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_experience_mobile">Experiencia</a>
-            <a href="#recursos" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_resources_mobile">Recursos</a>
-            <a href="#blog" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_blog_mobile">Blog</a>
-            <a href="#wellness" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_wellness_mobile">Wellness</a>
-            <a href="#contacto" class="block py-3 px-6 text-sm hover:bg-gray-50" data-translate="nav_contact_mobile">Contacto</a>
-             <div class="p-4 flex items-center justify-center"><button id="lang-switcher-mobile" class="lang-btn w-full">EN / ES</button></div>
         </div>
-    </header>
+    </nav>
 
-    <main class="container mx-auto px-6">
-
-        <!-- Hero Section -->
-        <section id="home" class="py-24 md:py-40 flex flex-col md:flex-row items-center text-center md:text-left">
-            <div class="md:w-3/5">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight" data-translate="hero_name">Dr. Edgar Ivan Bañuelos Han</h1>
-                <p class="mt-6 text-xl md:text-2xl text-gray-600 max-w-2xl" data-translate="hero_subtitle">
-                    Médico ocupacional con enfoque en seguridad, salud industrial y wellness corporativo, desarrollo y capacitación técnica. Aplico un enfoque basado en datos para optimizar el bienestar en el entorno de trabajo.
+    <!-- Sección Hero -->
+    <section id="perfil" class="min-h-screen flex items-center pt-32 pb-20 relative">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50 rounded-full blur-[140px] opacity-30 -z-10"></div>
+        
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative">
+            <div class="reveal-on-scroll">
+                <span class="section-tag" data-i18n="hero-tag">Medicina & Seguridad Industrial</span>
+                <h1 class="text-8xl lg:text-[120px] font-black text-slate-900 leading-[0.8] mb-10 tracking-tighter">
+                    Dr. <span class="text-accent italic">Han</span>
+                </h1>
+                <p class="text-2xl lg:text-3xl text-slate-500 font-light mb-14 max-w-xl leading-relaxed" data-i18n="hero-desc">
+                    No solo gestiono salud; blindo la <span class='text-slate-900 font-bold'>continuidad operativa</span> de su empresa mediante inteligencia de datos y rigor normativo.
                 </p>
-            </div>
-            <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center">
-                 <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl">
-                    <img src="https://lh3.googleusercontent.com/d/1gQpOl-XVb1YoDSqW4FizkDqtSh3BRLDb" alt="Foto profesional de Dr. Edgar Ivan Bañuelos Han" class="w-full h-full object-cover">
+                <div class="flex flex-wrap gap-6">
+                    <a href="https://wa.me/525629846164" target="_blank" class="bg-accent text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl hover:shadow-emerald-500/30 transition-all duration-500 hover:-translate-y-1">
+                        <i class="fa-brands fa-whatsapp text-3xl"></i> <span data-i18n="btn-whatsapp">WhatsApp Directo</span>
+                    </a>
+                    <div class="flex flex-col gap-3">
+                        <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="bg-industrial text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl transition-all duration-500 hover:-translate-y-1 border border-slate-800">
+                            <i class="fa-solid fa-file-pdf text-2xl text-accent"></i> <span data-i18n="btn-cv">CV completo</span>
+                        </a>
+                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em] text-center" data-i18n="cv-format-tag">Formato Profesional</span>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="relative reveal-on-scroll" style="transition-delay: 300ms;">
+                <div class="profile-img-container relative bg-white rounded-[100px] overflow-hidden aspect-[4/5] border-[16px] border-white shadow-[0_60px_100px_-20px_rgba(0,0,0,0.12)]">
+                    <img src="https://drive.google.com/thumbnail?id=1VWqk33PEasus2aWjckWVViojvVw-cajS&sz=w1000" alt="Dr. Han" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-10 -left-10 bg-industrial p-10 rounded-[50px] shadow-3xl border border-slate-800">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-accent mb-2" data-i18n="badge-id">CÉDULA PROFESIONAL</p>
+                    <p class="text-white font-black text-3xl tracking-tighter">12210167</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Storytelling & Pitch Section -->
-        <section id="story" class="py-24 border-t bg-gray-50 -mx-6 px-6">
-            <div class="container mx-auto max-w-5xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900" data-translate="story_title">Optimizando el Capital Humano</h2>
+    <!-- Pilares de Dominio -->
+    <section id="pilares" class="py-40 bg-[#f8fafc] reveal-on-scroll">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-white p-12 rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-[30px] flex items-center justify-center text-accent text-4xl mb-10">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tighter mb-6" data-i18n="p1-title">Salud <br>Ocupacional</h3>
+                    <p class="text-slate-500 leading-relaxed font-light" data-i18n="p1-desc">Gestión estratégica de siniestralidad ante el IMSS (ST-7, ST-9). Control de ausentismo y vigilancia epidemiológica industrial profunda.</p>
                 </div>
-                <div class="grid md:grid-cols-3 gap-10 mb-16 text-center">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="problem1_title">Primas de Riesgo Elevadas</h3>
-                        <p class="text-gray-600 text-sm" data-translate="problem1_desc">Accidentes frecuentes y una prima de riesgo que impacta directamente la rentabilidad de su empresa.</p>
+                <div class="bg-white p-12 rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700">
+                    <div class="w-20 h-20 bg-orange-50 rounded-[30px] flex items-center justify-center text-orange-600 text-4xl mb-10">
+                        <i class="fa-solid fa-hard-hat"></i>
                     </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m0-6a9 9 0 11-18 0 9 9 0 0118 0zM9 9a1 1 0 00-1 1v.01a1 1 0 001 1h.01a1 1 0 001-1V10a1 1 0 00-1-1H9z" /></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="problem2_title">Cultura de Bienestar Ausente</h3>
-                        <p class="text-gray-600 text-sm" data-translate="problem2_desc">Falta de estrategias de Wellness que deriven en baja productividad y alto ausentismo.</p>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="problem3_title">Complejidad Normativa</h3>
-                        <p class="text-gray-600 text-sm" data-translate="problem3_desc">Riesgo legal por incumplimiento de NOMs-STPS y falta de protocolos médicos estandarizados.</p>
-                    </div>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tighter mb-6" data-i18n="p2-title">Seguridad <br>Higiene (EHS)</h3>
+                    <p class="text-slate-500 leading-relaxed font-light" data-i18n="p2-desc">Especialidad en curso. Investigación de incidentes mediante Causa Raíz e implementación técnica de normativas preventivas en piso.</p>
                 </div>
-                <div class="max-w-3xl mx-auto text-center bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-900" data-translate="solution_title">Soluciones Integrales en Salud Operativa</h3>
-                    <p class="mt-4 text-lg text-gray-700 leading-relaxed md:text-justify" data-translate="solution_desc">
-                        Mi misión es integrar la medicina laboral con la seguridad industrial y el wellness corporativo. No solo gestiono el cumplimiento normativo (NOMs, ISO), sino que diseño entornos de trabajo seguros que potencian el talento humano. Utilizo herramientas tecnológicas de vanguardia e IA para crear procesos de capacitación eficientes y medibles que reducen riesgos y elevan la excelencia operativa.
+                <div class="bg-white p-12 rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700">
+                    <div class="w-20 h-20 bg-blue-50 rounded-[30px] flex items-center justify-center text-blue-600 text-4xl mb-10">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tighter mb-6" data-i18n="p3-title">Derecho <br>Sanitario</h3>
+                    <p class="text-slate-500 leading-relaxed font-light" data-i18n="p3-desc">Blindaje legal ante COFEPRIS y STPS. Gestión proactiva de avisos de funcionamiento y cumplimiento normativo integral.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dominio Normativo Premium -->
+    <section id="normas" class="py-40 bg-white reveal-on-scroll">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-32">
+                <span class="section-tag" data-i18n="norms-tag">Marco Regulatorio Industrial</span>
+                <h2 class="text-6xl font-black text-slate-900 tracking-tighter mb-8" data-i18n="norms-title">Dominio de Normativas <span class="text-accent italic block lg:inline">STPS</span></h2>
+                <div class="h-1.5 w-32 bg-accent mx-auto mb-10 rounded-full"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto text-xl font-light italic leading-relaxed" data-i18n="norms-subtitle">Módulos técnicos para el blindaje legal y la excelencia operativa bajo estándares nacionales e internacionales.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8" id="norms-grid">
+                <!-- Se inyecta vía JS con alineación mejorada -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trayectoria Industrial -->
+    <section id="experiencia" class="py-40 bg-industrial text-white relative overflow-hidden reveal-on-scroll">
+        <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.08),transparent)] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl font-black mb-24 italic tracking-tighter uppercase" data-i18n="exp-title">Trayectoria <span class="text-accent">Industrial</span></h2>
+            
+            <div class="space-y-20 max-w-6xl">
+                <!-- Aeroméxico -->
+                <div class="trayectoria-card py-4">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <h4 class="text-4xl lg:text-5xl font-black text-white tracking-tighter mb-2 italic uppercase">Aeroméxico</h4>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-accent text-industrial px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest" data-i18n="exp-pos-1">Médico Ocupacional</span>
+                                <span class="text-slate-500 font-bold text-xs uppercase tracking-widest">2023 — 2025</span>
+                            </div>
+                        </div>
+                        <div class="text-accent font-black text-6xl opacity-20">01</div>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed text-xl font-light max-w-4xl" data-i18n="exp-desc-1">Liderazgo en seguridad crítica aeronáutica. Gestión de protocolos de fatiga, alcoholimetría y siniestralidad operativa de alto impacto para tripulaciones y mantenimiento.</p>
+                </div>
+
+                <!-- Vallarta Plus -->
+                <div class="trayectoria-card py-4">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <h4 class="text-4xl lg:text-5xl font-black text-white tracking-tighter mb-2 italic uppercase tracking-tighter">Grupo Vallarta Plus</h4>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-accent text-industrial px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest" data-i18n="exp-pos-2">Salud Industrial</span>
+                                <span class="text-slate-500 font-bold text-xs uppercase tracking-widest" data-i18n="exp-tag-2">Gestión Integral</span>
+                            </div>
+                        </div>
+                        <div class="text-accent font-black text-6xl opacity-20">02</div>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed text-xl font-light max-w-4xl" data-i18n="exp-desc-2">Implementación de departamento médico desde fase cero. Diseño de KPIs de salud ocupacional y filtros médicos de reclutamiento predictivo para personal operativo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto y Acción -->
+    <section id="contacto" class="py-40 bg-industrial text-white relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-9xl md:text-[250px] font-black mb-16 tracking-tighter uppercase italic opacity-[0.03] pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2">DR. HAN</h2>
+            <div class="relative z-10">
+                <p class="text-slate-300 text-4xl md:text-5xl max-w-5xl mx-auto mb-32 font-light italic leading-tight" data-i18n="contact-slogan">
+                    "Protegiendo el recurso más valioso mediante <span class="text-accent font-bold">inteligencia médica</span> estratégica y rigor industrial."
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                    <a href="https://wa.me/525629846164" target="_blank" class="group bg-accent p-14 rounded-[70px] shadow-3xl flex flex-col items-center gap-8 hover:scale-105 transition-all duration-500">
+                        <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-accent transition duration-500 text-5xl">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <span class="font-bold text-3xl tracking-tighter" data-i18n="btn-contact-ent">Agendar Entrevista</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="group bg-white text-slate-900 p-14 rounded-[70px] shadow-3xl flex flex-col items-center gap-8 hover:scale-105 transition-all duration-500">
+                        <div class="w-24 h-24 bg-accent rounded-full flex items-center justify-center text-white group-hover:bg-slate-900 transition duration-500 text-5xl">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <span class="font-bold text-3xl tracking-tighter" data-i18n="btn-cv">CV completo</span>
+                    </a>
+                    <a href="mailto:dr.hanmedical@gmail.com" class="group bg-white/5 border border-white/10 p-14 rounded-[70px] shadow-3xl flex flex-col items-center gap-8 hover:scale-105 hover:bg-white hover:text-slate-900 transition-all duration-500">
+                        <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:text-accent transition duration-500 text-5xl">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <span class="font-bold text-3xl tracking-tighter" data-i18n="btn-contact-email">Correo Electrónico</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página Actualizado -->
+    <footer class="bg-black text-white pt-24 pb-16">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-16 border-b border-white/10 pb-20 mb-16">
+                <div class="space-y-6">
+                    <h5 class="text-accent font-black tracking-tighter text-xl">DR. HAN</h5>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-xs italic">
+                        Salud Industrial de alto impacto enfocada en la optimización operativa y el cumplimiento legal estratégico.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <h6 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Ubicación & Contacto</h6>
+                    <ul class="space-y-4 text-slate-300 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-accent"></i> Zapopan, Jalisco
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent"></i> dr.hanmedical@gmail.com
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h6 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Credenciales Oficiales</h6>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <span class="font-bold block text-white mb-2 italic">Dr. Edgar Ivan Bañuelos Han</span>
+                        Cédula profesional: <span class="text-accent font-mono font-bold text-base">12210167</span>
                     </p>
                 </div>
             </div>
-        </section>
-
-        <!-- Profile Section -->
-        <section id="perfil" class="py-24 border-t">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center" data-translate="profile_title">Perfil Profesional</h2>
-                <p class="text-lg text-gray-600 mb-4 text-justify" data-translate="profile_p1">
-                    Como médico ocupacional experto en seguridad, higiene y wellness corporativo, mi perfil integra la ciencia médica con la educación y el estricto cumplimiento normativo. Me especializo en transformar entornos de trabajo mediante el análisis de riesgos biomecánicos, la gestión de la salud laboral y la implementación de programas integrales que garantizan la seguridad operativa y el desarrollo del capital humano.
-                </p>
-                <p class="text-lg text-gray-600 text-justify" data-translate="profile_p2">
-                    Mi práctica se fundamenta en un enfoque preventivo y legal, asegurando que cada organización no solo cumpla con estándares nacionales (NOMs) e internacionales (ISO), sino que también fomente una cultura de bienestar real. Utilizo IA y contenido multimedia para democratizar el conocimiento técnico y asegurar una capacitación efectiva en todos los niveles.
+            
+            <!-- Derechos Reservados Centrados -->
+            <div class="text-center">
+                <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.3em]">
+                    &copy; 2026 Dr. Han Medical. Todos los derechos reservados.
                 </p>
             </div>
-        </section>
-
-        <!-- Specialties Section -->
-        <section id="especialidades" class="py-24 border-t bg-gray-50 -mx-6 px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900" data-translate="specialties_title">Áreas de Especialidad</h2>
-                </div>
-                <div class="grid md:grid-cols-3 gap-10">
-                    <div class="text-center p-6">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec1_title">Medicina Laboral</h3>
-                        <p class="text-gray-600 text-sm" data-translate="spec1_desc">Gestión de expedientes, exámenes médicos de aptitud y control de enfermedades de trabajo.</p>
-                    </div>
-                    <div class="text-center p-6">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec2_title">Cumplimiento Normativo</h3>
-                        <p class="text-gray-600 text-sm" data-translate="spec2_desc">Especialista en NOM-035, NOM-036 y estándares ISO 45001 para la seguridad operativa.</p>
-                    </div>
-                     <div class="text-center p-6">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate="spec3_title">Wellness Corporativo</h3>
-                        <p class="text-gray-600 text-sm" data-translate="spec3_desc">Programas integrales de salud física, mental y nutricional para potenciar el bienestar.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Tools & Standards Section -->
-        <section id="herramientas" class="py-24 border-t">
-            <div class="container mx-auto max-w-5xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900" data-translate="tools_title">Herramientas & Tecnología</h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-translate="tools_management_title">Gestión y Análisis</h3>
-                        <div class="space-y-4">
-                            <div class="bg-white p-4 rounded-lg border"><strong>Análisis de Datos:</strong><span data-translate="tool_da"> Looker Studio, Flourish, Excel Avanzado.</span></div>
-                            <div class="bg-white p-4 rounded-lg border"><strong>Investigación de Accidentes:</strong><span data-translate="tool_rca"> Metodologías de Análisis Causa Raíz.</span></div>
-                            <div class="bg-white p-4 rounded-lg border"><strong>Creación Digital:</strong><span data-translate="tool_content"> Herramientas de IA y CapCut.</span></div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-translate="tools_standards_title">Marco Regulatorio</h3>
-                        <div class="space-y-4">
-                             <div class="bg-white p-4 rounded-lg border">
-                                <strong class="block">Sistemas de Gestión:</strong>
-                                <p class="text-sm" data-translate="tool_iso">ISO 9001, ISO 19011, ISO 45001.</p>
-                             </div>
-                             <div class="bg-white p-4 rounded-lg border">
-                                <strong class="block">Normas Mexicanas:</strong>
-                                <p class="text-sm" data-translate="tool_noms">NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Psicosocial), NOM-036 (Ergonomía), y NOM-241 (Disp. Médicos).</p>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experiencia" class="py-24 border-t bg-gray-50 -mx-6 px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900" data-translate="experience_title">Experiencia Profesional</h2>
-            </div>
-            <div class="space-y-20">
-                 <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <div class="rounded-lg overflow-hidden shadow-md">
-                         <img src="https://lh3.googleusercontent.com/d/1Jf2lrXh5_anq5gMSPhNssUIhqOo89zPE" alt="Imagen de experiencia aeronáutica" class="w-full h-auto object-contain" loading="lazy">
-                    </div>
-                    <div class="pl-0 md:pl-10">
-                        <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp2_tag">Aeronáutica</p>
-                        <h3 class="text-3xl font-bold text-gray-800" data-translate="exp2_title">Gestión de Salud Crítica</h3>
-                        <p class="mt-4 text-gray-600 md:text-justify" data-translate="exp2_desc">Liderazgo en evaluaciones de aptitud médica para personal crítico en Aeroméxico, asegurando la seguridad aérea mediante el cumplimiento de protocolos internacionales.</p>
-                        <button data-modal-target="modal2" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_2">Ver detalles</button>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <div class="pr-0 md:pr-10">
-                        <p class="text-sm font-semibold tracking-widest uppercase text-gray-500 mb-2" data-translate="exp3_tag">Logística</p>
-                        <h3 class="text-3xl font-bold text-gray-800" data-translate="exp3_title">Implementación Departamental</h3>
-                        <p class="mt-4 text-gray-600 md:text-justify" data-translate="exp3_desc">Creación desde cero de la estructura de medicina laboral para Grupo Vallarta Plus, integrando wellness y seguridad operativa.</p>
-                        <button data-modal-target="modal3" class="mt-6 font-semibold text-gray-800 underline-animation" data-translate="exp_button_3">Ver detalles</button>
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-md">
-                        <img src="https://lh3.googleusercontent.com/d/1cXYMOyvxrWj5-gCkrRwQkHug1ItCIg1W" alt="Imagen de experiencia corporativa" class="w-full h-auto object-contain" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Wellness Section -->
-        <section id="wellness" class="py-24 border-t bg-blue-50/30 -mx-6 px-6">
-            <div class="container mx-auto max-w-5xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900" data-translate="wellness_title">Wellness Corporativo</h2>
-                    <p class="mt-4 text-lg text-gray-600" data-translate="wellness_subtitle">Integrando la salud integral como pilar de la excelencia organizacional.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-sm border text-center">
-                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-3" data-translate="well1_title">Salud Mental</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed" data-translate="well1_desc">Cumplimiento preventivo de la NOM-035 mediante el manejo de estrés y clima laboral.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-sm border text-center">
-                        <div class="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 16v2m3-6v6m3-8v8m-7 0h8a2 2 0 002-2V6a2 2 0 00-2-2H8a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-3" data-translate="well2_title">Nutrición</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed" data-translate="well2_desc">Programas de alimentación enfocados en la prevención de enfermedades crónicas y energía.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-sm border text-center">
-                        <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-3" data-translate="well3_title">Pausas Activas</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed" data-translate="well3_desc">Pausas activas y correcciones posturales para optimizar el rendimiento y evitar lesiones.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contacto" class="py-24 border-t text-center bg-gray-50 -mx-6 px-6">
-             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold text-gray-900 mb-8" data-translate="contact_title">Hablemos</h2>
-                
-                <!-- Botón de Descarga CV -->
-                <div class="mb-12">
-                    <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="inline-flex items-center px-8 py-4 bg-gray-900 text-white rounded-full font-bold shadow-lg hover:bg-gray-800 transition-all transform hover:-translate-y-1">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        <span data-translate="download_cv_alt">Descargar CV Alternativo</span>
-                    </a>
-                </div>
-
-                <!-- Botones Sociales con Colores y Logos -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <!-- Email -->
-                    <a href="mailto:dr.hanmedical@gmail.com" class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm border border-red-100 hover:border-red-300 hover:shadow-md transition-all group">
-                        <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <span class="font-bold text-gray-800">Email</span>
-                        <span class="text-xs text-gray-500 mt-1">dr.hanmedical@gmail.com</span>
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/drhanmedical" target="_blank" class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all group">
-                        <div class="w-12 h-12 bg-blue-50 text-[#0077B5] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-                        </div>
-                        <span class="font-bold text-gray-800">LinkedIn</span>
-                        <span class="text-xs text-gray-500 mt-1">Conectar Profesional</span>
-                    </a>
-
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/525629846164" target="_blank" class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm border border-green-100 hover:border-green-300 hover:shadow-md transition-all group">
-                        <div class="w-12 h-12 bg-green-50 text-[#25D366] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l-1.317 4.834 4.885-1.286z"></path></svg>
-                        </div>
-                        <span class="font-bold text-gray-800">WhatsApp</span>
-                        <span class="text-xs text-gray-500 mt-1">Respuesta Rápida</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="border-t py-6 text-center text-gray-500 text-xs">
-        <p data-translate="footer_text">&copy; 2025 Dr. Edgar Ivan Bañuelos Han. Salud, Seguridad & Wellness.</p>
+        </div>
     </footer>
 
-    <!-- Modals -->
-    <div id="modal2" class="modal-backdrop fixed inset-0 bg-black/60 flex items-center justify-center p-4 hidden opacity-0 z-[60]">
-        <div class="modal-content bg-white rounded-lg w-full max-w-xl p-8 transform transition-all duration-300 -translate-y-12">
-            <h3 class="text-2xl font-bold mb-4">Aeroméxico</h3>
-            <p class="text-gray-600 text-sm">Gestión médica de personal crítico y cumplimiento de normas aeronáuticas internacionales de salud y fatiga.</p>
-            <button data-modal-close class="mt-6 px-4 py-2 bg-gray-100 rounded text-sm hover:bg-gray-200">Cerrar</button>
-        </div>
-    </div>
-    <div id="modal3" class="modal-backdrop fixed inset-0 bg-black/60 flex items-center justify-center p-4 hidden opacity-0 z-[60]">
-        <div class="modal-content bg-white rounded-lg w-full max-w-xl p-8 transform transition-all duration-300 -translate-y-12">
-            <h3 class="text-2xl font-bold mb-4">Grupo Vallarta Plus</h3>
-            <p class="text-gray-600 text-sm">Diseño de sistemas de vigilancia epidemiológica y protocolos preventivos para la reducción de primas de riesgo.</p>
-            <button data-modal-close class="mt-6 px-4 py-2 bg-gray-100 rounded text-sm hover:bg-gray-200">Cerrar</button>
+    <!-- Modal Normas -->
+    <div id="normModal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-6">
+        <div class="absolute inset-0 bg-slate-900/95 backdrop-blur-xl" onclick="closeModal()"></div>
+        <div class="modal-content relative bg-white w-full max-w-2xl rounded-[70px] p-20 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-12 right-12 text-slate-300 hover:text-accent transition text-4xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-icon" class="w-24 h-24 rounded-[35px] flex items-center justify-center text-5xl mb-14 shadow-inner"></div>
+            <h3 id="modal-title" class="text-5xl font-black text-slate-900 mb-8 tracking-tighter uppercase"></h3>
+            <p id="modal-desc" class="text-slate-500 text-xl leading-relaxed font-light mb-14 italic"></p>
+            <div class="pt-10 border-t border-slate-50 flex items-center justify-between">
+                <span class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300 italic">Compliance Standard</span>
+                <span class="text-accent font-black italic text-xl tracking-tighter uppercase">DR. HAN</span>
+            </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const translations = {
-                en: {
-                    page_title: "Dr. Han | Occupational & Wellness Expert",
-                    nav_profile: "Profile", nav_specialties: "Areas", nav_tools: "Tools", nav_experience: "Experience", nav_resources: "Resources", nav_blog: "Blog", nav_wellness: "Wellness", nav_contact: "Contact",
-                    nav_profile_mobile: "Profile", nav_specialties_mobile: "Areas", nav_tools_mobile: "Tools", nav_experience_mobile: "Experience", nav_resources_mobile: "Resources", nav_blog_mobile: "Blog", nav_wellness_mobile: "Wellness", nav_contact_mobile: "Contact",
-                    hero_name: "Dr. Edgar Ivan Bañuelos Han",
-                    hero_subtitle: "Occupational physician with a focus on industrial safety, health, and corporate wellness, technical development, and training. I apply a data-driven approach to optimize well-being in the work environment.",
-                    story_title: "Optimizing Human Capital",
-                    profile_title: "Professional Profile",
-                    profile_p1: "As an occupational physician expert in safety, hygiene, and corporate wellness, my profile integrates medical science with education and strict regulatory compliance. I specialize in transforming work environments through biomechanical risk analysis, occupational health management, and the implementation of comprehensive programs that guarantee operational safety and human capital development.",
-                    profile_p2: "My practice is founded on a preventive and legal approach, ensuring that every organization not only meets national (NOMs) and international (ISO) standards but also fosters a real culture of well-being. I use AI and multimedia content to democratize technical knowledge and ensure effective training at all levels.",
-                    specialties_title: "Core Specialties",
-                    spec1_title: "Occupational Med", spec1_desc: "Health records management, fitness evaluations, and work-related disease control.",
-                    spec2_title: "Regulatory Compliance", spec2_desc: "Expert in NOM-035, NOM-036, and ISO 45001 standards for operational safety.",
-                    spec3_title: "Corporate Wellness", spec3_desc: "Comprehensive programs for physical, mental, and nutritional health to boost well-being.",
-                    tools_title: "Tools & Technology",
-                    tools_management_title: "Management & Analysis",
-                    tool_da: " Looker Studio, Flourish, Advanced Excel.", tool_rca: " Root Cause Analysis Methodologies.", tool_content: " AI Tools and CapCut.",
-                    tools_standards_title: "Regulatory Framework",
-                    tool_iso: "ISO 9001, ISO 19011, ISO 45001.", tool_noms: "NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Psychosocial), NOM-036 (Ergonomics), and NOM-241 (Medical Devices).",
-                    experience_title: "Career History",
-                    wellness_title: "Corporate Wellness", wellness_subtitle: "Integrating holistic health as a pillar of organizational excellence.",
-                    well1_title: "Psychosocial Factors", well1_desc: "Preventive compliance with NOM-035 through stress and climate management.",
-                    well2_title: "Healthy Nutrition", well2_desc: "Food programs focused on chronic disease prevention and energy.",
-                    well3_title: "Preventive Biomechanics", well3_desc: "Active breaks and postural corrections to optimize performance and avoid injury.",
-                    blog_title: "Insights", blog_read_more: "Read more →",
-                    contact_title: "Get in Touch", contact_p1: "Looking to optimize your team's health and ensure your company's legal compliance?",
-                    download_cv_alt: "Download Alternative CV",
-                    footer_text: "© 2025 Dr. Edgar Ivan Bañuelos Han. Health, Safety & Wellness."
-                },
-                es: {
-                    page_title: "Dr. Han | Médico Ocupacional & Wellness",
-                    nav_profile: "Perfil", nav_specialties: "Áreas", nav_tools: "Herramientas", nav_experience: "Experiencia", nav_resources: "Recursos", nav_blog: "Blog", nav_wellness: "Wellness", nav_contact: "Contacto",
-                    nav_profile_mobile: "Perfil", nav_specialties_mobile: "Áreas", nav_tools_mobile: "Herramientas", nav_experience_mobile: "Experiencia", nav_resources_mobile: "Recursos", nav_blog_mobile: "Blog", nav_wellness_mobile: "Wellness", nav_contact_mobile: "Contacto",
-                    hero_name: "Dr. Edgar Ivan Bañuelos Han",
-                    hero_subtitle: "Médico ocupacional con enfoque en seguridad, salud industrial y wellness corporativo, desarrollo y capacitación técnica. Aplico un enfoque basado en datos para optimizar el bienestar en el entorno de trabajo.",
-                    story_title: "Optimizando el Capital Humano",
-                    profile_title: "Perfil Profesional",
-                    profile_p1: "Como médico ocupacional experto en seguridad, higiene y wellness corporativo, mi perfil integra la ciencia médica con la educación y el estricto cumplimiento normativo. Me especializo en transformar entornos de trabajo mediante el análisis de riesgos biomecánicos, la gestión de la salud laboral y la implementación de programas integrales que garantizan la seguridad operativa y el desarrollo del capital humano.",
-                    profile_p2: "Mi práctica se fundamenta en un enfoque preventivo y legal, asegurando que cada organización no solo cumpla con estándares nacionales (NOMs) e internacionales (ISO), sino que también fomente una cultura de bienestar real. Utilizo IA y contenido multimedia para democratizar el conocimiento técnico y asegurar una capacitación efectiva en todos los niveles.",
-                    specialties_title: "Áreas de Especialidad",
-                    spec1_title: "Medicina Laboral", spec1_desc: "Gestión de expedientes, exámenes médicos de aptitud y control de enfermedades de trabajo.",
-                    spec2_title: "Cumplimiento Normativo", spec2_desc: "Especialista en NOM-035, NOM-036 y estándares ISO 45001 para la seguridad operativa.",
-                    spec3_title: "Wellness Corporativo", spec3_desc: "Programas integrales de salud física, mental y nutricional para potenciar el bienestar.",
-                    tools_title: "Herramientas & Tecnología",
-                    tools_management_title: "Gestión y Análisis",
-                    tool_da: " Looker Studio, Flourish, Excel Avanzado.", tool_rca: " Metodologías de Análisis Causa Raíz.", tool_content: " Herramientas de IA y CapCut.",
-                    tools_standards_title: "Marco Regulatorio",
-                    tool_iso: "ISO 9001, ISO 19011, ISO 45001.", tool_noms: "NOM-002, NOM-004, NOM-005, NOM-009, NOM-017, NOM-019, NOM-026, NOM-027, NOM-030, NOM-033, NOM-035 (Psicosocial), NOM-036 (Ergonomía), y NOM-241 (Disp. Médicos).",
-                    experience_title: "Trayectoria Profesional",
-                    wellness_title: "Wellness Corporativo", wellness_subtitle: "Salud integral como pilar de la excelencia organizacional.",
-                    well1_title: "Salud Mental", well1_desc: "Cumplimiento preventivo de la NOM-035 mediante el manejo de estrés y clima laboral.",
-                    well2_title: "Nutrición Saludable", well2_desc: "Programas de alimentación enfocados en la prevención de enfermedades crónicas y energía.",
-                    well3_title: "Biomecánica Preventiva", well3_desc: "Pausas activas y correcciones posturales para optimizar el rendimiento y evitar lesiones.",
-                    blog_title: "Blog Personal", blog_read_more: "Leer más →",
-                    contact_title: "Hablemos", contact_p1: "¿Busca optimizar la salud de su equipo y asegurar el cumplimiento legal de su empresa?",
-                    download_cv_alt: "Descargar CV Alternativo",
-                    footer_text: "© 2025 Dr. Edgar Ivan Bañuelos Han. Salud, Seguridad & Wellness."
-                }
-            };
-
-            let currentLang = 'es';
-            function switchLanguage(lang) {
-                currentLang = lang;
-                document.documentElement.lang = lang;
-                document.querySelectorAll('[data-translate]').forEach(element => {
-                    const key = element.getAttribute('data-translate');
-                    const translation = translations[lang]?.[key];
-                    if (translation) {
-                        element.textContent = translation;
-                    }
-                });
+        const translations = {
+            es: {
+                "nav-profile": "Perfil", "nav-norms": "Normas", "nav-experience": "Trayectoria", "nav-contact": "Hiring",
+                "hero-tag": "Medicina & Seguridad Industrial",
+                "hero-desc": "No solo gestiono salud; blindo la <span class='text-slate-900 font-bold underline decoration-accent decoration-4 underline-offset-8'>continuidad operativa</span> de su empresa mediante inteligencia de datos y rigor normativo.",
+                "btn-whatsapp": "WhatsApp Directo", "btn-norms": "Explorar Normas STPS", "btn-cv": "CV completo",
+                "badge-id": "CÉDULA PROFESIONAL", "cv-format-tag": "Formato Profesional",
+                "p1-title": "Salud <br>Ocupacional", "p1-desc": "Gestión estratégica de siniestralidad ante el IMSS (ST-7, ST-9). Control de ausentismo y vigilancia epidemiológica industrial profunda.",
+                "p2-title": "Seguridad <br>Higiene (EHS)", "p2-desc": "Especialidad en curso. Investigación de incidentes mediante Causa Raíz e implementación técnica de normativas preventivas en piso.",
+                "p3-title": "Derecho <br>Sanitario", "p3-desc": "Blindaje legal ante COFEPRIS y STPS. Gestión proactiva de avisos de funcionamiento y cumplimiento normativo integral.",
+                "norms-tag": "Marco Regulatorio Industrial", "norms-title": "Dominio de Normativas <span class='text-accent italic'>STPS</span>", "norms-subtitle": "Módulos técnicos para el blindaje legal y la excelencia operativa bajo estándares nacionales e internacionales.",
+                "exp-title": "Trayectoria <span class='text-accent'>Industrial</span>",
+                "exp-pos-1": "Médico Ocupacional", "exp-desc-1": "Liderazgo en seguridad crítica aeronáutica. Gestión de protocolos de fatiga, alcoholimetría y siniestralidad operativa de alto impacto.",
+                "exp-pos-2": "Salud Industrial", "exp-tag-2": "Gestión Integral", "exp-desc-2": "Implementación de departamento médico desde fase cero. Diseño de KPIs de salud ocupacional y filtros médicos de reclutamiento predictivos.",
+                "contact-slogan": "Protegiendo el recurso más valioso mediante inteligencia médica estratégica y rigor industrial.",
+                "btn-contact-ent": "Agendar Entrevista", "btn-contact-email": "Correo Electrónico"
+            },
+            en: {
+                "nav-profile": "Profile", "nav-norms": "Norms", "nav-experience": "Experience", "nav-contact": "Hiring",
+                "hero-tag": "Industrial Medicine & Safety",
+                "hero-desc": "I don't just manage health; I shield your company's <span class='text-slate-900 font-bold underline decoration-accent decoration-4 underline-offset-8'>operational continuity</span> through data intelligence and regulatory rigor.",
+                "btn-whatsapp": "Direct WhatsApp", "btn-norms": "Explore STPS Norms", "btn-cv": "Full CV",
+                "badge-id": "Professional License", "cv-format-tag": "Professional Format",
+                "p1-title": "Occupational <br>Health", "p1-desc": "Strategic IMSS risk management (ST-7, ST-9). Absenteeism control and deep industrial epidemiological surveillance.",
+                "p2-title": "Safety & <br>Hygiene (EHS)", "p2-desc": "Specialization in progress. Root Cause accident investigation and technical field implementation of preventive norms.",
+                "p3-title": "Sanitary <br>Law", "p3-desc": "Legal protection against COFEPRIS & STPS. Proactive management of operation permits and comprehensive regulatory compliance.",
+                "norms-tag": "Industrial Regulatory Framework", "norms-title": "Technical <span class='text-accent italic'>STPS</span> Mastery", "norms-subtitle": "Technical modules for legal shielding and operational excellence under national standards.",
+                "exp-title": "Industrial <span class='text-accent'>Journey</span>",
+                "exp-pos-1": "Occupational Physician", "exp-desc-1": "Leading critical safety for maintenance and flight crew. Fatigue protocols, drug testing, and high-impact operational claim handling.",
+                "exp-pos-2": "Industrial Health", "exp-desc-2": "Medical department setup from scratch. Health KPI optimization and predictive recruitment medical screening.",
+                "contact-slogan": "Protecting the most valuable resource through strategic medical intelligence and industrial rigor.",
+                "btn-contact-ent": "Schedule Interview", "btn-contact-email": "Email Contact"
             }
+        };
 
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                const isOpen = mobileMenu.classList.contains('max-h-96');
-                mobileMenu.classList.toggle('max-h-0', isOpen);
-                mobileMenu.classList.toggle('opacity-0', isOpen);
-                mobileMenu.classList.toggle('max-h-96', !isOpen);
-                mobileMenu.classList.toggle('opacity-100', !isOpen);
+        const norms = [
+            { id: "002", icon: "fa-fire", color: "text-red-500", bg: "bg-red-50", name_es: "Incendios", name_en: "Fire Protection", desc_es: "Prevención y protección contra incendios en los centros de trabajo. Auditoría de equipos y rutas de evacuación.", desc_en: "Fire prevention and protection in workplaces. Equipment auditing and evacuation route planning." },
+            { id: "004", icon: "fa-gear", color: "text-slate-400", bg: "bg-slate-50", name_es: "Maquinaria", name_en: "Machinery", desc_es: "Sistemas de protección y dispositivos de seguridad en maquinaria y equipo para prevenir riesgos mecánicos.", desc_en: "Protection systems and safety devices in machinery and equipment to prevent mechanical risks." },
+            { id: "005", icon: "fa-flask", color: "text-amber-500", bg: "bg-amber-50", name_es: "Sust. Químicas", name_en: "Chemicals", desc_es: "Manejo, transporte y almacenamiento de sustancias químicas peligrosas. Protocolos de seguridad química industrial.", desc_en: "Handling, transport, and storage of hazardous chemicals. Industrial chemical safety protocols." },
+            { id: "009", icon: "fa-arrow-up-right-dots", color: "text-blue-500", bg: "bg-blue-50", name_es: "Alturas", name_en: "Heights", desc_es: "Condiciones de seguridad para realizar trabajos en altura. Uso de arneses y prevención de caídas.", desc_en: "Safety conditions for working at heights. Harness usage and fall prevention management." },
+            { id: "017", icon: "fa-shield-heart", color: "text-accent", bg: "bg-emerald-50", name_es: "Equipamiento", name_en: "PPE Selection", desc_es: "Selección, uso y manejo de equipo de protección personal (EPP) según el análisis de riesgo del puesto.", desc_en: "Selection, use, and management of personal protective equipment (PPE) based on job risk analysis." },
+            { id: "019", icon: "fa-clipboard-list", color: "text-slate-400", bg: "bg-slate-50", name_es: "Comisiones", name_en: "Committees", desc_es: "Conformación y funcionamiento de las comisiones de seguridad e higiene en los centros de trabajo.", desc_en: "Establishment and operation of safety and hygiene commissions within workplaces." },
+            { id: "026", icon: "fa-triangle-exclamation", color: "text-amber-600", bg: "bg-amber-50", name_es: "Señalética", name_en: "Safety Signs", desc_es: "Colores y señales de seguridad e higiene; identificación de riesgos y fluidos en tuberías.", desc_en: "Safety and hygiene colors and signs; risk identification and fluid identification in piping systems." },
+            { id: "030", icon: "fa-user-doctor", color: "text-accent", bg: "bg-white", name_es: "Serv. Prev.", name_en: "Prev. Services", desc_es: "Servicios preventivos de seguridad y salud en el trabajo. Diagnóstico situacional y plan de acción médico.", desc_en: "Preventive safety and health services at work. Situational diagnosis and medical action plans." },
+            { id: "033", icon: "fa-door-closed", color: "text-slate-500", bg: "bg-slate-50", name_es: "Confinados", name_en: "Confined Space", desc_es: "Condiciones de seguridad para realizar trabajos en espacios confinados. Monitoreo atmosférico y rescate.", desc_en: "Safety conditions for working in confined spaces. Atmospheric monitoring and rescue protocols." },
+            { id: "035", icon: "fa-brain", color: "text-accent", bg: "bg-emerald-50", name_es: "Psicosocial", name_en: "Psychosocial", desc_es: "Factores de riesgo psicosocial en el trabajo: identificación, análisis y prevención del entorno laboral.", desc_en: "Psychosocial risk factors at work: identification, analysis, and prevention of workplace environment issues." },
+            { id: "036", icon: "fa-child-reaching", color: "text-accent", bg: "bg-emerald-50", name_es: "Ergonomía", name_en: "Ergonomics", desc_es: "Factores de riesgo ergonómico en el trabajo - Manejo manual de cargas. Prevención de lesiones musculoesqueléticas.", desc_en: "Ergonomic risk factors at work - Manual load handling. Prevention of musculoskeletal injuries." },
+            { id: "COF", icon: "fa-scale-balanced", color: "text-white", bg: "bg-industrial", name_es: "COFEPRIS", name_en: "Sanitary Law", desc_es: "Especialista en Derecho Sanitario. Gestión ante COFEPRIS, avisos de funcionamiento y cumplimiento RPBI.", desc_en: "Sanitary Law Specialist. COFEPRIS management, operation notices, and medical waste (RPBI) compliance." }
+        ];
+
+        let currentLang = 'es';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
             });
+            renderNorms();
+        }
 
-            document.querySelectorAll('[data-modal-target]').forEach(button => {
-                button.addEventListener('click', () => {
-                    const modal = document.getElementById(button.dataset.modalTarget);
-                    modal.classList.remove('hidden');
-                    setTimeout(() => { modal.classList.remove('opacity-0'); modal.querySelector('.modal-content').classList.remove('-translate-y-12'); }, 10);
-                    document.body.style.overflow = 'hidden';
-                });
+        function renderNorms() {
+            const grid = document.getElementById('norms-grid');
+            grid.innerHTML = '';
+            norms.forEach((n) => {
+                const div = document.createElement('div');
+                div.className = `nom-card p-14 rounded-[70px] text-center shadow-sm group ${n.bg || 'bg-white'}`;
+                div.onclick = () => openModal(n);
+                div.innerHTML = `
+                    <div class="relative flex flex-col items-center w-full">
+                        <div class="w-16 h-16 ${n.bg === 'bg-white' ? 'bg-slate-50' : 'bg-white/40'} ${n.color} rounded-2xl flex items-center justify-center text-3xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 mb-8 shadow-sm">
+                            <i class="fa-solid ${n.icon}"></i>
+                        </div>
+                        <div class="absolute top-0 right-0 lg:right-4 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[8px] font-black shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h4 class="font-black ${n.color === 'text-white' ? 'text-white' : 'text-slate-900'} text-lg tracking-tighter uppercase mb-2">NOM-${n.id}</h4>
+                        <p class="text-[10px] ${n.color === 'text-white' ? 'text-emerald-200' : 'text-slate-400'} mt-1 uppercase font-black tracking-widest leading-tight">
+                            ${currentLang === 'es' ? n.name_es : n.name_en}
+                        </p>
+                        <div class="mt-8 pt-4 border-t border-slate-100 w-full text-[8px] font-black uppercase text-accent opacity-40 tracking-[0.3em] group-hover:opacity-100 transition-opacity">
+                            Audit Ready
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(div);
             });
+        }
 
-            document.querySelectorAll('[data-modal-close]').forEach(button => {
-                button.addEventListener('click', () => {
-                    const modal = button.closest('.modal-backdrop');
-                    modal.classList.add('opacity-0');
-                    modal.querySelector('.modal-content').classList.add('-translate-y-12');
-                    setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = ''; }, 300);
-                });
+        function openModal(norm) {
+            const modal = document.getElementById('normModal');
+            document.getElementById('modal-icon').className = `w-28 h-28 rounded-[40px] flex items-center justify-center text-5xl mb-12 shadow-inner ${norm.bg} ${norm.color}`;
+            document.getElementById('modal-icon').innerHTML = `<i class="fa-solid ${norm.icon}"></i>`;
+            document.getElementById('modal-title').innerText = `NOM-${norm.id}`;
+            document.getElementById('modal-desc').innerText = currentLang === 'es' ? norm.desc_es : norm.desc_en;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('normModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal-on-scroll');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('reveal-active');
+                }
             });
-
-            const switchers = [document.getElementById('lang-switcher-desktop'), document.getElementById('lang-switcher-mobile')];
-            switchers.forEach(s => s.addEventListener('click', () => switchLanguage(currentLang === 'es' ? 'en' : 'es')));
-
-            switchLanguage('es');
-        });
+        };
+        window.addEventListener('scroll', reveal);
+        window.onload = () => { renderNorms(); reveal(); };
     </script>
 </body>
 </html>
