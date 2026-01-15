@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -24,13 +24,13 @@
         
         .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(15, 23, 42, 0.08); }
         
-        /* Refinamiento de Modal */
+        /* Modal Refinement */
         .modal { transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden; }
         .modal.active { opacity: 1; visibility: visible; }
         .modal-content { transform: scale(0.9) translateY(40px); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
         .modal.active .modal-content { transform: scale(1) translateY(0); }
 
-        /* Sistema de Tarjetas Premium */
+        /* Premium Card System */
         .nom-card {
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             background: white;
@@ -60,12 +60,12 @@
             transform: scaleX(1);
         }
 
-        /* Selector de Idioma */
+        /* Language Toggle */
         .lang-switch { display: inline-flex; background: #f8fafc; padding: 5px; border-radius: 14px; border: 1px solid #e2e8f0; }
         .lang-btn { padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; transition: 0.4s; }
         .lang-btn.active { background: var(--primary-navy); color: white; }
         
-        /* Revelado de Foto: B&N a Color */
+        /* Photo Reveal: B&W to Color */
         .profile-img-container img {
             filter: grayscale(100%) contrast(1.15) brightness(1.05);
             transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -102,7 +102,7 @@
 </head>
 <body class="bg-[#fcfdfe] text-slate-900 overflow-x-hidden selection:bg-emerald-100 selection:text-emerald-900">
 
-    <!-- Navegación del Encabezado -->
+    <!-- Header Navigation -->
     <nav class="fixed w-full z-50 glass-header py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="text-slate-900 font-black text-2xl tracking-tighter uppercase group cursor-pointer">
@@ -124,7 +124,7 @@
         </div>
     </nav>
 
-    <!-- Sección Hero -->
+    <!-- Hero Section -->
     <section id="perfil" class="min-h-screen flex items-center pt-32 pb-20 relative">
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50 rounded-full blur-[140px] opacity-30 -z-10"></div>
         
@@ -241,7 +241,7 @@
                         </div>
                         <div class="text-accent font-black text-6xl opacity-20">02</div>
                     </div>
-                    <p class="text-slate-400 leading-relaxed text-xl font-light max-w-4xl" data-i18n="exp-desc-2">Implementación de departamento médico desde fase cero. Diseño de KPIs de salud ocupacional y filtros médicos de reclutamiento predictivo para personal operativo.</p>
+                    <p class="text-slate-400 leading-relaxed text-xl font-light max-w-4xl" data-i18n="exp-desc-2">Diseño e implementación integral del departamento de medicina laboral desde cero. Estructuración de protocolos médicos para **nuevos ingresos** y optimización de recursos para la contención de costos operativos.</p>
                 </div>
             </div>
         </div>
@@ -280,7 +280,7 @@
         </div>
     </section>
 
-    <!-- Pie de Página Actualizado -->
+    <!-- Footer -->
     <footer class="bg-black text-white pt-24 pb-16">
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-3 gap-16 border-b border-white/10 pb-20 mb-16">
@@ -310,7 +310,6 @@
                 </div>
             </div>
             
-            <!-- Derechos Reservados Centrados -->
             <div class="text-center">
                 <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.3em]">
                     &copy; 2026 Dr. Han Medical. Todos los derechos reservados.
@@ -322,7 +321,7 @@
     <!-- Modal Normas -->
     <div id="normModal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-6">
         <div class="absolute inset-0 bg-slate-900/95 backdrop-blur-xl" onclick="closeModal()"></div>
-        <div class="modal-content relative bg-white w-full max-w-2xl rounded-[70px] p-20 shadow-2xl">
+        <div class="modal-content relative bg-white w-full max-w-2xl rounded-[70px] p-20 shadow-2xl border border-slate-100">
             <button onclick="closeModal()" class="absolute top-12 right-12 text-slate-300 hover:text-accent transition text-4xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -350,7 +349,7 @@
                 "norms-tag": "Marco Regulatorio Industrial", "norms-title": "Dominio de Normativas <span class='text-accent italic'>STPS</span>", "norms-subtitle": "Módulos técnicos para el blindaje legal y la excelencia operativa bajo estándares nacionales e internacionales.",
                 "exp-title": "Trayectoria <span class='text-accent'>Industrial</span>",
                 "exp-pos-1": "Médico Ocupacional", "exp-desc-1": "Liderazgo en seguridad crítica aeronáutica. Gestión de protocolos de fatiga, alcoholimetría y siniestralidad operativa de alto impacto.",
-                "exp-pos-2": "Salud Industrial", "exp-tag-2": "Gestión Integral", "exp-desc-2": "Implementación de departamento médico desde fase cero. Diseño de KPIs de salud ocupacional y filtros médicos de reclutamiento predictivos.",
+                "exp-tag-2": "GESTIÓN INTEGRAL", "exp-pos-2": "Salud Industrial", "exp-desc-2": "Diseño e implementación integral del departamento de medicina laboral desde cero. Estructuración de protocolos médicos para **nuevos ingresos** y optimización de recursos para la contención de costos operativos.",
                 "contact-slogan": "Protegiendo el recurso más valioso mediante inteligencia médica estratégica y rigor industrial.",
                 "btn-contact-ent": "Agendar Entrevista", "btn-contact-email": "Correo Electrónico"
             },
@@ -366,7 +365,7 @@
                 "norms-tag": "Industrial Regulatory Framework", "norms-title": "Technical <span class='text-accent italic'>STPS</span> Mastery", "norms-subtitle": "Technical modules for legal shielding and operational excellence under national standards.",
                 "exp-title": "Industrial <span class='text-accent'>Journey</span>",
                 "exp-pos-1": "Occupational Physician", "exp-desc-1": "Leading critical safety for maintenance and flight crew. Fatigue protocols, drug testing, and high-impact operational claim handling.",
-                "exp-pos-2": "Industrial Health", "exp-desc-2": "Medical department setup from scratch. Health KPI optimization and predictive recruitment medical screening.",
+                "exp-tag-2": "COMPREHENSIVE MGMT", "exp-pos-2": "Industrial Health", "exp-desc-2": "End-to-end design and implementation of the occupational medicine department. Structuring medical protocols for **new hires** and resource optimization for cost containment.",
                 "contact-slogan": "Protecting the most valuable resource through strategic medical intelligence and industrial rigor.",
                 "btn-contact-ent": "Schedule Interview", "btn-contact-email": "Email Contact"
             }
