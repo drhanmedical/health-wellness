@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Han | Salud Industrial & Estrategia Operativa</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Agregamos Chart.js para el Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -98,6 +100,27 @@
             background: rgba(255, 255, 255, 0.03);
             padding-left: 2rem;
         }
+
+        /* Dashboard Specific Styles */
+        .dash-sidebar-btn {
+            transition: all 0.3s ease;
+        }
+        .dash-sidebar-btn.active {
+            background-color: var(--accent-emerald);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+        }
+        .dash-sidebar-btn:hover:not(.active) {
+            background-color: rgba(255,255,255,0.05);
+            color: white;
+        }
+        .kpi-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
     </style>
 </head>
 <body class="bg-[#fcfdfe] text-slate-900 overflow-x-hidden selection:bg-emerald-100 selection:text-emerald-900">
@@ -112,6 +135,7 @@
             <div class="flex items-center gap-8 lg:gap-12">
                 <div class="hidden lg:flex space-x-12 text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">
                     <a href="#perfil" data-i18n="nav-profile" class="hover:text-accent transition">Perfil</a>
+                    <a href="#dashboard" class="hover:text-accent transition text-accent">Dashboard</a>
                     <a href="#normas" data-i18n="nav-norms" class="hover:text-accent transition">Normatividad</a>
                     <a href="#experiencia" data-i18n="nav-experience" class="hover:text-accent transition">Trayectoria</a>
                     <a href="#contacto" data-i18n="nav-contact" class="text-slate-900 border-b-2 border-accent pb-1 uppercase tracking-widest">Hiring</a>
@@ -138,8 +162,8 @@
                     No solo gestiono salud; blindo la <span class='text-slate-900 font-bold'>continuidad operativa</span> de su empresa mediante inteligencia de datos y rigor normativo.
                 </p>
                 <div class="flex flex-wrap gap-6">
-                    <a href="https://wa.me/525629846164" target="_blank" class="bg-accent text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl hover:shadow-emerald-500/30 transition-all duration-500 hover:-translate-y-1">
-                        <i class="fa-brands fa-whatsapp text-3xl"></i> <span data-i18n="btn-whatsapp">WhatsApp Directo</span>
+                    <a href="#dashboard" class="bg-accent text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl hover:shadow-emerald-500/30 transition-all duration-500 hover:-translate-y-1">
+                        <i class="fa-solid fa-chart-line text-2xl"></i> <span>Ver Dashboard</span>
                     </a>
                     <div class="flex flex-col gap-3">
                         <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="bg-industrial text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl transition-all duration-500 hover:-translate-y-1 border border-slate-800">
@@ -157,6 +181,188 @@
                 <div class="absolute -bottom-10 -left-10 bg-industrial p-10 rounded-[50px] shadow-3xl border border-slate-800">
                     <p class="text-[10px] font-black uppercase tracking-widest text-accent mb-2" data-i18n="badge-id">CÉDULA PROFESIONAL</p>
                     <p class="text-white font-black text-3xl tracking-tighter">12210167</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVO: DASHBOARD INTERACTIVO (Looker Studio Simulation) -->
+    <section id="dashboard" class="py-32 bg-slate-50 relative reveal-on-scroll">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="section-tag">Inteligencia de Datos</span>
+                <h2 class="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6">Operación Basada en <span class="text-accent italic">KPIs</span></h2>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light">
+                    Interactúa con este simulador de dashboard para ver cómo transformo datos médicos en decisiones financieras y operativas.
+                </p>
+            </div>
+
+            <!-- Dashboard Window Container -->
+            <div class="bg-white rounded-[40px] shadow-2xl border border-slate-200 overflow-hidden flex flex-col md:flex-row min-h-[800px] max-w-7xl mx-auto">
+                
+                <!-- Sidebar -->
+                <div class="w-full md:w-72 bg-industrial text-white p-8 flex flex-col">
+                    <div class="mb-12">
+                        <!-- Logo Optimizado -->
+                        <div class="font-black text-2xl tracking-tighter uppercase mb-2">
+                            DR. <span class="text-accent">HAN</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Analytics & EHS</p>
+                    </div>
+
+                    <nav class="space-y-4 flex-1">
+                        <button onclick="switchDashTab('general')" id="tab-general" class="dash-sidebar-btn w-full flex items-center space-x-4 px-6 py-4 rounded-2xl active">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <span class="font-bold text-sm">General</span>
+                        </button>
+                        <button onclick="switchDashTab('riesgos')" id="tab-riesgos" class="dash-sidebar-btn w-full flex items-center space-x-4 px-6 py-4 rounded-2xl text-slate-400">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span class="font-bold text-sm">Riesgos (ST-7)</span>
+                        </button>
+                        <button onclick="switchDashTab('wellness')" id="tab-wellness" class="dash-sidebar-btn w-full flex items-center space-x-4 px-6 py-4 rounded-2xl text-slate-400">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span class="font-bold text-sm">Wellness</span>
+                        </button>
+                    </nav>
+
+                    <div class="mt-auto pt-8 border-t border-slate-700">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold">ED</div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Dr. Edgar Bañuelos</p>
+                                <p class="text-[9px] text-slate-400">Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="flex-1 bg-slate-50 p-8 md:p-12 overflow-y-auto">
+                    
+                    <!-- Top Bar -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                        <div>
+                            <h3 class="text-2xl font-black text-slate-800 tracking-tight" id="dash-title">Centro de Comando Estratégico</h3>
+                            <p class="text-slate-400 text-sm mt-1">Última actualización: En tiempo real</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <select id="deptFilter" onchange="updateCharts()" class="bg-white border border-slate-200 text-slate-700 text-sm rounded-xl focus:ring-accent focus:border-accent block w-full p-3 shadow-sm font-medium">
+                                <option value="all">Todos los Deptos</option>
+                                <option value="ops">Operaciones</option>
+                                <option value="mant">Mantenimiento</option>
+                                <option value="cedis">CEDIS</option>
+                            </select>
+                            <button class="bg-white p-3 rounded-xl border border-slate-200 text-slate-400 hover:text-accent shadow-sm">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VISTA: GENERAL -->
+                    <div id="view-general" class="dash-view animate-fade-in">
+                        <!-- KPI Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-orange-500"></div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Días Incapacidad</span>
+                                    <i class="fa-solid fa-bed-pulse text-orange-200 text-xl"></i>
+                                </div>
+                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-days">142</h4>
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full"><i class="fa-solid fa-arrow-down mr-1"></i>12% vs año ant</span>
+                            </div>
+
+                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Costo Siniestralidad</span>
+                                    <i class="fa-solid fa-sack-dollar text-red-200 text-xl"></i>
+                                </div>
+                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-cost">$85k</h4>
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">Bajo Presupuesto</span>
+                            </div>
+
+                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-accent"></div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Cumplimiento ISO</span>
+                                    <i class="fa-solid fa-check-double text-emerald-200 text-xl"></i>
+                                </div>
+                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-compliance">98%</h4>
+                                <span class="bg-blue-50 text-blue-600 text-xs font-bold px-2 py-1 rounded-full">Audit Ready</span>
+                            </div>
+
+                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Incidentes Totales</span>
+                                    <i class="fa-solid fa-truck-medical text-blue-200 text-xl"></i>
+                                </div>
+                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-incidents">12</h4>
+                                <span class="bg-slate-100 text-slate-500 text-xs font-bold px-2 py-1 rounded-full">Estable</span>
+                            </div>
+                        </div>
+
+                        <!-- Charts Row -->
+                        <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                            <div class="lg:col-span-2 bg-white p-8 rounded-[30px] shadow-sm border border-slate-100">
+                                <h5 class="font-bold text-slate-800 mb-6 flex items-center">
+                                    <i class="fa-solid fa-chart-area text-accent mr-3"></i> Tendencia de Siniestralidad vs Costos
+                                </h5>
+                                <div class="h-64 w-full">
+                                    <canvas id="trendChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="bg-white p-8 rounded-[30px] shadow-sm border border-slate-100">
+                                <h5 class="font-bold text-slate-800 mb-6 flex items-center">
+                                    <i class="fa-solid fa-chart-pie text-orange-500 mr-3"></i> Riesgo por Área
+                                </h5>
+                                <div class="h-64 w-full flex items-center justify-center">
+                                    <canvas id="deptChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VISTA: RIESGOS (Placeholder simplificado) -->
+                    <div id="view-riesgos" class="dash-view hidden animate-fade-in">
+                        <div class="bg-white p-8 rounded-[30px] shadow-sm border border-slate-100 mb-8">
+                            <div class="flex justify-between items-center mb-6">
+                                <h5 class="font-bold text-slate-800 text-xl">Gestión de Casos ST-7 (IMSS)</h5>
+                                <button class="bg-accent text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider">Exportar Reporte</button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left text-slate-500">
+                                    <thead class="text-xs text-slate-400 uppercase bg-slate-50 font-bold">
+                                        <tr>
+                                            <th class="px-6 py-4 rounded-l-xl">Folio</th>
+                                            <th class="px-6 py-4">Empleado</th>
+                                            <th class="px-6 py-4">Depto</th>
+                                            <th class="px-6 py-4">Estado</th>
+                                            <th class="px-6 py-4 rounded-r-xl text-right">Costo Est.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        <tr class="hover:bg-slate-50 transition">
+                                            <td class="px-6 py-4 font-bold text-slate-900">ST7-002</td>
+                                            <td class="px-6 py-4">Juan Pérez</td>
+                                            <td class="px-6 py-4">Mantenimiento</td>
+                                            <td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-md text-xs font-bold">En Proceso</span></td>
+                                            <td class="px-6 py-4 text-right">$12,400</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50 transition">
+                                            <td class="px-6 py-4 font-bold text-slate-900">ST7-001</td>
+                                            <td class="px-6 py-4">Ana García</td>
+                                            <td class="px-6 py-4">Operaciones</td>
+                                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-md text-xs font-bold">Cerrado</span></td>
+                                            <td class="px-6 py-4 text-right">$4,200</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -336,6 +542,7 @@
     </div>
 
     <script>
+        // --- LOGICA DE TRADUCCION ---
         const translations = {
             es: {
                 "nav-profile": "Perfil", "nav-norms": "Normas", "nav-experience": "Trayectoria", "nav-contact": "Hiring",
@@ -452,8 +659,109 @@
                 }
             });
         };
+
+        // --- DASHBOARD LOGIC (SIMULATION) ---
+        let trendChartInstance = null;
+        let deptChartInstance = null;
+
+        function initDashboard() {
+            // Trend Chart
+            const ctxTrend = document.getElementById('trendChart').getContext('2d');
+            trendChartInstance = new Chart(ctxTrend, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Costos ($)',
+                        data: [45000, 38000, 22000, 18000, 15000, 12000],
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Incidentes',
+                        data: [8, 6, 4, 3, 2, 1],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'bottom' } },
+                    scales: {
+                        y: { beginAtZero: true, display: false },
+                        y1: { type: 'linear', display: false, position: 'right' },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Dept Chart
+            const ctxDept = document.getElementById('deptChart').getContext('2d');
+            deptChartInstance = new Chart(ctxDept, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Operaciones', 'Mantenimiento', 'CEDIS'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: ['#3b82f6', '#f97316', '#10b981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } },
+                    cutout: '75%'
+                }
+            });
+        }
+
+        function switchDashTab(tabName) {
+            // Reset Buttons
+            document.querySelectorAll('.dash-sidebar-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-white', 'bg-accent');
+                btn.classList.add('text-slate-400');
+            });
+            // Active Button
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-slate-400');
+
+            // Toggle Views
+            document.querySelectorAll('.dash-view').forEach(v => v.classList.add('hidden'));
+            if(tabName === 'wellness') {
+                // Si no hay vista de wellness aun, mostrar general como fallback o alerta
+                document.getElementById('view-general').classList.remove('hidden');
+                alert("Módulo Wellness: Disponible en versión completa.");
+            } else {
+                document.getElementById(`view-${tabName}`).classList.remove('hidden');
+            }
+        }
+
+        function updateCharts() {
+            const filter = document.getElementById('deptFilter').value;
+            // Simulacion de cambio de datos
+            if (filter === 'ops') {
+                trendChartInstance.data.datasets[0].data = [30000, 28000, 25000, 24000, 20000, 18000];
+                document.getElementById('kpi-days').innerText = "85";
+            } else if (filter === 'mant') {
+                trendChartInstance.data.datasets[0].data = [10000, 5000, 2000, 1000, 500, 0];
+                document.getElementById('kpi-days').innerText = "12";
+            } else {
+                trendChartInstance.data.datasets[0].data = [45000, 38000, 22000, 18000, 15000, 12000];
+                document.getElementById('kpi-days').innerText = "142";
+            }
+            trendChartInstance.update();
+        }
+
         window.addEventListener('scroll', reveal);
-        window.onload = () => { renderNorms(); reveal(); };
+        window.onload = () => { renderNorms(); reveal(); initDashboard(); };
     </script>
 </body>
 </html>
