@@ -1,364 +1,887 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Han | Salud Industrial & Estrategia Operativa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Agregamos Chart.js para el Dashboard -->
+    <meta name="description" content="Sitio Oficial del Dr. Edgar Ivan Bañuelos Han. Especialista en Salud Industrial, Gestión de Riesgos STPS/IMSS y Blindaje Operativo.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, .font-title { font-family: 'Lexend', sans-serif; }
-        
-        :root {
-            --primary-navy: #0f172a; /* Slate 900 */
-            --accent-emerald: #10b981; /* Emerald 500 */
-            --industrial-gray: #475569;
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0f172a',    // Industrial Navy - Base
+                        navyLight: '#1e293b', // Lighter Navy for cards
+                        slate: '#f8fafc',   // Very Light Slate - Backgrounds
+                        slateDark: '#cbd5e1', // Darker Slate for borders
+                        safety: '#eab308',  // Safety Yellow (EHS) - Accent
+                        alert: '#ef4444',   // Red Alert
+                        teal: '#0d9488',    // Medical Teal - Accent
+                        imss: '#10b981',    // Green (Compliance)
+                        darkOverlay: 'rgba(15, 23, 42, 0.8)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'premium-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'glow': '0 0 15px rgba(234, 179, 8, 0.3)', // Safety yellow glow
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'gradient-xy': 'gradientXY 6s ease infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        gradientXY: {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        }
+                    }
+                }
+            }
         }
+    </script>
 
-        .bg-industrial { background-color: var(--primary-navy); }
-        .text-accent { color: var(--accent-emerald); }
-        .bg-accent { background-color: var(--accent-emerald); }
-        .border-accent { border-color: var(--accent-emerald); }
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; background-color: #f8fafc; color: #334155; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Montserrat', sans-serif; letter-spacing: -0.02em; }
         
-        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(15, 23, 42, 0.08); }
-        
-        /* Modal Refinement */
-        .modal { transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden; }
-        .modal.active { opacity: 1; visibility: visible; }
-        .modal-content { transform: scale(0.9) translateY(40px); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .modal.active .modal-content { transform: scale(1) translateY(0); }
-
-        /* Premium Card System */
-        .nom-card {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Premium Norm Card */
+        .norm-card { 
             background: white;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
-        .nom-card::before {
+        .norm-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+            border-color: #eab308;
+        }
+        .norm-card::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--accent-emerald);
+            bottom: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, #0d9488, #eab308);
             transform: scaleX(0);
-            transition: transform 0.4s ease;
             transform-origin: left;
+            transition: transform 0.4s ease;
         }
-        .nom-card:hover {
-            border-color: var(--accent-emerald);
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px -12px rgba(16, 185, 129, 0.12);
+        .norm-card:hover::after { transform: scaleX(1); }
+
+        /* Dashboard Sidebar Button */
+        .dash-sidebar-btn { 
+            transition: all 0.3s ease; 
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
         }
-        .nom-card:hover::before {
-            transform: scaleX(1);
+        .dash-sidebar-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background-color: #eab308;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        .dash-sidebar-btn.active { 
+            background-color: rgba(255, 255, 255, 0.08); 
+            color: white; 
+        }
+        .dash-sidebar-btn.active::before { transform: scaleY(1); }
+        .dash-sidebar-btn:hover:not(.active) { background-color: rgba(255, 255, 255, 0.04); }
+
+        /* Smooth Slider */
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%;
+            background: #eab308; cursor: pointer; margin-top: -7px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+        input[type=range]:active::-webkit-slider-thumb { transform: scale(1.1); }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: rgba(255,255,255,0.15); border-radius: 2px;
         }
 
-        /* Language Toggle */
-        .lang-switch { display: inline-flex; background: #f8fafc; padding: 5px; border-radius: 14px; border: 1px solid #e2e8f0; }
-        .lang-btn { padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; transition: 0.4s; }
-        .lang-btn.active { background: var(--primary-navy); color: white; }
-        
-        /* Photo Reveal: B&W to Color */
-        .profile-img-container img {
-            filter: grayscale(100%) contrast(1.15) brightness(1.05);
-            transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .profile-img-container:hover img {
-            filter: grayscale(0%) contrast(1) brightness(1);
-        }
-
-        .section-tag {
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 0.5em;
-            color: var(--accent-emerald);
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            display: inline-block;
-            border-left: 3px solid var(--accent-emerald);
-            padding-left: 1rem;
-        }
-
-        .reveal-on-scroll { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
-        .reveal-active { opacity: 1; transform: translateY(0); }
-
-        .trayectoria-card {
-            transition: all 0.4s ease;
-            border-left: 4px solid transparent;
-        }
-        .trayectoria-card:hover {
-            border-left-color: var(--accent-emerald);
-            background: rgba(255, 255, 255, 0.03);
-            padding-left: 2rem;
-        }
-
-        /* Dashboard Specific Styles */
-        .dash-sidebar-btn {
-            transition: all 0.3s ease;
-        }
-        .dash-sidebar-btn.active {
-            background-color: var(--accent-emerald);
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
-        }
-        .dash-sidebar-btn:hover:not(.active) {
-            background-color: rgba(255,255,255,0.05);
-            color: white;
-        }
-        .kpi-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .kpi-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        /* Glassmorphism Effect for Navbar */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body class="bg-[#fcfdfe] text-slate-900 overflow-x-hidden selection:bg-emerald-100 selection:text-emerald-900">
+<body class="bg-slate text-gray-700 antialiased selection:bg-safety selection:text-navy">
 
-    <!-- Header Navigation -->
-    <nav class="fixed w-full z-50 glass-header py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="text-slate-900 font-black text-2xl tracking-tighter uppercase group cursor-pointer">
-                DR. <span class="text-accent group-hover:tracking-normal transition-all duration-500">HAN</span>
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-safety rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                        <img src="https://drive.google.com/thumbnail?id=1oqMOYFDdIc47CKLMa3xCSSvptH9aJyeC&sz=w200" alt="Logo Dr. Han" class="h-10 w-auto bg-white rounded-lg p-0.5 relative z-10">
+                    </div>
+                    <div>
+                        <a href="#" class="text-white font-heading font-bold text-lg tracking-wide block leading-none">DR. HAN</a>
+                        <span class="text-[10px] text-safety font-bold tracking-[0.2em] uppercase">Salud Industrial</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#perfil" class="text-gray-300 hover:text-white transition-colors text-sm font-medium tracking-wide hover:underline decoration-safety decoration-2 underline-offset-4">Perfil</a>
+                    <a href="#dashboard" class="text-white hover:text-safety transition-colors text-sm font-bold tracking-wide">Dashboard</a>
+                    <a href="#normas" class="text-gray-300 hover:text-white transition-colors text-sm font-medium tracking-wide hover:underline decoration-safety decoration-2 underline-offset-4">Normatividad</a>
+                    
+                    <!-- Botones de Contacto -->
+                    <div class="flex items-center gap-3 ml-2 pl-4 border-l border-white/10">
+                        <a href="mailto:dr.hanmedical@gmail.com" class="bg-navy hover:bg-navyLight text-white w-9 h-9 rounded-full flex items-center justify-center transition-all border border-white/10 shadow-lg hover:shadow-teal/20 hover:-translate-y-0.5" title="Enviar Correo">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                        <a href="https://wa.me/525629846164" target="_blank" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transform hover:-translate-y-0.5 border border-white/10">
+                            <i class="fab fa-whatsapp text-sm"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white transition-colors"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
             </div>
-            
-            <div class="flex items-center gap-8 lg:gap-12">
-                <div class="hidden lg:flex space-x-12 text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">
-                    <a href="#perfil" data-i18n="nav-profile" class="hover:text-accent transition">Perfil</a>
-                    <a href="#dashboard" class="hover:text-accent transition text-accent">Dashboard</a>
-                    <a href="#normas" data-i18n="nav-norms" class="hover:text-accent transition">Normatividad</a>
-                    <a href="#experiencia" data-i18n="nav-experience" class="hover:text-accent transition">Trayectoria</a>
-                    <a href="#contacto" data-i18n="nav-contact" class="text-slate-900 border-b-2 border-accent pb-1 uppercase tracking-widest">Hiring</a>
-                </div>
-                <div class="lang-switch">
-                    <button class="lang-btn active" onclick="setLanguage('es')" id="btn-es">ES</button>
-                    <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
-                </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-gray-800 absolute w-full shadow-xl">
+            <div class="px-4 pt-4 pb-6 space-y-2 text-center">
+                <a href="#perfil" class="block px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Perfil</a>
+                <a href="#dashboard" class="block px-3 py-3 text-safety font-bold bg-white/5 rounded-lg">Dashboard</a>
+                <a href="#normas" class="block px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Normatividad</a>
+                <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="block px-3 py-3 text-white font-bold bg-teal/20 rounded-lg border border-teal/30">Descargar CV Completo</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="perfil" class="min-h-screen flex items-center pt-32 pb-20 relative">
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50 rounded-full blur-[140px] opacity-30 -z-10"></div>
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative bg-navy pt-36 pb-24 overflow-hidden text-white">
+        <!-- Abstract Background Elements -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-teal/20 rounded-full blur-[120px] -mr-32 -mt-32 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-safety/10 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none"></div>
         
-        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative">
-            <div class="reveal-on-scroll">
-                <span class="section-tag" data-i18n="hero-tag">Medicina & Seguridad Industrial</span>
-                <h1 class="text-8xl lg:text-[120px] font-black text-slate-900 leading-[0.8] mb-10 tracking-tighter">
-                    Dr. <span class="text-accent italic">Han</span>
-                </h1>
-                <p class="text-2xl lg:text-3xl text-slate-500 font-light mb-14 max-w-xl leading-relaxed" data-i18n="hero-desc">
-                    No solo gestiono salud; blindo la <span class='text-slate-900 font-bold'>continuidad operativa</span> de su empresa mediante inteligencia de datos y rigor normativo.
-                </p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="#dashboard" class="bg-accent text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl hover:shadow-emerald-500/30 transition-all duration-500 hover:-translate-y-1">
-                        <i class="fa-solid fa-chart-line text-2xl"></i> <span>Ver Dashboard</span>
-                    </a>
-                    <div class="flex flex-col gap-3">
-                        <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="bg-industrial text-white px-12 py-6 rounded-3xl font-bold flex items-center gap-4 hover:scale-105 transition shadow-2xl transition-all duration-500 hover:-translate-y-1 border border-slate-800">
-                            <i class="fa-solid fa-file-pdf text-2xl text-accent"></i> <span data-i18n="btn-cv">CV completo</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="text-center lg:text-left animate-slide-up">
+                    <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
+                        <span class="w-2 h-2 rounded-full bg-safety animate-pulse"></span>
+                        <span class="text-gray-300 text-xs font-bold tracking-widest uppercase">Medicina & Seguridad Industrial</span>
+                    </div>
+                    
+                    <h1 class="text-4xl lg:text-5xl xl:text-6xl font-heading font-extrabold leading-tight mb-6 tracking-tight">
+                        Salud Industrial & <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-safety to-orange-400">Estrategia Operativa</span>
+                    </h1>
+                    
+                    <h2 class="text-lg text-gray-400 mb-10 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Soy el <strong class="text-white font-semibold">Dr. Han</strong>. No solo gestiono salud; blindo la continuidad operativa de su empresa mediante inteligencia de datos, gestión de riesgos (ST-7) y rigor normativo STPS.
+                    </h2>
+                    
+                    <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                        <a href="#dashboard" class="group px-8 py-4 bg-white text-navy font-bold rounded-lg shadow-xl shadow-white/5 hover:bg-gray-50 transition-all flex items-center justify-center gap-3">
+                            Ver Dashboard Operativo
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform text-safety"></i>
                         </a>
-                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em] text-center" data-i18n="cv-format-tag">Formato Profesional</span>
+                        <!-- Botón CV en Hero -->
+                        <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
+                            <i class="fas fa-file-pdf text-gray-400"></i> CV Completo
+                        </a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="relative reveal-on-scroll" style="transition-delay: 300ms;">
-                <div class="profile-img-container relative bg-white rounded-[100px] overflow-hidden aspect-[4/5] border-[16px] border-white shadow-[0_60px_100px_-20px_rgba(0,0,0,0.12)]">
-                    <img src="https://drive.google.com/thumbnail?id=1VWqk33PEasus2aWjckWVViojvVw-cajS&sz=w1000" alt="Dr. Han" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute -bottom-10 -left-10 bg-industrial p-10 rounded-[50px] shadow-3xl border border-slate-800">
-                    <p class="text-[10px] font-black uppercase tracking-widest text-accent mb-2" data-i18n="badge-id">CÉDULA PROFESIONAL</p>
-                    <p class="text-white font-black text-3xl tracking-tighter">12210167</p>
+
+                <div class="flex justify-center lg:justify-end animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="relative w-full max-w-sm group">
+                        <!-- Tech Frame Decoration -->
+                        <div class="absolute -inset-1 bg-gradient-to-tr from-teal to-safety rounded-xl opacity-30 blur-lg group-hover:opacity-50 transition duration-500"></div>
+                        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-navyLight">
+                            <img 
+                                src="https://drive.google.com/thumbnail?id=1VWqk33PEasus2aWjckWVViojvVw-cajS&sz=w1000" 
+                                alt="Dr. Edgar Ivan Bañuelos Han" 
+                                class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out transform hover:scale-105"
+                            >
+                            <!-- Badge Overlay -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 pt-12">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-safety/20 p-2 rounded-lg border border-safety/30">
+                                        <i class="fas fa-id-card text-safety text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-[10px] uppercase tracking-widest font-bold">Cédula Profesional</p>
+                                        <p class="text-white text-lg font-mono font-bold tracking-wide">12210167</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NUEVO: DASHBOARD INTERACTIVO (Looker Studio Simulation) -->
-    <section id="dashboard" class="py-32 bg-slate-50 relative reveal-on-scroll">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="section-tag">Inteligencia de Datos</span>
-                <h2 class="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6">Operación Basada en <span class="text-accent italic">KPIs</span></h2>
-                <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light">
-                    Interactúa con este simulador de dashboard para ver cómo transformo datos médicos en decisiones financieras y operativas.
-                </p>
+    <!-- SECTION: PERFIL PROFESIONAL -->
+    <section id="perfil" class="py-24 bg-slate relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-teal font-bold text-xs tracking-widest uppercase mb-2 block">Expertise Técnico</span>
+                <h2 class="text-3xl lg:text-4xl font-heading font-bold text-navy mb-6">Pilares de Gestión Estratégica</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal to-safety mx-auto rounded-full"></div>
             </div>
 
-            <!-- Dashboard Window Container -->
-            <div class="bg-white rounded-[40px] shadow-2xl border border-slate-200 overflow-hidden flex flex-col md:flex-row min-h-[800px] max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 bg-white rounded-2xl shadow-premium hover:shadow-premium-hover transition-all duration-300 group border border-transparent hover:border-navy/10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-navy/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                    <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6 text-navy text-2xl group-hover:bg-navy group-hover:text-white transition-colors duration-300">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-navy mb-4">Salud Ocupacional</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed text-justify">
+                        Gestión estratégica de siniestralidad ante el IMSS (ST-7, ST-9). Control de ausentismo y vigilancia epidemiológica industrial profunda.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 bg-white rounded-2xl shadow-premium hover:shadow-premium-hover transition-all duration-300 group border border-transparent hover:border-safety/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-safety/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                    <div class="w-14 h-14 bg-safety/10 rounded-xl flex items-center justify-center mb-6 text-yellow-600 text-2xl group-hover:bg-safety group-hover:text-navy transition-colors duration-300">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-navy mb-4">Seguridad Higiene (EHS)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed text-justify">
+                        Investigación de incidentes mediante Causa Raíz e implementación técnica de normativas preventivas en piso para la reducción de riesgos.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 bg-white rounded-2xl shadow-premium hover:shadow-premium-hover transition-all duration-300 group border border-transparent hover:border-teal/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-teal/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                    <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center mb-6 text-teal text-2xl group-hover:bg-teal group-hover:text-white transition-colors duration-300">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-navy mb-4">Derecho Sanitario</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed text-justify">
+                        Blindaje legal ante COFEPRIS y STPS. Gestión proactiva de avisos de funcionamiento y cumplimiento normativo integral para evitar multas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DASHBOARD OPERATIVO -->
+    <section id="dashboard" class="py-24 bg-white relative border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="text-safety font-bold uppercase tracking-wider text-xs">Inteligencia de Datos</span>
+                    <h2 class="text-3xl lg:text-4xl font-heading font-bold text-navy mt-2">Centro de Comando</h2>
+                    <p class="text-gray-500 mt-2 text-sm max-w-xl">Simulador interactivo de monitoreo en tiempo real. Visualice KPIs críticos.</p>
+                </div>
+                <div class="hidden md:block">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-xs font-bold border border-green-100">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Sistema Online
+                    </span>
+                </div>
+            </div>
+
+            <!-- DASHBOARD UI CONTAINER -->
+            <div class="bg-slate rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col md:flex-row min-h-[850px]">
                 
-                <!-- Sidebar -->
-                <div class="w-full md:w-72 bg-industrial text-white p-8 flex flex-col">
-                    <div class="mb-12">
-                        <!-- Logo Optimizado -->
-                        <div class="font-black text-2xl tracking-tighter uppercase mb-2">
-                            DR. <span class="text-accent">HAN</span>
+                <!-- SIDEBAR -->
+                <div class="w-full md:w-72 bg-navy text-gray-300 flex flex-col p-6 border-r border-white/5">
+                    <div class="mb-10 px-2 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-navy font-bold text-lg shadow-lg">DH</div>
+                        <div class="leading-tight">
+                            <span class="block text-white font-bold text-base tracking-wide">Analytics Suite</span>
+                            <span class="block text-[10px] text-safety uppercase font-bold tracking-wider">v2.1 PRO</span>
                         </div>
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Analytics & EHS</p>
                     </div>
 
-                    <nav class="space-y-4 flex-1">
-                        <button onclick="switchDashTab('general')" id="tab-general" class="dash-sidebar-btn w-full flex items-center space-x-4 px-6 py-4 rounded-2xl active">
-                            <i class="fa-solid fa-chart-pie"></i>
-                            <span class="font-bold text-sm">General</span>
+                    <nav class="space-y-2 flex-1">
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-4 mb-2">Vistas Principales</p>
+                        <button onclick="switchTab('general')" id="btn-general" class="dash-sidebar-btn w-full text-left px-4 py-3.5 active font-medium text-sm flex items-center gap-3 group">
+                            <i class="fas fa-chart-pie w-5 text-center group-hover:text-white transition-colors"></i> General
                         </button>
-                        <button onclick="switchDashTab('riesgos')" id="tab-riesgos" class="dash-sidebar-btn w-full flex items-center space-x-4 px-6 py-4 rounded-2xl text-slate-400">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span class="font-bold text-sm">Riesgos (ST-7)</span>
+                        <button onclick="switchTab('riesgos')" id="btn-riesgos" class="dash-sidebar-btn w-full text-left px-4 py-3.5 font-medium text-sm flex items-center gap-3 group">
+                            <i class="fas fa-triangle-exclamation w-5 text-center group-hover:text-safety transition-colors"></i> Riesgos (ST-7)
                         </button>
-                        <button onclick="switchDashTab('wellness')" id="tab-wellness" class="dash-sidebar-btn w-full flex items-center space-x-4 px-6 py-4 rounded-2xl text-slate-400">
-                            <i class="fa-solid fa-heart-pulse"></i>
-                            <span class="font-bold text-sm">Wellness</span>
+                        <button onclick="switchTab('wellness')" id="btn-wellness" class="dash-sidebar-btn w-full text-left px-4 py-3.5 font-medium text-sm flex items-center gap-3 group">
+                            <i class="fas fa-heart-pulse w-5 text-center group-hover:text-teal transition-colors"></i> Salud & Aptitud
                         </button>
                     </nav>
 
-                    <div class="mt-auto pt-8 border-t border-slate-700">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold">ED</div>
+                    <div class="mt-auto pt-6 border-t border-gray-700/50 text-xs">
+                        <div class="flex items-center gap-3">
+                            <img src="https://drive.google.com/thumbnail?id=1VWqk33PEasus2aWjckWVViojvVw-cajS&sz=w200" class="w-8 h-8 rounded-full object-cover border border-white/20" alt="Avatar">
                             <div>
-                                <p class="text-xs font-bold text-white">Dr. Edgar Bañuelos</p>
-                                <p class="text-[9px] text-slate-400">Admin</p>
+                                <p class="text-white font-bold">Dr. Edgar Bañuelos</p>
+                                <p class="text-gray-500">Administrador EHS</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Main Content -->
-                <div class="flex-1 bg-slate-50 p-8 md:p-12 overflow-y-auto">
+                <!-- MAIN CONTENT AREA -->
+                <div class="flex-1 bg-[#f8fafc] p-6 md:p-10 overflow-y-auto">
                     
-                    <!-- Top Bar -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                    <!-- Content Header -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                         <div>
-                            <h3 class="text-2xl font-black text-slate-800 tracking-tight" id="dash-title">Centro de Comando Estratégico</h3>
-                            <p class="text-slate-400 text-sm mt-1">Última actualización: En tiempo real</p>
+                            <h3 class="text-2xl font-bold text-navy tracking-tight" id="view-title">Vista General</h3>
+                            <p class="text-xs text-gray-400 mt-1 flex items-center gap-1"><i class="far fa-clock"></i> Datos actualizados: En tiempo real</p>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <select id="deptFilter" onchange="updateCharts()" class="bg-white border border-slate-200 text-slate-700 text-sm rounded-xl focus:ring-accent focus:border-accent block w-full p-3 shadow-sm font-medium">
-                                <option value="all">Todos los Deptos</option>
-                                <option value="ops">Operaciones</option>
-                                <option value="mant">Mantenimiento</option>
-                                <option value="cedis">CEDIS</option>
+                        <div class="flex gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm">
+                            <select class="bg-transparent text-sm text-gray-600 font-medium rounded px-3 py-1.5 focus:outline-none cursor-pointer hover:bg-gray-50">
+                                <option>Global (Todos)</option>
+                                <option>Operaciones</option>
+                                <option>Mantenimiento</option>
+                                <option>CEDIS</option>
                             </select>
-                            <button class="bg-white p-3 rounded-xl border border-slate-200 text-slate-400 hover:text-accent shadow-sm">
-                                <i class="fa-solid fa-download"></i>
+                            <div class="w-px bg-gray-200 my-1"></div>
+                            <button class="px-3 py-1.5 rounded text-gray-500 hover:text-navy hover:bg-gray-50 transition-colors" title="Exportar">
+                                <i class="fas fa-download"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- VISTA: GENERAL -->
+                    <!-- VIEW: GENERAL -->
                     <div id="view-general" class="dash-view animate-fade-in">
-                        <!-- KPI Cards -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute top-0 left-0 w-full h-1 bg-orange-500"></div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Días Incapacidad</span>
-                                    <i class="fa-solid fa-bed-pulse text-orange-200 text-xl"></i>
+                        <!-- KPIs Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                            <!-- Card 1 -->
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
+                                <div class="absolute right-0 top-0 w-16 h-16 bg-red-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-2">Días Incapacidad</p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-heading font-bold text-navy">142</p>
+                                    <span class="text-xs font-bold text-red-500 bg-red-50 px-1.5 py-0.5 rounded flex items-center gap-1">
+                                        <i class="fas fa-arrow-up text-[10px]"></i> 12%
+                                    </span>
                                 </div>
-                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-days">142</h4>
-                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full"><i class="fa-solid fa-arrow-down mr-1"></i>12% vs año ant</span>
+                                <p class="text-xs text-gray-400 mt-2">vs año anterior</p>
+                            </div>
+                            
+                            <!-- Card 2 -->
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
+                                <div class="absolute right-0 top-0 w-16 h-16 bg-yellow-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-2">Costo Siniestralidad</p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-heading font-bold text-navy">$85k</p>
+                                    <span class="text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded">Bajo</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-2">Presupuesto anual</p>
                             </div>
 
-                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Costo Siniestralidad</span>
-                                    <i class="fa-solid fa-sack-dollar text-red-200 text-xl"></i>
+                            <!-- Card 3 -->
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
+                                <div class="absolute right-0 top-0 w-16 h-16 bg-teal/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-2">Cumplimiento ISO</p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-heading font-bold text-navy">98%</p>
+                                    <span class="text-xs font-bold text-teal bg-teal/10 px-1.5 py-0.5 rounded">Audit Ready</span>
                                 </div>
-                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-cost">$85k</h4>
-                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">Bajo Presupuesto</span>
+                                <p class="text-xs text-gray-400 mt-2">Normas 45001 / 9001</p>
                             </div>
 
-                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute top-0 left-0 w-full h-1 bg-accent"></div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Cumplimiento ISO</span>
-                                    <i class="fa-solid fa-check-double text-emerald-200 text-xl"></i>
+                            <!-- Card 4 -->
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
+                                <div class="absolute right-0 top-0 w-16 h-16 bg-navy/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-2">Incidentes Totales</p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-heading font-bold text-navy">12</p>
+                                    <span class="text-xs font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">Estable</span>
                                 </div>
-                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-compliance">98%</h4>
-                                <span class="bg-blue-50 text-blue-600 text-xs font-bold px-2 py-1 rounded-full">Audit Ready</span>
-                            </div>
-
-                            <div class="kpi-card bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Incidentes Totales</span>
-                                    <i class="fa-solid fa-truck-medical text-blue-200 text-xl"></i>
-                                </div>
-                                <h4 class="text-4xl font-black text-slate-800 mb-2" id="kpi-incidents">12</h4>
-                                <span class="bg-slate-100 text-slate-500 text-xs font-bold px-2 py-1 rounded-full">Estable</span>
+                                <p class="text-xs text-gray-400 mt-2">Últimos 30 días</p>
                             </div>
                         </div>
 
-                        <!-- Charts Row -->
-                        <div class="grid lg:grid-cols-3 gap-8 mb-8">
-                            <div class="lg:col-span-2 bg-white p-8 rounded-[30px] shadow-sm border border-slate-100">
-                                <h5 class="font-bold text-slate-800 mb-6 flex items-center">
-                                    <i class="fa-solid fa-chart-area text-accent mr-3"></i> Tendencia de Siniestralidad vs Costos
-                                </h5>
-                                <div class="h-64 w-full">
-                                    <canvas id="trendChart"></canvas>
+                        <!-- Charts Grid -->
+                        <div class="grid lg:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h4 class="font-bold text-navy text-sm flex items-center gap-2">
+                                        <div class="w-2 h-2 rounded-full bg-red-500"></div> Tendencia: Siniestralidad vs Costos
+                                    </h4>
+                                    <button class="text-gray-400 hover:text-navy"><i class="fas fa-ellipsis-h"></i></button>
                                 </div>
+                                <div class="h-64"><canvas id="chartGeneral1"></canvas></div>
                             </div>
-                            <div class="bg-white p-8 rounded-[30px] shadow-sm border border-slate-100">
-                                <h5 class="font-bold text-slate-800 mb-6 flex items-center">
-                                    <i class="fa-solid fa-chart-pie text-orange-500 mr-3"></i> Riesgo por Área
-                                </h5>
-                                <div class="h-64 w-full flex items-center justify-center">
-                                    <canvas id="deptChart"></canvas>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h4 class="font-bold text-navy text-sm flex items-center gap-2">
+                                        <div class="w-2 h-2 rounded-full bg-safety"></div> Riesgo por Área Operativa
+                                    </h4>
+                                    <button class="text-gray-400 hover:text-navy"><i class="fas fa-ellipsis-h"></i></button>
                                 </div>
+                                <div class="h-64"><canvas id="chartGeneral2"></canvas></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- VISTA: RIESGOS (Placeholder simplificado) -->
+                    <!-- VIEW: RIESGOS (ST-7) -->
                     <div id="view-riesgos" class="dash-view hidden animate-fade-in">
-                        <div class="bg-white p-8 rounded-[30px] shadow-sm border border-slate-100 mb-8">
-                            <div class="flex justify-between items-center mb-6">
-                                <h5 class="font-bold text-slate-800 text-xl">Gestión de Casos ST-7 (IMSS)</h5>
-                                <button class="bg-accent text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider">Exportar Reporte</button>
+                        <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                            <!-- Table Section -->
+                            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h4 class="font-bold text-navy text-sm flex items-center gap-2">
+                                        <i class="fas fa-folder-open text-teal"></i> Gestión de Casos ST-7 (IMSS)
+                                    </h4>
+                                    <button class="text-[10px] font-bold uppercase tracking-wide bg-navy/5 text-navy px-3 py-1.5 rounded hover:bg-navy hover:text-white transition-colors">Ver Todos</button>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm text-left text-gray-600">
+                                        <thead class="text-xs text-gray-400 uppercase bg-slate/50 font-semibold border-b border-gray-100">
+                                            <tr>
+                                                <th class="px-4 py-3 rounded-tl-lg">Folio</th>
+                                                <th class="px-4 py-3">Empleado</th>
+                                                <th class="px-4 py-3">Depto</th>
+                                                <th class="px-4 py-3">Estado</th>
+                                                <th class="px-4 py-3 rounded-tr-lg text-right">Costo Est.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-50">
+                                            <tr class="hover:bg-slate/50 transition-colors group cursor-pointer">
+                                                <td class="px-4 py-3.5 font-mono text-xs font-bold text-navy group-hover:text-teal transition-colors">ST7-002</td>
+                                                <td class="px-4 py-3.5 font-medium">Juan Pérez</td>
+                                                <td class="px-4 py-3.5"><span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">Mantto.</span></td>
+                                                <td class="px-4 py-3.5"><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded font-bold border border-yellow-200">En Proceso</span></td>
+                                                <td class="px-4 py-3.5 text-right font-medium">$12,400</td>
+                                            </tr>
+                                            <tr class="hover:bg-slate/50 transition-colors group cursor-pointer">
+                                                <td class="px-4 py-3.5 font-mono text-xs font-bold text-navy group-hover:text-teal transition-colors">ST7-001</td>
+                                                <td class="px-4 py-3.5 font-medium">Ana García</td>
+                                                <td class="px-4 py-3.5"><span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">Operaciones</span></td>
+                                                <td class="px-4 py-3.5"><span class="bg-red-50 text-red-700 text-xs px-2 py-1 rounded font-bold border border-red-100">Dictamen IPP</span></td>
+                                                <td class="px-4 py-3.5 text-right font-bold text-red-600">$45,200</td>
+                                            </tr>
+                                            <tr class="hover:bg-slate/50 transition-colors group cursor-pointer">
+                                                <td class="px-4 py-3.5 font-mono text-xs font-bold text-navy group-hover:text-teal transition-colors">ST7-000</td>
+                                                <td class="px-4 py-3.5 font-medium">Carlos Ruiz</td>
+                                                <td class="px-4 py-3.5"><span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">CEDIS</span></td>
+                                                <td class="px-4 py-3.5"><span class="bg-green-50 text-green-700 text-xs px-2 py-1 rounded font-bold border border-green-100">Cerrado</span></td>
+                                                <td class="px-4 py-3.5 text-right font-medium">$4,200</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-sm text-left text-slate-500">
-                                    <thead class="text-xs text-slate-400 uppercase bg-slate-50 font-bold">
-                                        <tr>
-                                            <th class="px-6 py-4 rounded-l-xl">Folio</th>
-                                            <th class="px-6 py-4">Empleado</th>
-                                            <th class="px-6 py-4">Depto</th>
-                                            <th class="px-6 py-4">Estado</th>
-                                            <th class="px-6 py-4 rounded-r-xl text-right">Costo Est.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-100">
-                                        <tr class="hover:bg-slate-50 transition">
-                                            <td class="px-6 py-4 font-bold text-slate-900">ST7-002</td>
-                                            <td class="px-6 py-4">Juan Pérez</td>
-                                            <td class="px-6 py-4">Mantenimiento</td>
-                                            <td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-md text-xs font-bold">En Proceso</span></td>
-                                            <td class="px-6 py-4 text-right">$12,400</td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50 transition">
-                                            <td class="px-6 py-4 font-bold text-slate-900">ST7-001</td>
-                                            <td class="px-6 py-4">Ana García</td>
-                                            <td class="px-6 py-4">Operaciones</td>
-                                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-md text-xs font-bold">Cerrado</span></td>
-                                            <td class="px-6 py-4 text-right">$4,200</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            
+                            <!-- Simulator Panel -->
+                            <div class="bg-navy p-6 rounded-xl shadow-premium text-white relative overflow-hidden flex flex-col justify-between">
+                                <!-- Background blobs -->
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-safety/20 rounded-full blur-[40px] -mr-10 -mt-10"></div>
+                                <div class="absolute bottom-0 left-0 w-24 h-24 bg-teal/20 rounded-full blur-[40px] -ml-5 -mb-5"></div>
+                                
+                                <div class="relative z-10">
+                                    <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                                        <i class="fas fa-calculator text-safety"></i> Simulador Prima
+                                    </h4>
+                                    <p class="text-gray-400 text-xs mb-8 leading-relaxed">Proyección financiera anual basada en variables de siniestralidad.</p>
+                                    
+                                    <div class="space-y-8">
+                                        <div>
+                                            <div class="flex justify-between mb-3 text-xs uppercase tracking-wide font-bold">
+                                                <span class="text-gray-400">Incidentes</span>
+                                                <span class="text-safety" id="sim-acc-val">12</span>
+                                            </div>
+                                            <input type="range" min="0" max="50" value="12" id="sim-acc" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-3 text-xs uppercase tracking-wide font-bold">
+                                                <span class="text-gray-400">Días Subsidiados</span>
+                                                <span class="text-safety" id="sim-days-val">142</span>
+                                            </div>
+                                            <input type="range" min="0" max="500" value="142" id="sim-days" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative z-10 mt-8 pt-6 border-t border-white/10">
+                                    <div class="flex justify-between items-end">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase tracking-widest mb-1">Prima Estimada</span>
+                                            <span class="text-3xl font-heading font-bold text-white tracking-tight" id="sim-result">1.82540</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <span class="block text-[10px] text-gray-400 uppercase tracking-widest mb-1">Impacto</span>
+                                            <span class="text-sm font-bold text-red-400 bg-red-400/10 px-2 py-1 rounded">+$245k</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <!-- VIEW: WELLNESS -->
+                    <div id="view-wellness" class="dash-view hidden animate-fade-in">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-3 text-navy">
+                                    <i class="fas fa-user-check text-xl"></i>
+                                </div>
+                                <h4 class="text-3xl font-heading font-bold text-navy mb-1">95%</h4>
+                                <p class="text-xs text-gray-500 uppercase font-bold tracking-wide">Aptitud Psicofísica</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-3 text-red-500">
+                                    <i class="fas fa-user-clock text-xl"></i>
+                                </div>
+                                <h4 class="text-3xl font-heading font-bold text-navy mb-1">8.4%</h4>
+                                <p class="text-xs text-gray-500 uppercase font-bold tracking-wide">Ausentismo Global</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-teal/10 rounded-full flex items-center justify-center mx-auto mb-3 text-teal">
+                                    <i class="fas fa-file-medical text-xl"></i>
+                                </div>
+                                <h4 class="text-3xl font-heading font-bold text-teal mb-1">100%</h4>
+                                <p class="text-xs text-gray-500 uppercase font-bold tracking-wide">Exámenes Periódicos</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="font-bold text-navy text-sm mb-6 flex items-center gap-2">
+                                <i class="fas fa-chart-bar text-gray-400"></i> Prevalencia de Enfermedades Crónicas (Operativo)
+                            </h4>
+                            <div class="h-72"><canvas id="chartWellness"></canvas></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: NORMATIVIDAD STPS (PREMIUM) -->
+    <section id="normas" class="py-24 bg-slate border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-teal font-bold uppercase tracking-wider text-xs block mb-2">Compliance Industrial</span>
+                <h2 class="text-3xl lg:text-4xl font-heading font-bold text-navy">Marco Regulatorio & Normatividad</h2>
+                <p class="text-gray-500 mt-4 text-sm max-w-2xl mx-auto leading-relaxed">Experiencia probada en la implementación, auditoría y ejecución técnica de las Normas Oficiales Mexicanas.</p>
+            </div>
+
+            <!-- Categoría 1: Seguridad Industrial & Prevención -->
+            <div class="mb-16">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-4">
+                    <span class="w-8 h-px bg-gray-300"></span> Seguridad Industrial & Prevención <span class="flex-1 h-px bg-gray-200"></span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+                    
+                    <!-- NOM-002 (Incendios) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center text-red-500 text-lg">
+                                <i class="fas fa-fire-extinguisher"></i>
+                            </div>
+                            <span class="bg-gray-100 text-gray-500 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Seguridad</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-002</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Prevención Incendios</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Clasificación de riesgo de incendio, determinación de equipo contra incendio y brigadas.
+                        </p>
+                    </div>
+
+                    <!-- NOM-004 (Maquinaria) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 text-lg">
+                                <i class="fas fa-gears"></i>
+                            </div>
+                            <span class="bg-gray-100 text-gray-500 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Seguridad</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-004</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Maquinaria</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Sistemas de protección, bloqueos (LOTO) y análisis de riesgo en maquinaria y equipo.
+                        </p>
+                    </div>
+
+                    <!-- NOM-005 (Sustancias Químicas) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <span class="bg-gray-100 text-gray-500 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Higiene</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-005</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Sustancias Químicas</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Manejo, transporte y almacenamiento seguro. Hojas de datos de seguridad (HDS).
+                        </p>
+                    </div>
+
+                    <!-- NOM-009 (Alturas) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center text-sky-600 text-lg">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <span class="bg-red-50 text-red-500 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Alto Riesgo</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-009</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Trabajos en Altura</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Medidas de seguridad, sistemas de protección personal y planes de rescate vertical.
+                        </p>
+                    </div>
+
+                     <!-- NOM-027 (Soldadura) -->
+                     <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 text-lg">
+                                <i class="fas fa-fire-burner"></i>
+                            </div>
+                            <span class="bg-red-50 text-red-500 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Alto Riesgo</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-027</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Soldadura y Corte</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Condiciones de seguridad en actividades de soldadura, corte y trabajos en caliente.
+                        </p>
+                    </div>
+
+                     <!-- NOM-033 (Espacios Confinados) -->
+                     <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-white text-lg">
+                                <i class="fas fa-dungeon"></i>
+                            </div>
+                            <span class="bg-red-50 text-red-500 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Crítico</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-033</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Espacios Confinados</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Procedimientos de entrada segura, monitoreo de atmósfera y vigilancia continua.
+                        </p>
+                    </div>
+
+                    <!-- NOM-017 (EPP) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg">
+                                <i class="fas fa-vest"></i>
+                            </div>
+                            <span class="bg-blue-50 text-blue-600 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Gestión</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-017</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Equipo de Protección</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Selección y uso de EPP basado en análisis de riesgos específicos por puesto.
+                        </p>
+                    </div>
+
+                    <!-- NOM-019 (Comisiones) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-yellow-50 rounded-lg flex items-center justify-center text-yellow-600 text-lg">
+                                <i class="fas fa-users-gear"></i>
+                            </div>
+                            <span class="bg-blue-50 text-blue-600 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Organización</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-019</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Comisiones CSH</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Constitución y funcionamiento de comisiones mixtas. Recorridos de verificación.
+                        </p>
+                    </div>
+
+                     <!-- NOM-026 (Señales) -->
+                     <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-700 text-lg">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <span class="bg-blue-50 text-blue-600 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Visual</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-026</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Colores y Señales</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Identificación de riesgos por fluidos y señalización normativa de seguridad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoría 2: Salud Ocupacional & Bienestar -->
+            <div>
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-4">
+                    <span class="w-8 h-px bg-gray-300"></span> Salud Ocupacional & Bienestar <span class="flex-1 h-px bg-gray-200"></span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    
+                    <!-- NOM-030 (Servicios Preventivos) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-teal/10 rounded-lg flex items-center justify-center text-teal text-lg">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <span class="bg-green-50 text-green-600 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Salud</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-030</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Servicios Preventivos</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Diagnóstico integral de seguridad y salud en el trabajo. Programa de actividades.
+                        </p>
+                    </div>
+
+                    <!-- NOM-035 (Psicosocial) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 text-lg">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span class="bg-green-50 text-green-600 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Salud</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-035</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Riesgo Psicosocial</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Prevención de factores de riesgo psicosocial. Entornos organizacionales favorables.
+                        </p>
+                    </div>
+
+                    <!-- NOM-036 (Ergonomía) -->
+                    <div class="norm-card p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 text-lg">
+                                <i class="fas fa-person-carrying-box"></i>
+                            </div>
+                            <span class="bg-green-50 text-green-600 text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Salud</span>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg mb-1">NOM-036</h4>
+                        <p class="text-[10px] uppercase text-gray-400 font-bold mb-3 tracking-wide">Ergonomía</p>
+                        <p class="text-xs text-gray-500 leading-relaxed pt-3 border-t border-gray-100">
+                            Identificación y control de riesgos ergonómicos por manejo manual de cargas.
+                        </p>
+                    </div>
+
+                     <!-- Gestión IMSS (Diseño Friendly, Premium & High Contrast) -->
+                     <div class="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-1 rounded-xl shadow-lg relative overflow-hidden group h-full transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-teal-200 bg-gradient-to-br from-teal-50 via-white to-emerald-50">
+                        
+                        <!-- Fondo Decorativo Sutil -->
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-[50px] -mr-20 -mt-20 opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 w-48 h-48 bg-teal-100/60 rounded-full blur-[40px] -ml-16 -mb-16 pointer-events-none"></div>
+
+                        <!-- Contenido Principal -->
+                        <div class="relative z-10 p-7 flex flex-col h-full justify-between">
+                            
+                            <!-- Header -->
+                            <div class="flex items-start justify-between mb-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-teal-700 text-2xl border border-teal-200 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-hospital-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading font-bold text-navy text-xl leading-tight tracking-tight">Gestión IMSS</h4>
+                                        <div class="flex items-center gap-2 mt-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                            <p class="text-[10px] text-teal-800 uppercase tracking-widest font-bold">Estrategia STPS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Descripción (Texto más oscuro para contraste) -->
+                            <div class="mb-6 relative pl-4 border-l-4 border-teal-500 rounded-sm">
+                                <p class="text-xs text-slate-700 font-semibold leading-relaxed">
+                                    Control técnico de formatos para calificación de riesgos y contención efectiva de la <span class="text-teal-800 font-bold bg-teal-100/50 px-1 rounded">Prima de Riesgo</span>.
+                                </p>
+                            </div>
+                            
+                            <!-- Grilla de Formatos (Badges - High Visibility) -->
+                            <div class="grid grid-cols-2 gap-3 mb-6">
+                                <!-- ST-7 -->
+                                <div class="bg-white p-3 rounded-lg border border-teal-200 hover:border-teal-400 hover:shadow-md transition-all duration-300 group/item cursor-default shadow-sm">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-[9px] text-teal-800 font-bold uppercase tracking-wider">Aviso</span>
+                                        <i class="fas fa-file-medical text-teal-400 group-hover/item:text-teal-600 transition-colors text-xs"></i>
+                                    </div>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-lg font-bold text-navy tracking-wide">ST-7</span>
+                                        <span class="text-[10px] text-slate-500 font-medium">Accidente</span>
+                                    </div>
+                                </div>
+                                <!-- ST-2 -->
+                                <div class="bg-white p-3 rounded-lg border border-teal-200 hover:border-teal-400 hover:shadow-md transition-all duration-300 group/item cursor-default shadow-sm">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-[9px] text-teal-800 font-bold uppercase tracking-wider">Alta</span>
+                                        <i class="fas fa-file-signature text-teal-400 group-hover/item:text-teal-600 transition-colors text-xs"></i>
+                                    </div>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-lg font-bold text-navy tracking-wide">ST-2</span>
+                                        <span class="text-[10px] text-slate-500 font-medium">Médica</span>
+                                    </div>
+                                </div>
+                                <!-- ST-9 -->
+                                <div class="bg-white p-3 rounded-lg border border-teal-200 hover:border-teal-400 hover:shadow-md transition-all duration-300 group/item cursor-default shadow-sm">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-[9px] text-teal-800 font-bold uppercase tracking-wider">Enf.</span>
+                                        <i class="fas fa-viruses text-teal-400 group-hover/item:text-teal-600 transition-colors text-xs"></i>
+                                    </div>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-lg font-bold text-navy tracking-wide">ST-9</span>
+                                        <span class="text-[10px] text-slate-500 font-medium">Trabajo</span>
+                                    </div>
+                                </div>
+                                <!-- ST-3 -->
+                                <div class="bg-white p-3 rounded-lg border border-teal-200 hover:border-teal-400 hover:shadow-md transition-all duration-300 group/item cursor-default shadow-sm">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-[9px] text-teal-800 font-bold uppercase tracking-wider">Dictamen</span>
+                                        <i class="fas fa-gavel text-teal-400 group-hover/item:text-teal-600 transition-colors text-xs"></i>
+                                    </div>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-lg font-bold text-navy tracking-wide">ST-3</span>
+                                        <span class="text-[10px] text-slate-500 font-medium">Incapacidad</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer / Badge de Seguridad -->
+                            <div class="mt-auto">
+                                <div class="bg-teal-900 rounded-lg py-3 px-4 flex items-center justify-center gap-2.5 shadow-lg group-hover:bg-teal-800 transition-colors border border-teal-700">
+                                    <i class="fas fa-shield-halved text-safety text-sm"></i>
+                                    <span class="text-[11px] text-black font-bold uppercase tracking-widest">Blindaje Legal Activo</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -368,400 +891,208 @@
         </div>
     </section>
 
-    <!-- Pilares de Dominio -->
-    <section id="pilares" class="py-40 bg-[#f8fafc] reveal-on-scroll">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-white p-12 rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700">
-                    <div class="w-20 h-20 bg-emerald-50 rounded-[30px] flex items-center justify-center text-accent text-4xl mb-10">
-                        <i class="fa-solid fa-stethoscope"></i>
-                    </div>
-                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tighter mb-6" data-i18n="p1-title">Salud <br>Ocupacional</h3>
-                    <p class="text-slate-500 leading-relaxed font-light" data-i18n="p1-desc">Gestión estratégica de siniestralidad ante el IMSS (ST-7, ST-9). Control de ausentismo y vigilancia epidemiológica industrial profunda.</p>
-                </div>
-                <div class="bg-white p-12 rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700">
-                    <div class="w-20 h-20 bg-orange-50 rounded-[30px] flex items-center justify-center text-orange-600 text-4xl mb-10">
-                        <i class="fa-solid fa-hard-hat"></i>
-                    </div>
-                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tighter mb-6" data-i18n="p2-title">Seguridad <br>Higiene (EHS)</h3>
-                    <p class="text-slate-500 leading-relaxed font-light" data-i18n="p2-desc">Especialidad en curso. Investigación de incidentes mediante Causa Raíz e implementación técnica de normativas preventivas en piso.</p>
-                </div>
-                <div class="bg-white p-12 rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700">
-                    <div class="w-20 h-20 bg-blue-50 rounded-[30px] flex items-center justify-center text-blue-600 text-4xl mb-10">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                    </div>
-                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tighter mb-6" data-i18n="p3-title">Derecho <br>Sanitario</h3>
-                    <p class="text-slate-500 leading-relaxed font-light" data-i18n="p3-desc">Blindaje legal ante COFEPRIS y STPS. Gestión proactiva de avisos de funcionamiento y cumplimiento normativo integral.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- SECTION: TRAYECTORIA -->
+    <section id="experiencia" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-heading font-bold text-center text-navy mb-16">Trayectoria Industrial</h2>
 
-    <!-- Dominio Normativo Premium -->
-    <section id="normas" class="py-40 bg-white reveal-on-scroll">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-32">
-                <span class="section-tag" data-i18n="norms-tag">Marco Regulatorio Industrial</span>
-                <h2 class="text-6xl font-black text-slate-900 tracking-tighter mb-8" data-i18n="norms-title">Dominio de Normativas <span class="text-accent italic block lg:inline">STPS</span></h2>
-                <div class="h-1.5 w-32 bg-accent mx-auto mb-10 rounded-full"></div>
-                <p class="text-slate-400 max-w-2xl mx-auto text-xl font-light italic leading-relaxed" data-i18n="norms-subtitle">Módulos técnicos para el blindaje legal y la excelencia operativa bajo estándares nacionales e internacionales.</p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8" id="norms-grid">
-                <!-- Se inyecta vía JS con alineación mejorada -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Trayectoria Industrial -->
-    <section id="experiencia" class="py-40 bg-industrial text-white relative overflow-hidden reveal-on-scroll">
-        <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.08),transparent)] pointer-events-none"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl font-black mb-24 italic tracking-tighter uppercase" data-i18n="exp-title">Trayectoria <span class="text-accent">Industrial</span></h2>
-            
-            <div class="space-y-20 max-w-6xl">
-                <!-- Aeroméxico -->
-                <div class="trayectoria-card py-4">
-                    <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
-                        <div>
-                            <h4 class="text-4xl lg:text-5xl font-black text-white tracking-tighter mb-2 italic uppercase">Aeroméxico</h4>
-                            <div class="flex items-center gap-4">
-                                <span class="bg-accent text-industrial px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest" data-i18n="exp-pos-1">Médico Ocupacional</span>
-                                <span class="text-slate-500 font-bold text-xs uppercase tracking-widest">2023 — 2025</span>
-                            </div>
-                        </div>
-                        <div class="text-accent font-black text-6xl opacity-20">01</div>
+            <div class="relative border-l-2 border-gray-200 ml-4 md:ml-0 space-y-16">
+                
+                <!-- Aeromexico -->
+                <div class="relative flex flex-col md:flex-row gap-8 md:items-start pl-10 md:pl-0 group">
+                    <div class="absolute -left-[9px] md:relative md:left-auto md:w-1/3 md:text-right md:pr-12">
+                        <h4 class="text-xl font-bold text-navy group-hover:text-teal transition-colors">Aeroméxico</h4>
+                        <span class="text-safety font-bold text-xs uppercase tracking-wide">Médico Ocupacional (2023-2025)</span>
                     </div>
-                    <p class="text-slate-400 leading-relaxed text-xl font-light max-w-4xl" data-i18n="exp-desc-1">Liderazgo en seguridad crítica aeronáutica. Gestión de protocolos de fatiga, alcoholimetría y siniestralidad operativa de alto impacto para tripulaciones y mantenimiento.</p>
+                    <div class="hidden md:block w-4 h-4 bg-white rounded-full border-4 border-navy absolute left-1/3 -translate-x-[9px] mt-1.5 z-10 group-hover:border-teal transition-colors shadow-sm"></div>
+                    
+                    <!-- Mobile Dot -->
+                    <div class="md:hidden w-4 h-4 bg-white rounded-full border-4 border-navy absolute left-[-9px] mt-1.5 z-10"></div>
+
+                    <div class="md:w-2/3 bg-slate p-8 rounded-xl border border-gray-100 hover:border-teal/20 hover:shadow-lg transition-all duration-300 relative">
+                        <div class="absolute left-0 top-6 -ml-2 w-4 h-4 bg-slate rotate-45 border-l border-b border-gray-100 hidden md:block"></div>
+                        <p class="text-gray-600 text-sm leading-relaxed text-justify">
+                            Liderazgo en seguridad crítica aeronáutica. Gestión de protocolos de fatiga, alcoholimetría y siniestralidad operativa de alto impacto para tripulaciones y personal de mantenimiento.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Vallarta Plus -->
-                <div class="trayectoria-card py-4">
-                    <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
-                        <div>
-                            <h4 class="text-4xl lg:text-5xl font-black text-white tracking-tighter mb-2 italic uppercase tracking-tighter">Grupo Vallarta Plus</h4>
-                            <div class="flex items-center gap-4">
-                                <span class="bg-accent text-industrial px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest" data-i18n="exp-pos-2">Salud Industrial</span>
-                                <span class="text-slate-500 font-bold text-xs uppercase tracking-widest" data-i18n="exp-tag-2">Gestión Integral</span>
-                            </div>
-                        </div>
-                        <div class="text-accent font-black text-6xl opacity-20">02</div>
+                <div class="relative flex flex-col md:flex-row gap-8 md:items-start pl-10 md:pl-0 group">
+                    <div class="absolute -left-[9px] md:relative md:left-auto md:w-1/3 md:text-right md:pr-12">
+                        <h4 class="text-xl font-bold text-navy group-hover:text-safety transition-colors">Grupo Vallarta Plus</h4>
+                        <span class="text-safety font-bold text-xs uppercase tracking-wide">Salud Industrial (Gestión Integral)</span>
                     </div>
-                    <p class="text-slate-400 leading-relaxed text-xl font-light max-w-4xl" data-i18n="exp-desc-2">Diseño e implementación integral del departamento de medicina laboral desde cero. Estructuración de protocolos médicos para **nuevos ingresos** y optimización de recursos para la contención de costos operativos.</p>
+                    <div class="hidden md:block w-4 h-4 bg-white rounded-full border-4 border-navy absolute left-1/3 -translate-x-[9px] mt-1.5 z-10 group-hover:border-safety transition-colors shadow-sm"></div>
+                    
+                    <!-- Mobile Dot -->
+                    <div class="md:hidden w-4 h-4 bg-white rounded-full border-4 border-navy absolute left-[-9px] mt-1.5 z-10"></div>
+
+                    <div class="md:w-2/3 bg-slate p-8 rounded-xl border border-gray-100 hover:border-safety/20 hover:shadow-lg transition-all duration-300 relative">
+                        <div class="absolute left-0 top-6 -ml-2 w-4 h-4 bg-slate rotate-45 border-l border-b border-gray-100 hidden md:block"></div>
+                        <p class="text-gray-600 text-sm leading-relaxed text-justify">
+                            Diseño e implementación integral del departamento de medicina laboral desde cero. Estructuración de protocolos médicos para nuevos ingresos y optimización de recursos para la contención de costos.
+                        </p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Contacto y Acción -->
-    <section id="contacto" class="py-40 bg-industrial text-white relative">
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-9xl md:text-[250px] font-black mb-16 tracking-tighter uppercase italic opacity-[0.03] pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2">DR. HAN</h2>
-            <div class="relative z-10">
-                <p class="text-slate-300 text-4xl md:text-5xl max-w-5xl mx-auto mb-32 font-light italic leading-tight" data-i18n="contact-slogan">
-                    "Protegiendo el recurso más valioso mediante <span class="text-accent font-bold">inteligencia médica</span> estratégica y rigor industrial."
-                </p>
-                
-                <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                    <a href="https://wa.me/525629846164" target="_blank" class="group bg-accent p-14 rounded-[70px] shadow-3xl flex flex-col items-center gap-8 hover:scale-105 transition-all duration-500">
-                        <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-accent transition duration-500 text-5xl">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <span class="font-bold text-3xl tracking-tighter" data-i18n="btn-contact-ent">Agendar Entrevista</span>
-                    </a>
-                    <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="group bg-white text-slate-900 p-14 rounded-[70px] shadow-3xl flex flex-col items-center gap-8 hover:scale-105 transition-all duration-500">
-                        <div class="w-24 h-24 bg-accent rounded-full flex items-center justify-center text-white group-hover:bg-slate-900 transition duration-500 text-5xl">
-                            <i class="fa-solid fa-file-pdf"></i>
-                        </div>
-                        <span class="font-bold text-3xl tracking-tighter" data-i18n="btn-cv">CV completo</span>
-                    </a>
-                    <a href="mailto:dr.hanmedical@gmail.com" class="group bg-white/5 border border-white/10 p-14 rounded-[70px] shadow-3xl flex flex-col items-center gap-8 hover:scale-105 hover:bg-white hover:text-slate-900 transition-all duration-500">
-                        <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:text-accent transition duration-500 text-5xl">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                        </div>
-                        <span class="font-bold text-3xl tracking-tighter" data-i18n="btn-contact-email">Correo Electrónico</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black text-white pt-24 pb-16">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-3 gap-16 border-b border-white/10 pb-20 mb-16">
-                <div class="space-y-6">
-                    <h5 class="text-accent font-black tracking-tighter text-xl">DR. HAN</h5>
-                    <p class="text-slate-500 text-sm leading-relaxed max-w-xs italic">
-                        Salud Industrial de alto impacto enfocada en la optimización operativa y el cumplimiento legal estratégico.
-                    </p>
-                </div>
-                <div class="space-y-6">
-                    <h6 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Ubicación & Contacto</h6>
-                    <ul class="space-y-4 text-slate-300 text-sm">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-location-dot text-accent"></i> Zapopan, Jalisco
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-envelope text-accent"></i> dr.hanmedical@gmail.com
-                        </li>
-                    </ul>
-                </div>
-                <div class="space-y-6">
-                    <h6 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Credenciales Oficiales</h6>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        <span class="font-bold block text-white mb-2 italic">Dr. Edgar Ivan Bañuelos Han</span>
-                        Cédula profesional: <span class="text-accent font-mono font-bold text-base">12210167</span>
-                    </p>
-                </div>
-            </div>
+    <!-- FOOTER -->
+    <footer class="bg-navy text-white pt-20 pb-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-2xl lg:text-3xl font-heading font-bold mb-8 max-w-2xl mx-auto">"Protegiendo el recurso más valioso mediante inteligencia médica estratégica."</h2>
             
-            <div class="text-center">
-                <p class="text-[11px] font-black text-slate-600 uppercase tracking-[0.3em]">
-                    &copy; 2026 Dr. Han Medical. Todos los derechos reservados.
-                </p>
+            <!-- Botones Footer Rediseñados -->
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-16 items-center">
+                <a href="mailto:dr.hanmedical@gmail.com" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full text-sm transition-all shadow-lg backdrop-blur-sm border border-white/10 flex items-center gap-3 group w-full sm:w-auto justify-center">
+                    <div class="w-8 h-8 rounded-full bg-white text-navy flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span>Enviar Correo</span>
+                </a>
+                
+                <a href="https://wa.me/525629846164" target="_blank" class="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold rounded-full text-sm transition-all shadow-lg shadow-green-500/30 flex items-center gap-3 group w-full sm:w-auto justify-center transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>WhatsApp Directo</span>
+                </a>
+
+                <!-- Botón CV en Footer -->
+                <a href="https://drive.google.com/file/d/1zPAhoGCNj7cHVxNoF2MLWUudHTGEP_4-/view?usp=sharing" target="_blank" class="px-8 py-4 bg-transparent border border-gray-600 hover:border-white text-gray-400 hover:text-white font-bold rounded-full text-sm transition-all flex items-center gap-3 group w-full sm:w-auto justify-center">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Descargar CV</span>
+                </a>
+            </div>
+
+            <div class="border-t border-gray-800 pt-10 text-xs text-gray-500">
+                <p class="font-bold text-white mb-2 text-sm">Dr. Edgar Ivan Bañuelos Han</p>
+                <p>Cédula profesional: 12210167 | Zapopan, Jalisco</p>
+                <p class="mt-6 text-gray-600">© 2026 Dr. Han Medical. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Normas -->
-    <div id="normModal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-6">
-        <div class="absolute inset-0 bg-slate-900/95 backdrop-blur-xl" onclick="closeModal()"></div>
-        <div class="modal-content relative bg-white w-full max-w-2xl rounded-[70px] p-20 shadow-2xl border border-slate-100">
-            <button onclick="closeModal()" class="absolute top-12 right-12 text-slate-300 hover:text-accent transition text-4xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div id="modal-icon" class="w-24 h-24 rounded-[35px] flex items-center justify-center text-5xl mb-14 shadow-inner"></div>
-            <h3 id="modal-title" class="text-5xl font-black text-slate-900 mb-8 tracking-tighter uppercase"></h3>
-            <p id="modal-desc" class="text-slate-500 text-xl leading-relaxed font-light mb-14 italic"></p>
-            <div class="pt-10 border-t border-slate-50 flex items-center justify-between">
-                <span class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300 italic">Compliance Standard</span>
-                <span class="text-accent font-black italic text-xl tracking-tighter uppercase">DR. HAN</span>
-            </div>
-        </div>
-    </div>
-
+    <!-- SCRIPTS -->
     <script>
-        // --- LOGICA DE TRADUCCION ---
-        const translations = {
-            es: {
-                "nav-profile": "Perfil", "nav-norms": "Normas", "nav-experience": "Trayectoria", "nav-contact": "Hiring",
-                "hero-tag": "Medicina & Seguridad Industrial",
-                "hero-desc": "No solo gestiono salud; blindo la <span class='text-slate-900 font-bold underline decoration-accent decoration-4 underline-offset-8'>continuidad operativa</span> de su empresa mediante inteligencia de datos y rigor normativo.",
-                "btn-whatsapp": "WhatsApp Directo", "btn-norms": "Explorar Normas STPS", "btn-cv": "CV completo",
-                "badge-id": "CÉDULA PROFESIONAL", "cv-format-tag": "Formato Profesional",
-                "p1-title": "Salud <br>Ocupacional", "p1-desc": "Gestión estratégica de siniestralidad ante el IMSS (ST-7, ST-9). Control de ausentismo y vigilancia epidemiológica industrial profunda.",
-                "p2-title": "Seguridad <br>Higiene (EHS)", "p2-desc": "Especialidad en curso. Investigación de incidentes mediante Causa Raíz e implementación técnica de normativas preventivas en piso.",
-                "p3-title": "Derecho <br>Sanitario", "p3-desc": "Blindaje legal ante COFEPRIS y STPS. Gestión proactiva de avisos de funcionamiento y cumplimiento normativo integral.",
-                "norms-tag": "Marco Regulatorio Industrial", "norms-title": "Dominio de Normativas <span class='text-accent italic'>STPS</span>", "norms-subtitle": "Módulos técnicos para el blindaje legal y la excelencia operativa bajo estándares nacionales e internacionales.",
-                "exp-title": "Trayectoria <span class='text-accent'>Industrial</span>",
-                "exp-pos-1": "Médico Ocupacional", "exp-desc-1": "Liderazgo en seguridad crítica aeronáutica. Gestión de protocolos de fatiga, alcoholimetría y siniestralidad operativa de alto impacto.",
-                "exp-tag-2": "GESTIÓN INTEGRAL", "exp-pos-2": "Salud Industrial", "exp-desc-2": "Diseño e implementación integral del departamento de medicina laboral desde cero. Estructuración de protocolos médicos para **nuevos ingresos** y optimización de recursos para la contención de costos operativos.",
-                "contact-slogan": "Protegiendo el recurso más valioso mediante inteligencia médica estratégica y rigor industrial.",
-                "btn-contact-ent": "Agendar Entrevista", "btn-contact-email": "Correo Electrónico"
-            },
-            en: {
-                "nav-profile": "Profile", "nav-norms": "Norms", "nav-experience": "Experience", "nav-contact": "Hiring",
-                "hero-tag": "Industrial Medicine & Safety",
-                "hero-desc": "I don't just manage health; I shield your company's <span class='text-slate-900 font-bold underline decoration-accent decoration-4 underline-offset-8'>operational continuity</span> through data intelligence and regulatory rigor.",
-                "btn-whatsapp": "Direct WhatsApp", "btn-norms": "Explore STPS Norms", "btn-cv": "Full CV",
-                "badge-id": "Professional License", "cv-format-tag": "Professional Format",
-                "p1-title": "Occupational <br>Health", "p1-desc": "Strategic IMSS risk management (ST-7, ST-9). Absenteeism control and deep industrial epidemiological surveillance.",
-                "p2-title": "Safety & <br>Hygiene (EHS)", "p2-desc": "Specialization in progress. Root Cause accident investigation and technical field implementation of preventive norms.",
-                "p3-title": "Sanitary <br>Law", "p3-desc": "Legal protection against COFEPRIS & STPS. Proactive management of operation permits and comprehensive regulatory compliance.",
-                "norms-tag": "Industrial Regulatory Framework", "norms-title": "Technical <span class='text-accent italic'>STPS</span> Mastery", "norms-subtitle": "Technical modules for legal shielding and operational excellence under national standards.",
-                "exp-title": "Industrial <span class='text-accent'>Journey</span>",
-                "exp-pos-1": "Occupational Physician", "exp-desc-1": "Leading critical safety for maintenance and flight crew. Fatigue protocols, drug testing, and high-impact operational claim handling.",
-                "exp-tag-2": "COMPREHENSIVE MGMT", "exp-pos-2": "Industrial Health", "exp-desc-2": "End-to-end design and implementation of the occupational medicine department. Structuring medical protocols for **new hires** and resource optimization for cost containment.",
-                "contact-slogan": "Protecting the most valuable resource through strategic medical intelligence and industrial rigor.",
-                "btn-contact-ent": "Schedule Interview", "btn-contact-email": "Email Contact"
-            }
-        };
+        // --- DASHBOARD LOGIC ---
+        let chartGeneral1, chartGeneral2, chartWellness;
 
-        const norms = [
-            { id: "002", icon: "fa-fire", color: "text-red-500", bg: "bg-red-50", name_es: "Incendios", name_en: "Fire Protection", desc_es: "Prevención y protección contra incendios en los centros de trabajo. Auditoría de equipos y rutas de evacuación.", desc_en: "Fire prevention and protection in workplaces. Equipment auditing and evacuation route planning." },
-            { id: "004", icon: "fa-gear", color: "text-slate-400", bg: "bg-slate-50", name_es: "Maquinaria", name_en: "Machinery", desc_es: "Sistemas de protección y dispositivos de seguridad en maquinaria y equipo para prevenir riesgos mecánicos.", desc_en: "Protection systems and safety devices in machinery and equipment to prevent mechanical risks." },
-            { id: "005", icon: "fa-flask", color: "text-amber-500", bg: "bg-amber-50", name_es: "Sust. Químicas", name_en: "Chemicals", desc_es: "Manejo, transporte y almacenamiento de sustancias químicas peligrosas. Protocolos de seguridad química industrial.", desc_en: "Handling, transport, and storage of hazardous chemicals. Industrial chemical safety protocols." },
-            { id: "009", icon: "fa-arrow-up-right-dots", color: "text-blue-500", bg: "bg-blue-50", name_es: "Alturas", name_en: "Heights", desc_es: "Condiciones de seguridad para realizar trabajos en altura. Uso de arneses y prevención de caídas.", desc_en: "Safety conditions for working at heights. Harness usage and fall prevention management." },
-            { id: "017", icon: "fa-shield-heart", color: "text-accent", bg: "bg-emerald-50", name_es: "Equipamiento", name_en: "PPE Selection", desc_es: "Selección, uso y manejo de equipo de protección personal (EPP) según el análisis de riesgo del puesto.", desc_en: "Selection, use, and management of personal protective equipment (PPE) based on job risk analysis." },
-            { id: "019", icon: "fa-clipboard-list", color: "text-slate-400", bg: "bg-slate-50", name_es: "Comisiones", name_en: "Committees", desc_es: "Conformación y funcionamiento de las comisiones de seguridad e higiene en los centros de trabajo.", desc_en: "Establishment and operation of safety and hygiene commissions within workplaces." },
-            { id: "026", icon: "fa-triangle-exclamation", color: "text-amber-600", bg: "bg-amber-50", name_es: "Señalética", name_en: "Safety Signs", desc_es: "Colores y señales de seguridad e higiene; identificación de riesgos y fluidos en tuberías.", desc_en: "Safety and hygiene colors and signs; risk identification and fluid identification in piping systems." },
-            { id: "030", icon: "fa-user-doctor", color: "text-accent", bg: "bg-white", name_es: "Serv. Prev.", name_en: "Prev. Services", desc_es: "Servicios preventivos de seguridad y salud en el trabajo. Diagnóstico situacional y plan de acción médico.", desc_en: "Preventive safety and health services at work. Situational diagnosis and medical action plans." },
-            { id: "033", icon: "fa-door-closed", color: "text-slate-500", bg: "bg-slate-50", name_es: "Confinados", name_en: "Confined Space", desc_es: "Condiciones de seguridad para realizar trabajos en espacios confinados. Monitoreo atmosférico y rescate.", desc_en: "Safety conditions for working in confined spaces. Atmospheric monitoring and rescue protocols." },
-            { id: "035", icon: "fa-brain", color: "text-accent", bg: "bg-emerald-50", name_es: "Psicosocial", name_en: "Psychosocial", desc_es: "Factores de riesgo psicosocial en el trabajo: identificación, análisis y prevención del entorno laboral.", desc_en: "Psychosocial risk factors at work: identification, analysis, and prevention of workplace environment issues." },
-            { id: "036", icon: "fa-child-reaching", color: "text-accent", bg: "bg-emerald-50", name_es: "Ergonomía", name_en: "Ergonomics", desc_es: "Factores de riesgo ergonómico en el trabajo - Manejo manual de cargas. Prevención de lesiones musculoesqueléticas.", desc_en: "Ergonomic risk factors at work - Manual load handling. Prevention of musculoskeletal injuries." },
-            { id: "COF", icon: "fa-scale-balanced", color: "text-white", bg: "bg-industrial", name_es: "COFEPRIS", name_en: "Sanitary Law", desc_es: "Especialista en Derecho Sanitario. Gestión ante COFEPRIS, avisos de funcionamiento y cumplimiento RPBI.", desc_en: "Sanitary Law Specialist. COFEPRIS management, operation notices, and medical waste (RPBI) compliance." }
-        ];
-
-        let currentLang = 'es';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-            renderNorms();
-        }
-
-        function renderNorms() {
-            const grid = document.getElementById('norms-grid');
-            grid.innerHTML = '';
-            norms.forEach((n) => {
-                const div = document.createElement('div');
-                div.className = `nom-card p-14 rounded-[70px] text-center shadow-sm group ${n.bg || 'bg-white'}`;
-                div.onclick = () => openModal(n);
-                div.innerHTML = `
-                    <div class="relative flex flex-col items-center w-full">
-                        <div class="w-16 h-16 ${n.bg === 'bg-white' ? 'bg-slate-50' : 'bg-white/40'} ${n.color} rounded-2xl flex items-center justify-center text-3xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 mb-8 shadow-sm">
-                            <i class="fa-solid ${n.icon}"></i>
-                        </div>
-                        <div class="absolute top-0 right-0 lg:right-4 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[8px] font-black shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-check"></i>
-                        </div>
-                        <h4 class="font-black ${n.color === 'text-white' ? 'text-white' : 'text-slate-900'} text-lg tracking-tighter uppercase mb-2">NOM-${n.id}</h4>
-                        <p class="text-[10px] ${n.color === 'text-white' ? 'text-emerald-200' : 'text-slate-400'} mt-1 uppercase font-black tracking-widest leading-tight">
-                            ${currentLang === 'es' ? n.name_es : n.name_en}
-                        </p>
-                        <div class="mt-8 pt-4 border-t border-slate-100 w-full text-[8px] font-black uppercase text-accent opacity-40 tracking-[0.3em] group-hover:opacity-100 transition-opacity">
-                            Audit Ready
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(div);
-            });
-        }
-
-        function openModal(norm) {
-            const modal = document.getElementById('normModal');
-            document.getElementById('modal-icon').className = `w-28 h-28 rounded-[40px] flex items-center justify-center text-5xl mb-12 shadow-inner ${norm.bg} ${norm.color}`;
-            document.getElementById('modal-icon').innerHTML = `<i class="fa-solid ${norm.icon}"></i>`;
-            document.getElementById('modal-title').innerText = `NOM-${norm.id}`;
-            document.getElementById('modal-desc').innerText = currentLang === 'es' ? norm.desc_es : norm.desc_en;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('normModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        const reveal = () => {
-            const reveals = document.querySelectorAll('.reveal-on-scroll');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('reveal-active');
+        function initCharts() {
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                    y: { display: false }
                 }
-            });
-        };
+            };
 
-        // --- DASHBOARD LOGIC (SIMULATION) ---
-        let trendChartInstance = null;
-        let deptChartInstance = null;
-
-        function initDashboard() {
-            // Trend Chart
-            const ctxTrend = document.getElementById('trendChart').getContext('2d');
-            trendChartInstance = new Chart(ctxTrend, {
+            // 1. General: Siniestralidad vs Costos
+            chartGeneral1 = new Chart(document.getElementById('chartGeneral1'), {
                 type: 'line',
                 data: {
                     labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
                     datasets: [{
-                        label: 'Costos ($)',
-                        data: [45000, 38000, 22000, 18000, 15000, 12000],
-                        borderColor: '#ef4444',
-                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                        fill: true,
-                        tension: 0.4
+                        label: 'Costos ($)', data: [45, 50, 42, 60, 55, 85],
+                        borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.05)', fill: true, tension: 0.4, pointRadius: 3, pointHoverRadius: 5
                     }, {
-                        label: 'Incidentes',
-                        data: [8, 6, 4, 3, 2, 1],
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        yAxisID: 'y1'
+                        label: 'Incidentes', data: [5, 6, 4, 8, 7, 12],
+                        borderColor: '#0f172a', backgroundColor: 'transparent', borderDash: [5, 5], fill: false, tension: 0.4, yAxisID: 'y1', pointRadius: 0
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
-                    plugins: { legend: { position: 'bottom' } },
-                    scales: {
-                        y: { beginAtZero: true, display: false },
-                        y1: { type: 'linear', display: false, position: 'right' },
-                        x: { grid: { display: false } }
-                    }
+                options: { 
+                    ...commonOptions, 
+                    scales: { y: { display: false }, y1: { display: false }, x: { grid: { display: false } } },
+                    plugins: { tooltip: { mode: 'index', intersect: false } }
                 }
             });
 
-            // Dept Chart
-            const ctxDept = document.getElementById('deptChart').getContext('2d');
-            deptChartInstance = new Chart(ctxDept, {
-                type: 'doughnut',
+            // 2. General: Riesgo por Área
+            chartGeneral2 = new Chart(document.getElementById('chartGeneral2'), {
+                type: 'bar',
                 data: {
-                    labels: ['Operaciones', 'Mantenimiento', 'CEDIS'],
+                    labels: ['Operaciones', 'Mantto', 'CEDIS', 'Admin'],
                     datasets: [{
-                        data: [65, 25, 10],
-                        backgroundColor: ['#3b82f6', '#f97316', '#10b981'],
-                        borderWidth: 0
+                        label: 'Riesgo Ponderado', data: [85, 60, 40, 10],
+                        backgroundColor: ['#ef4444', '#eab308', '#0d9488', '#0f172a'], borderRadius: 6, barThickness: 40
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } },
-                    cutout: '75%'
-                }
+                options: commonOptions
+            });
+
+            // 3. Wellness: Crónicos
+            chartWellness = new Chart(document.getElementById('chartWellness'), {
+                type: 'bar',
+                data: {
+                    labels: ['Sobrepeso', 'Hipertensión', 'Diabetes', 'Tabaquismo'],
+                    datasets: [{
+                        label: '% Plantilla', data: [45, 12, 8, 22],
+                        backgroundColor: '#0d9488', borderRadius: 4, barThickness: 25
+                    }]
+                },
+                options: { indexAxis: 'y', ...commonOptions }
             });
         }
 
-        function switchDashTab(tabName) {
-            // Reset Buttons
-            document.querySelectorAll('.dash-sidebar-btn').forEach(btn => {
-                btn.classList.remove('active', 'text-white', 'bg-accent');
-                btn.classList.add('text-slate-400');
+        // --- TABS LOGIC ---
+        function switchTab(tabId) {
+            // Update buttons
+            document.querySelectorAll('.dash-sidebar-btn').forEach(b => {
+                b.classList.remove('active');
+                b.classList.add('text-gray-400');
             });
-            // Active Button
-            const activeBtn = document.getElementById(`tab-${tabName}`);
+            const activeBtn = document.getElementById(`btn-${tabId}`);
             activeBtn.classList.add('active');
-            activeBtn.classList.remove('text-slate-400');
+            activeBtn.classList.remove('text-gray-400');
+            
+            // Update titles
+            const titles = { 'general': 'Vista General', 'riesgos': 'Gestión de Riesgos ST-7', 'wellness': 'Salud & Aptitud' };
+            document.getElementById('view-title').innerText = titles[tabId];
 
-            // Toggle Views
-            document.querySelectorAll('.dash-view').forEach(v => v.classList.add('hidden'));
-            if(tabName === 'wellness') {
-                // Si no hay vista de wellness aun, mostrar general como fallback o alerta
-                document.getElementById('view-general').classList.remove('hidden');
-                alert("Módulo Wellness: Disponible en versión completa.");
-            } else {
-                document.getElementById(`view-${tabName}`).classList.remove('hidden');
-            }
+            // Update views with fade animation
+            document.querySelectorAll('.dash-view').forEach(v => {
+                v.classList.add('hidden');
+                v.classList.remove('animate-fade-in');
+            });
+            const newView = document.getElementById(`view-${tabId}`);
+            newView.classList.remove('hidden');
+            void newView.offsetWidth; // Trigger reflow
+            newView.classList.add('animate-fade-in');
         }
 
-        function updateCharts() {
-            const filter = document.getElementById('deptFilter').value;
-            // Simulacion de cambio de datos
-            if (filter === 'ops') {
-                trendChartInstance.data.datasets[0].data = [30000, 28000, 25000, 24000, 20000, 18000];
-                document.getElementById('kpi-days').innerText = "85";
-            } else if (filter === 'mant') {
-                trendChartInstance.data.datasets[0].data = [10000, 5000, 2000, 1000, 500, 0];
-                document.getElementById('kpi-days').innerText = "12";
-            } else {
-                trendChartInstance.data.datasets[0].data = [45000, 38000, 22000, 18000, 15000, 12000];
-                document.getElementById('kpi-days').innerText = "142";
+        // --- SIMULATOR LOGIC ---
+        function initSim() {
+            const iAcc = document.getElementById('sim-acc');
+            const iDays = document.getElementById('sim-days');
+            
+            function update() {
+                const acc = iAcc.value;
+                const days = iDays.value;
+                
+                document.getElementById('sim-acc-val').innerText = acc;
+                document.getElementById('sim-days-val').innerText = days;
+
+                // Fake Formula for Demo
+                const res = 0.5 + (acc * 0.05) + (days * 0.005);
+                document.getElementById('sim-result').innerText = res.toFixed(5);
             }
-            trendChartInstance.update();
+            iAcc.addEventListener('input', update);
+            iDays.addEventListener('input', update);
         }
 
-        window.addEventListener('scroll', reveal);
-        window.onload = () => { renderNorms(); reveal(); initDashboard(); };
+        // --- MOBILE MENU ---
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // INIT
+        window.onload = () => {
+            initCharts();
+            initSim();
+        };
     </script>
 </body>
 </html>
